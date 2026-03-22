@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>CHANEL MAYOR - Gravity Falls Portal</title>
     <style>
-        /* ========== RESET ========== */
+        /* ========== RESET & VARIABLES ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        /* ========== FONTS ========== */
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Patrick+Hand&family=Rock+Salt&display=swap');
         
         :root {
             --primary: #ff6b9d;
@@ -27,6 +24,9 @@
             --shadow: #4a154b;
             --cipher: #39ff14;
         }
+        
+        /* ========== FONTS ========== */
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Patrick+Hand&family=Rock+Salt&display=swap');
         
         body {
             font-family: 'Patrick Hand', 'Courier New', cursive;
@@ -170,7 +170,7 @@
             display: block; padding: 12px 20px; background: var(--journal); color: var(--primary); text-decoration: none;
             font-size: 1.1em; font-weight: bold; border: 4px solid var(--secondary); border-radius: 40px; transform: rotate(var(--rot, 0deg));
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 5px 5px 0 var(--secondary); text-transform: uppercase;
-            letter-spacing: 2px; position: relative; overflow: hidden; white-space: nowrap;
+            letter-spacing: 2px; position: relative; overflow: hidden;
         }
         @media (max-width: 768px) { .nav-link { white-space: normal; text-align: center; width: 100%; transform: rotate(0deg) !important; } }
         .nav-link:hover { transform: rotate(0deg) scale(1.1); background: var(--accent); color: var(--journal); box-shadow: 8px 8px 0 var(--primary); border-color: var(--primary); }
@@ -188,10 +188,10 @@
         @media (max-width: 768px) { .filter-btn { padding: 10px 15px; min-width: calc(50% - 10px); } }
         .filter-btn:hover, .filter-btn.active { background: var(--primary); color: var(--journal); border-color: var(--accent); transform: scale(1.05); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin: 30px 0; }
-        .gallery-item { background: var(--journal); border: 5px solid var(--secondary); border-radius: 35px; overflow: hidden; transform: rotate(var(--rot, -1deg)); transition: all 0.4s; box-shadow: 10px 10px 0 var(--primary); animation: appear 0.5s ease-out; }
+        .gallery-item { background: var(--journal); border: 5px solid var(--secondary); border-radius: 35px; overflow: hidden; transform: rotate(var(--rot, -1deg)); transition: all 0.4s; box-shadow: 10px 10px 0 var(--primary); animation: appear 0.5s ease-out; cursor: pointer; }
         .gallery-item:nth-child(even) { --rot: 2deg; }
         .gallery-item:hover { transform: rotate(0deg) scale(1.02); box-shadow: 15px 15px 0 var(--accent); border-color: var(--primary); }
-        .gallery-image { height: 200px; background: var(--pine); position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; background-image: radial-gradient(circle at 30% 30%, var(--accent) 10px, transparent 10px), linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%); }
+        .gallery-image { height: 200px; background: var(--pine); position: relative; display: flex; align-items: center; justify-content: center; background-image: radial-gradient(circle at 30% 30%, var(--accent) 10px, transparent 10px), linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%); }
         .gallery-emoji { font-size: 4em; z-index: 2; transition: all 0.3s; }
         .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74,21,75,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; z-index: 3; }
         .gallery-image:hover .gallery-overlay { opacity: 1; }
@@ -210,9 +210,7 @@
         @media (max-width: 1024px) { .about-container { grid-template-columns: 1fr; } }
         .polaroid { background: var(--journal); padding: 15px 15px 30px; border: 5px solid var(--secondary); transform: rotate(-3deg); box-shadow: 15px 15px 0 var(--primary); transition: all 0.4s; cursor: pointer; max-width: 300px; margin: 0 auto; }
         .polaroid-image { height: 280px; background: var(--pine); display: flex; align-items: center; justify-content: center; font-size: 5em; background-image: radial-gradient(circle at 30% 30%, var(--accent) 15px, transparent 15px), linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%); border-radius: 5px; overflow: hidden; }
-        .polaroid-image img { width: 100%; height: 100%; object-fit: cover; }
-        .badge-logo { width: 80px; height: 80px; margin: 10px auto; border-radius: 50%; overflow: hidden; border: 3px solid #fff; }
-        .badge-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .badge-logo { width: 80px; height: 80px; margin: 10px auto; border-radius: 50%; overflow: hidden; border: 3px solid #fff; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 2.5em; }
         .social-links { display: flex; flex-direction: column; gap: 10px; max-width: 300px; margin: 0 auto; width: 100%; }
         .social-link { padding: 12px; background: var(--journal); border: 3px solid var(--secondary); border-radius: 40px; color: var(--primary); text-decoration: none; text-align: center; transition: all 0.3s; font-weight: bold; }
         .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0; }
@@ -239,7 +237,7 @@
         @media (max-width: 768px) { .timeline-item { width: 100%; left: 0; padding: 15px 20px 15px 50px; } }
         .timeline-left { left: 0; padding-right: 50px; }
         .timeline-right { left: 50%; padding-left: 50px; }
-        .timeline-content { background: var(--journal); padding: 25px; border-radius: 40px; border: 4px solid var(--primary); box-shadow: 10px 10px 0 var(--secondary); transition: all 0.3s; }
+        .timeline-content { background: var(--journal); padding: 25px; border-radius: 40px; border: 4px solid var(--primary); box-shadow: 10px 10px 0 var(--secondary); transition: all 0.3s; cursor: pointer; }
         .timeline-icon { position: absolute; top: -20px; left: 20px; background: var(--accent); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5em; border: 3px solid var(--primary); animation: spin 8s linear infinite; }
         .timeline-year { display: inline-block; background: var(--primary); color: var(--journal); padding: 5px 20px; border-radius: 30px; margin-bottom: 10px; }
         .timeline-dot { position: absolute; width: 25px; height: 25px; background: var(--cipher); border: 4px solid var(--primary); border-radius: 50%; top: 50%; transform: translateY(-50%); animation: pulse 2s infinite; }
@@ -249,6 +247,9 @@
         .journal-page { margin-top: 40px; padding: 40px; background: var(--journal); border-radius: 50px; transform: rotate(0.3deg); border: 5px double var(--secondary); position: relative; }
         .invisible-text { color: transparent; text-shadow: 0 0 6px var(--cipher); cursor: help; text-align: center; margin-top: 20px; padding: 10px; background: rgba(255,217,102,0.2); border-radius: 20px; }
         .invisible-text:hover { color: var(--accent); text-shadow: none; }
+        .story-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .story-stat-item { background: rgba(255,107,157,0.2); padding: 15px; border-radius: 30px; text-align: center; border: 2px solid var(--accent); }
+        .story-stat-number { font-size: 2em; font-weight: bold; color: var(--accent); }
         
         /* ========== BACKGROUNDS ========== */
         .backgrounds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
@@ -268,7 +269,7 @@
         .map-tooltip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8em; white-space: nowrap; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
         .map-cell:hover .map-tooltip { opacity: 1; }
         
-        /* ========== ILLUSTRATIONS (MASONRY) ========== */
+        /* ========== ILLUSTRATIONS ========== */
         .masonry-grid { column-count: 4; column-gap: 20px; }
         @media (max-width: 1024px) { .masonry-grid { column-count: 3; } }
         @media (max-width: 768px) { .masonry-grid { column-count: 2; } }
@@ -281,6 +282,9 @@
         .personal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin: 30px 0; }
         .personal-card { background: var(--journal); padding: 25px; border-radius: 40px; border: 4px solid var(--secondary); position: relative; cursor: pointer; transition: all 0.4s; }
         .personal-number { font-size: 3em; font-weight: bold; color: rgba(181,55,242,0.2); position: absolute; bottom: 10px; right: 15px; }
+        .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 40px; flex-wrap: wrap; }
+        .page-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--journal); border: 3px solid var(--primary); border-radius: 15px; color: var(--primary); text-decoration: none; font-weight: bold; transition: all 0.3s; }
+        .page-link:hover, .page-link.active { background: var(--primary); color: var(--journal); border-color: var(--accent); transform: scale(1.1); }
         
         /* ========== FOOTER ========== */
         .site-footer { background: var(--pine); text-align: center; padding: 40px 20px; margin-top: 50px; border-top: 12px solid var(--secondary); border-radius: 0 0 40px 40px; }
@@ -288,18 +292,49 @@
         @media (max-width: 768px) { .footer-email { font-size: 1.3em; } }
         .counter { display: inline-block; background: var(--shadow); color: var(--cipher); padding: 12px 25px; border-radius: 15px; font-family: monospace; margin-top: 20px; border: 3px solid var(--accent); }
         .easter-egg { margin-top: 30px; text-align: center; padding: 20px; background: rgba(255,107,157,0.2); border-radius: 30px; cursor: pointer; }
+        .about-greeting { font-size: 1.8em; color: var(--accent); text-shadow: 2px 2px 0 var(--primary); margin-bottom: 20px; }
+        .about-paragraph { font-size: 1.1em; line-height: 1.6; margin-bottom: 15px; }
+        .about-quote { margin: 30px 0; padding: 25px; background: rgba(255,217,102,0.2); border-left: 6px solid var(--accent); border-radius: 20px; font-style: italic; }
+        .intro-big { font-size: 1.8em; color: var(--accent); text-shadow: 2px 2px 0 var(--primary); margin-bottom: 15px; }
+        .observation-location { font-size: 0.9em; color: var(--mystery); margin: 10px 0 5px; }
+        .timeline-desc { margin: 10px 0; }
+        .timeline-details { font-size: 0.9em; color: var(--mystery); margin-top: 10px; font-style: italic; }
+        .journal-page-number { position: absolute; top: -12px; right: 30px; background: var(--secondary); color: var(--journal); padding: 5px 20px; border-radius: 30px; font-weight: bold; }
+        .journal-page-title { font-size: 1.5em; color: var(--primary); margin-bottom: 15px; }
+        .map-footer { margin-top: 20px; text-align: right; font-style: italic; }
+        .cipher-footer { font-family: monospace; font-size: 1.2em; margin: 15px 0; color: var(--accent); }
+        .footer-text { font-size: 1.2em; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div><div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div><div class="star" style="top: 12%; left: 10%; animation-duration: 22s;">🌟</div>
+    <!-- Звездочки -->
+    <div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div>
+    <div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div>
+    <div class="star" style="top: 12%; left: 10%; animation-duration: 22s;">🌟</div>
+    <div class="star" style="top: 20%; right: 15%; animation-duration: 16s;">💫</div>
+    <div class="star" style="top: 35%; right: 25%; animation-duration: 24s;">⭐</div>
+    <div class="star" style="top: 50%; left: 85%; animation-duration: 18s;">✨</div>
+    <div class="star" style="top: 70%; right: 90%; animation-duration: 20s;">🌟</div>
+    <div class="star" style="top: 85%; left: 50%; animation-duration: 25s;">💫</div>
+    
+    <!-- Билл Шифр -->
     <div class="bill-cipher" title="Билл Шифр" onclick="billClick()"></div>
+    
     <div class="journal-container">
-        <div class="journal-corner corner-tl"></div><div class="journal-corner corner-tr"></div><div class="journal-corner corner-bl"></div><div class="journal-corner corner-br"></div>
+        <div class="journal-corner corner-tl"></div>
+        <div class="journal-corner corner-tr"></div>
+        <div class="journal-corner corner-bl"></div>
+        <div class="journal-corner corner-br"></div>
+        
         <header class="site-header">
             <h1 class="site-title">CHANEL MAYOR</h1>
-            <nav class="nav-bar"><ul class="nav-menu" id="navMenu"></ul></nav>
+            <nav class="nav-bar">
+                <ul class="nav-menu" id="navMenu"></ul>
+            </nav>
         </header>
+        
         <main id="mainContent"></main>
+        
         <footer class="site-footer">
             <div class="footer-text">📬 СВЯЗАТЬСЯ С ХИЖИНОЙ ТАЙН:</div>
             <a href="mailto:chanelmayor@gmail.com" class="footer-email">chanelmayor@gmail.com</a>
@@ -308,52 +343,357 @@
             <div class="counter">⏳ СТРАННЫХ СОБЫТИЙ: <span id="randomCounter">4231</span></div>
         </footer>
     </div>
-    <div id="imageModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal()">&times;</span><div class="modal-body"><div class="modal-emoji" id="modalEmoji"></div><h2 id="modalTitle"></h2><p id="modalDesc"></p><p class="modal-story" id="modalStory"></p><div class="modal-year" id="modalYear"></div></div></div></div>
+    
+    <!-- Модальное окно -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-emoji" id="modalEmoji"></div>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <p class="modal-story" id="modalStory"></p>
+                <div class="modal-year" id="modalYear"></div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        const pages = { about: 'О себе', portfolio: 'Портфолио', observational: 'Наблюдения', story: 'История', backgrounds: 'Фоны', illustrations: 'Иллюстрации' };
-        let currentPage = new URLSearchParams(window.location.search).get('page') || 'about';
+        // Данные для галереи
         const galleryItems = [
             {title:'Тайна леса', category:'landscapes', year:'2023', desc:'Серия работ о существах из Гравити Фолз', img:'🌲', story:'Странные огни в лесу'},
             {title:'Хижина Тайн', category:'landscapes', year:'2023', desc:'Интерьеры загадочного места', img:'🏚️', story:'По реальным фотографиям'},
             {title:'Билл Шифр', category:'characters', year:'2024', desc:'Портреты всеведущего демона', img:'🔺', story:'Появлялся во снах 3 раза'},
-            {title:'Пухля', category:'characters', year:'2024', desc:'Хроники короля свиней', img:'🐷', story:'Король позировал лично'}
+            {title:'Пухля', category:'characters', year:'2024', desc:'Хроники короля свиней', img:'🐷', story:'Король позировал лично'},
+            {title:'Диппер и Мэйбл', category:'characters', year:'2023', desc:'Близнецы Пайнс', img:'👥', story:'12 портретов в разных стилях'},
+            {title:'Зус', category:'characters', year:'2023', desc:'Серия комиксов', img:'👨', story:'24 страницы приключений'},
+            {title:'Венди', category:'characters', year:'2024', desc:'Скейт-культура', img:'🛹', story:'Вдохновлено скейтерами Орегона'},
+            {title:'Лес осенью', category:'landscapes', year:'2024', desc:'Золотая осень', img:'🍂', story:'Пленэрные зарисовки'},
+            {title:'Ночная хижина', category:'landscapes', year:'2024', desc:'Хижина при луне', img:'🌙', story:'Наблюдения за тенями'},
+            {title:'Гномий совет', category:'characters', year:'2024', desc:'Собрание гномов', img:'👺', story:'Под полной луной'},
+            {title:'Летающая тарелка', category:'mystery', year:'2023', desc:'НЛО над лесом', img:'🛸', story:'Странный объект в небе'},
+            {title:'Статуя Билла', category:'mystery', year:'2024', desc:'Каменное изваяние', img:'🗿', story:'В глубине леса'}
         ];
-        function renderNav() { const nav = document.getElementById('navMenu'); nav.innerHTML = Object.entries(pages).map(([key, title]) => `<li class="nav-item"><a href="?page=${key}" class="nav-link ${currentPage===key?'active':''}" style="--rot:${Math.floor(Math.random()*9)-4}deg">${title}</a></li>`).join(''); }
-        function openModal(item) { document.getElementById('modalEmoji').innerHTML=item.img; document.getElementById('modalTitle').innerHTML=item.title; document.getElementById('modalDesc').innerHTML=item.desc; document.getElementById('modalStory').innerHTML='📖 '+item.story; document.getElementById('modalYear').innerHTML='Год: '+item.year; document.getElementById('imageModal').style.display='block'; }
-        function closeModal() { document.getElementById('imageModal').style.display='none'; }
-        function billClick() { alert(['📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"','🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!','⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!','👁️ ОДИН ГЛАЗ ВИДИТ БОЛЬШЕ'][Math.floor(Math.random()*4)]); }
-        function revealSecret(cell, num, msg) { if(!cell.classList.contains('revealed')){ cell.classList.add('revealed'); cell.innerHTML='🔍'; let cnt=parseInt(document.getElementById('secretCount')?.innerText||3)+1; if(document.getElementById('secretCount')) document.getElementById('secretCount').innerText=cnt; alert('🎉 СЕКРЕТ! '+msg); if(cnt>=20) alert('ВСЕ 20 СЕКРЕТОВ! БИЛЛ ГОРДИТСЯ!'); } }
-        function applyFilters(containerClass, filterAttr){ document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('click',function(){ let f=this.dataset.filter; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll(containerClass).forEach(i=>{ if(f==='all'||i.dataset[filterAttr]===f) i.style.display='block'; else i.style.display='none'; }); })); }
-        function renderContent(){
-            let html='';
-            if(currentPage==='about'){
-                html=`<div class="content-section"><h2 class="section-title">📖 ABOUT - ХУДОЖНИК ИЗ ХИЖИНЫ ТАЙН</h2><div class="about-container"><div class="about-image"><div class="polaroid" onclick="this.style.transform='rotate(360deg) scale(1.1)'"><div class="polaroid-image"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ff6b9d'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='white'%3E🎨%3C/text%3E%3C/svg%3E" alt="Chanel"></div><div class="polaroid-caption">Eda</div></div><div class="badge-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,10 90,90 10,90' fill='%2339ff14'/%3E%3Ctext x='50' y='65' font-size='20' text-anchor='middle' fill='black'%3E▲%3C/text%3E%3C/svg%3E"></div><div class="social-links"><a href="#" class="social-link">📷 Instagram</a><a href="#" class="social-link">🐦 Twitter</a><a href="#" class="social-link">🎨 DeviantArt</a></div></div><div class="about-content"><p class="about-greeting">🔆 ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН! 🔆</p><p><strong>CHANEL MAYOR</strong>, художник и искатель приключений, 12 лет в Гравити Фолз. Рисую гномов, Билла, Пухлю и всё странное вокруг.</p><div class="about-stats"><div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div><div class="stat-item"><div class="stat-number">12</div><div class="stat-label">лет</div></div><div class="stat-item"><div class="stat-number">247</div><div class="stat-label">наблюдений</div></div></div><div class="skills-list"><span class="skill-tag">✏️ Рисунок</span><span class="skill-tag">💻 Цифра</span><span class="skill-tag">🎨 Акварель</span><span class="skill-tag">🎬 Анимация</span></div><div class="testimonials"><div class="testimonial-item"><p>"Лучший художник в Гравити Фолз!"</p><p class="testimonial-author">- Дядя Стэн</p></div></div></div></div><div class="cipher-box"><div class="cipher-title">🔐 РАСШИФРУЙ:</div><div class="cipher-display">⬟◆⬟◆ ⬟⬟◆⬟</div><div class="cipher-answer" onclick="this.innerHTML='▶ БИЛЛ ШИФР ВСЕГДА РЯДОМ'">🔍 Показать ответ</div></div><div class="easter-egg" onclick="this.innerHTML='👁️ '+this.innerHTML">Остерегайтесь Билла Шифра!</div></div>`;
-            } else if(currentPage==='portfolio'){
-                html=`<div class="content-section"><h2 class="section-title">🎨 PORTFOLIO + PERSONAL WORK</h2><div class="gallery-filter"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="2024">2024</button><button class="filter-btn" data-filter="2023">2023</button></div><div class="gallery-grid" id="galleryGrid"></div><div class="personal-works"><h3 class="section-title">✨ PERSONAL WORK</h3><div class="personal-grid"><div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>24 работы • 2024</p></div><div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>8 видео</p></div></div></div></div>`;
-                setTimeout(()=>{ let grid=document.getElementById('galleryGrid'); if(grid) grid.innerHTML=galleryItems.map(i=>`<div class="gallery-item" data-category="${i.category}" data-year="${i.year}"><div class="gallery-image" onclick='openModal(${JSON.stringify(i).replace(/'/g, "&apos;")})'><div class="gallery-overlay"><span class="gallery-icon">🔍</span></div><div class="gallery-emoji">${i.img}</div><div class="gallery-year">${i.year}</div></div><div class="gallery-info"><h3>${i.title}</h3><p>${i.desc}</p></div></div>`).join(''); applyFilters('.gallery-item','category'); },10);
-            } else if(currentPage==='observational'){
-                let observations = [{title:'Лесные гномы',desc:'Поведение в лесу',time:'14:30',icon:'👺',loc:'Старый пень'},{title:'Билл Шифр',desc:'В отражениях',time:'03:15',icon:'🔺',loc:'Зеркала'}];
-                html=`<div class="content-section"><h2 class="section-title">🔍 OBSERVATIONAL STUDIES</h2><div class="observational-grid" id="obsGrid"></div><div class="journal-notes"><h3>📝 ЗАМЕТКИ НА ПОЛЯХ</h3><div class="daily-cipher"><div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟</div><div class="cipher-answer" onclick="this.innerHTML='▶ БИЛЛ СМОТРИТ'">🔍 Ответ</div></div></div></div>`;
-                setTimeout(()=>{ let grid=document.getElementById('obsGrid'); if(grid) grid.innerHTML=observations.map(o=>`<div class="observation-card"><div class="observation-time">⏰ ${o.time}</div><div class="observation-icon">${o.icon}</div><h4>${o.title}</h4><p>${o.desc}</p><div class="observation-location">📍 ${o.loc}</div></div>`).join(''); },10);
-            } else if(currentPage==='story'){
-                let timeline = [{year:'Лето 2012',title:'ПРИБЫТИЕ',desc:'Первые наброски',icon:'🚌',details:'47 набросков'},{year:'2024',title:'НАШИ ДНИ',desc:'Главный проект',icon:'🔍',details:'Скоро'}];
-                html=`<div class="content-section"><h2 class="section-title">📚 STORY - ХРОНИКИ ХИЖИНЫ</h2><div class="timeline" id="timelineContainer"></div><div class="journal-page"><div class="journal-page-number">№ 19</div><p class="journal-page-title">САМАЯ ВАЖНАЯ ЗАПИСЬ</p><p>За 12 лет я создал более 1500 работ...</p><div class="invisible-text">ТЫ НАШЁЛ ЭТОТ ТЕКСТ!</div></div><div class="story-stats"><div class="story-stat-item"><div class="story-stat-number">12</div><div class="story-stat-label">лет</div></div></div></div>`;
-                setTimeout(()=>{ let cont=document.getElementById('timelineContainer'); if(cont) cont.innerHTML=`<div class="timeline-line"></div>`+timeline.map((t,i)=>`<div class="timeline-item ${i%2?'timeline-right':'timeline-left'}" style="--delay:${i*0.1}s"><div class="timeline-content"><div class="timeline-icon">${t.icon}</div><div class="timeline-year">${t.year}</div><h3>${t.title}</h3><p>${t.desc}</p><div class="timeline-details">${t.details}</div><div class="timeline-dot"></div></div></div>`).join(''); },10);
-            } else if(currentPage==='backgrounds'){
-                let bg=[{name:'Хижина Тайн',time:'День',desc:'Главное здание',icon:'🏚️',danger:'Безопасно',secret:'🔼'}];
-                html=`<div class="content-section"><h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2><div class="backgrounds-grid" id="bgGrid"></div><div class="mystery-map"><h3>🗺️ КАРТА ТАЙН</h3><p>Найдено: <span id="secretCount">3</span>/20</p><div class="map-grid" id="mapGrid"></div></div></div>`;
-                setTimeout(()=>{ document.getElementById('bgGrid').innerHTML=bg.map(b=>`<div class="background-card"><div class="background-image"><span class="background-icon">${b.icon}</span><span class="background-time">${b.time}</span><span class="background-danger">${b.danger}</span><span class="background-secret">${b.secret}</span></div><h3>${b.name}</h3><p>${b.desc}</p></div>`).join(''); let map=''; for(let i=1;i<=20;i++) map+=`<div class="map-cell" onclick="revealSecret(this,${i},'Секрет ${i}')"><div class="map-marker">?</div><div class="map-tooltip">Тайна ${i}</div></div>`; document.getElementById('mapGrid').innerHTML=map; },10);
-            } else if(currentPage==='illustrations'){
-                let titles=['Портрет Диппера','Мэйбл и Пухля','Билл в лесу','Хижина ночью'];
-                html=`<div class="content-section"><h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2><div class="illustrations-filter"><button class="filter-btn active" data-filter="all">Все (124)</button><button class="filter-btn" data-filter="2024">2024</button></div><div class="masonry-grid" id="masonryGrid"></div><div class="pagination"><a href="#" class="page-link active">1</a></div></div>`;
-                setTimeout(()=>{ let grid=document.getElementById('masonryGrid'); if(grid) grid.innerHTML=titles.map((t,i)=>`<div class="masonry-item portrait" data-year="2024" data-category="portrait"><div class="masonry-image"><div class="masonry-overlay"><span class="masonry-view">🔍</span></div><div class="masonry-year">2024</div><div class="masonry-emoji">🎨</div></div><div class="masonry-info"><h4>${t}</h4><p>№${String(i+1).padStart(3,'0')}</p></div></div>`).join(''); applyFilters('.masonry-item','year'); },10);
-            }
-            document.getElementById('mainContent').innerHTML=html;
-            document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('click',function(){ let f=this.dataset.filter; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item, .masonry-item').forEach(i=>{ if(f==='all'||i.dataset.category===f||i.dataset.year===f) i.style.display='block'; else i.style.display='none'; }); }));
+        
+        // Данные для наблюдений
+        const observations = [
+            {title:'Лесные гномы', desc:'Поведение в естественной среде. Танцы под луной.', time:'14:30', icon:'👺', loc:'Старый пень у ручья'},
+            {title:'Билл Шифр', desc:'Появление в отражениях и экранах телефонов.', time:'03:15', icon:'🔺', loc:'В каждом зеркале'},
+            {title:'Пухля', desc:'Режим питания. Ест каждые 2 часа.', time:'12:00', icon:'🐷', loc:'Загон у хижины'},
+            {title:'Хижина', desc:'Странные звуки по ночам.', time:'02:00', icon:'🏚️', loc:'Подвал'},
+            {title:'Лес', desc:'Изменение цвета листьев не по сезону.', time:'18:30', icon:'🌳', loc:'Северная часть леса'},
+            {title:'Озеро', desc:'Отражения луны странной формы.', time:'21:45', icon:'🌊', loc:'Озеро Миннегага'}
+        ];
+        
+        // Данные для таймлайна
+        const timelineData = [
+            {year:'Лето 2012', title:'ПРИБЫТИЕ В ГРАВИТИ ФОЛЗ', desc:'Первые наброски и знакомство с городом.', icon:'🚌', details:'47 первых набросков'},
+            {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Случайно нашёл страницу из дневника.', icon:'📖', details:'Найдено 3 страницы'},
+            {year:'Лето 2013', title:'ВЫСТАВКА В ХИЖИНЕ', desc:'Первая персональная выставка.', icon:'🏛️', details:'Продано 12 работ'},
+            {year:'2015', title:'ГРАФИЧЕСКИЙ РОМАН', desc:'Работа над книгой наблюдений.', icon:'📚', details:'128 страниц'},
+            {year:'2022', title:'10 ЛЕТ СПУСТЯ', desc:'Юбилейная выставка в Хижине Тайн.', icon:'🎉', details:'100 гостей'},
+            {year:'2024', title:'НАШИ ДНИ', desc:'Работа над главной тайной.', icon:'🔍', details:'Скоро открытие'}
+        ];
+        
+        // Данные для фонов
+        const bgItems = [
+            {name:'Хижина Тайн', time:'День', desc:'Главное здание. Здесь всё началось.', icon:'🏚️', danger:'Безопасно', secret:'🔼'},
+            {name:'Лесная опушка', time:'Закат', desc:'Место встреч гномов.', icon:'🌅', danger:'⚠️ Опасно ночью', secret:'🌲'},
+            {name:'Водопад', time:'Утро', desc:'Скрытый вход в пещеру.', icon:'💦', danger:'Скользко', secret:'💧'},
+            {name:'Озеро', time:'Полдень', desc:'Отражения. Иногда видно небо в воде.', icon:'🏞️', danger:'Глубоко', secret:'🌊'}
+        ];
+        
+        const pages = { about: 'О себе', portfolio: 'Портфолио', observational: 'Наблюдения', story: 'История', backgrounds: 'Фоны', illustrations: 'Иллюстрации' };
+        let currentPage = new URLSearchParams(window.location.search).get('page') || 'about';
+        let secretCount = 3;
+        
+        function renderNav() {
+            const nav = document.getElementById('navMenu');
+            nav.innerHTML = Object.entries(pages).map(([key, title]) => 
+                `<li class="nav-item"><a href="?page=${key}" class="nav-link ${currentPage===key?'active':''}" style="--rot:${Math.floor(Math.random()*9)-4}deg">${title}</a></li>`
+            ).join('');
         }
-        window.addEventListener('load',()=>{ renderNav(); renderContent(); document.getElementById('randomCounter').innerText=Math.floor(3000+Math.random()*7000); });
-        window.onclick=e=>{ if(e.target===document.getElementById('imageModal')) closeModal(); };
-        window.billClick=billClick; window.openModal=openModal; window.closeModal=closeModal; window.revealSecret=revealSecret;
+        
+        function openModal(item) {
+            document.getElementById('modalEmoji').innerHTML = item.img;
+            document.getElementById('modalTitle').innerHTML = item.title;
+            document.getElementById('modalDesc').innerHTML = item.desc;
+            document.getElementById('modalStory').innerHTML = '📖 ' + item.story;
+            document.getElementById('modalYear').innerHTML = 'Год: ' + item.year;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+        
+        function closeModal() { document.getElementById('imageModal').style.display = 'none'; }
+        
+        function billClick() {
+            const messages = ['📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"', '🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!', '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!', '👁️ ОДИН ГЛАЗ ВИДИТ БОЛЬШЕ', '🌀 СКОРО ВСЁ ИЗМЕНИТСЯ'];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            const bill = document.querySelector('.bill-cipher');
+            bill.style.animation = 'shake 0.5s, spin 0.5s linear';
+            setTimeout(() => { bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite'; }, 500);
+        }
+        
+        function revealSecret(cell, num, msg) {
+            if(!cell.classList.contains('revealed')) {
+                cell.classList.add('revealed');
+                cell.innerHTML = '🔍';
+                secretCount++;
+                const cntSpan = document.getElementById('secretCount');
+                if(cntSpan) cntSpan.innerText = secretCount;
+                alert('🎉 СЕКРЕТ НАЙДЕН! ' + msg);
+                if(secretCount >= 20) alert('🎉 ПОЗДРАВЛЯЮ! ТЫ НАШЁЛ ВСЕ 20 СЕКРЕТОВ! БИЛЛ ШИФР ГОРДИТСЯ ТОБОЙ!');
+            }
+        }
+        
+        function applyFilters(selector, attr) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll(selector).forEach(item => {
+                        if(filter === 'all' || item.dataset[attr] === filter) item.style.display = 'block';
+                        else item.style.display = 'none';
+                    });
+                });
+            });
+        }
+        
+        function renderContent() {
+            let html = '';
+            
+            if(currentPage === 'about') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">📖 ABOUT - ХУДОЖНИК ИЗ ХИЖИНЫ ТАЙН</h2>
+                    <div class="about-container">
+                        <div class="about-image">
+                            <div class="polaroid" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
+                                <div class="polaroid-image"><span style="font-size:5em;">🎨</span></div>
+                                <div class="polaroid-caption">CHANEL MAYOR</div>
+                            </div>
+                            <div class="badge-logo">🔺</div>
+                            <div class="social-links">
+                                <a href="#" class="social-link">📷 Instagram</a>
+                                <a href="#" class="social-link">🐦 Twitter</a>
+                                <a href="#" class="social-link">🎨 DeviantArt</a>
+                            </div>
+                        </div>
+                        <div class="about-content">
+                            <p class="about-greeting">🔆 ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН! 🔆</p>
+                            <p class="about-paragraph">Меня зовут <strong>CHANEL MAYOR</strong>. Я художник, иллюстратор и искатель приключений, уже 12 лет живущий в самом загадочном городке Америки - Гравити Фолз.</p>
+                            <p class="about-paragraph">Всё началось летом 2012 года, когда я случайно забрёл в этот город и увидел Хижину Тайн. С тех пор я не могу уехать - каждый день приносит новые открытия.</p>
+                            <div class="about-quote"><p>"Тайна этого портала в том, что за каждой картинкой скрывается целая вселенная."</p><p class="quote-author">- CHANEL MAYOR</p></div>
+                            <div class="about-stats">
+                                <div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div>
+                                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">лет опыта</div></div>
+                                <div class="stat-item"><div class="stat-number">247</div><div class="stat-label">наблюдений</div></div>
+                            </div>
+                            <div class="about-skills"><h4>🔧 ИНСТРУМЕНТЫ</h4><div class="skills-list">
+                                <span class="skill-tag">✏️ Традиционный рисунок</span><span class="skill-tag">💻 Цифровая иллюстрация</span>
+                                <span class="skill-tag">🎨 Акварель</span><span class="skill-tag">🎬 Анимация</span>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="cipher-box"><div class="cipher-title">🔐 РАСШИФРУЙ ПОСЛАНИЕ:</div><div class="cipher-display">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆</div><div class="cipher-answer" onclick="this.innerHTML='▶ БИЛЛ ШИФР ВСЕГДА РЯДОМ'">🔍 Показать ответ</div></div>
+                    <div class="easter-egg" onclick="this.innerHTML='👁️ ' + this.innerHTML">Остерегайтесь Билла Шифра!</div>
+                </div>`;
+            }
+            else if(currentPage === 'portfolio') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🎨 PORTFOLIO + PERSONAL WORK</h2>
+                    <div class="gallery-filter">
+                        <button class="filter-btn active" data-filter="all">Все работы</button>
+                        <button class="filter-btn" data-filter="2024">2024</button>
+                        <button class="filter-btn" data-filter="2023">2023</button>
+                        <button class="filter-btn" data-filter="characters">Персонажи</button>
+                        <button class="filter-btn" data-filter="landscapes">Пейзажи</button>
+                    </div>
+                    <div class="gallery-grid" id="galleryGrid"></div>
+                    <div class="personal-works"><h3 class="section-title" style="font-size:2em;">✨ PERSONAL WORK</h3>
+                    <div class="personal-grid">
+                        <div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>Серия работ, вдохновленных старой бумагой</p><div class="personal-stats">24 работы • 2024</div></div>
+                        <div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>Короткие анимационные сцены</p><div class="personal-stats">8 видео • 2023-2024</div></div>
+                        <div class="personal-card"><div class="personal-number">03</div><h4>Концепт-арт</h4><p>Идеи для несуществующих эпизодов</p><div class="personal-stats">45 концептов • 2024</div></div>
+                    </div></div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('galleryGrid');
+                    if(grid) {
+                        grid.innerHTML = galleryItems.map(item => `
+                            <div class="gallery-item" data-category="${item.category}" data-year="${item.year}">
+                                <div class="gallery-image" onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})'>
+                                    <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+                                    <div class="gallery-emoji">${item.img}</div>
+                                    <div class="gallery-year">${item.year}</div>
+                                </div>
+                                <div class="gallery-info"><h3>${item.title}</h3><p>${item.desc}</p></div>
+                            </div>
+                        `).join('');
+                        applyFilters('.gallery-item', 'category');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'observational') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🔍 OBSERVATIONAL STUDIES</h2>
+                    <div class="intro-big">ДНЕВНИК НАБЛЮДЕНИЙ #19</div>
+                    <div class="stats-mini"><div class="stat-mini-item">📊 Всего наблюдений: 247</div><div class="stat-mini-item">👁️ Подтверждённых явлений: 89</div></div>
+                    <div class="observational-grid" id="obsGrid"></div>
+                    <div class="journal-notes"><h3>📝 ЗАМЕТКИ НА ПОЛЯХ ДНЕВНИКА</h3>
+                    <div class="notes-list"><div class="note-item"><span class="note-marker">✦</span><span>Гномы предпочитают селиться в старых пнях</span></div></div>
+                    <div class="daily-cipher"><div class="cipher-label">🔐 КРИПТОГРАММА ДНЯ:</div><div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆</div><div class="cipher-answer" onclick="this.innerHTML='▶ ПОСЛАНИЕ: БИЛЛ ШИФР СМОТРИТ'">🔍 Показать ответ</div></div></div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('obsGrid');
+                    if(grid) {
+                        grid.innerHTML = observations.map(obs => `
+                            <div class="observation-card">
+                                <div class="observation-time">⏰ ${obs.time}</div>
+                                <div class="observation-icon">${obs.icon}</div>
+                                <h4>${obs.title}</h4>
+                                <p>${obs.desc}</p>
+                                <div class="observation-location">📍 ${obs.loc}</div>
+                            </div>
+                        `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'story') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">📚 STORY - ХРОНИКИ ХИЖИНЫ</h2>
+                    <div class="story-intro"><p class="intro-big">12 ЛЕТ ТАЙН И ОТКРЫТИЙ</p></div>
+                    <div class="timeline" id="timelineContainer"></div>
+                    <div class="journal-page"><div class="journal-page-number">№ 19</div><p class="journal-page-title">САМАЯ ВАЖНАЯ ЗАПИСЬ</p><p>"За 12 лет я создал более 1500 работ. Каждая из них - это окно в другой мир."</p><div class="invisible-text">ТЫ НАШЁЛ ЭТОТ ТЕКСТ! БИЛЛ УЖЕ РЯДОМ...</div></div>
+                    <div class="story-stats"><div class="story-stat-item"><div class="story-stat-number">12</div><div class="story-stat-label">лет в Гравити Фолз</div></div><div class="story-stat-item"><div class="story-stat-number">1500+</div><div class="story-stat-label">созданных работ</div></div><div class="story-stat-item"><div class="story-stat-number">∞</div><div class="story-stat-label">нераскрытых тайн</div></div></div>
+                </div>`;
+                setTimeout(() => {
+                    const container = document.getElementById('timelineContainer');
+                    if(container) {
+                        container.innerHTML = `<div class="timeline-line"></div>` + 
+                            timelineData.map((t, i) => `
+                                <div class="timeline-item ${i%2?'timeline-right':'timeline-left'}" style="--delay:${i*0.1}s">
+                                    <div class="timeline-content">
+                                        <div class="timeline-icon">${t.icon}</div>
+                                        <div class="timeline-year">${t.year}</div>
+                                        <h3>${t.title}</h3>
+                                        <p class="timeline-desc">${t.desc}</p>
+                                        <div class="timeline-details">${t.details}</div>
+                                        <div class="timeline-dot"></div>
+                                    </div>
+                                </div>
+                            `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'backgrounds') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2>
+                    <div class="intro-big">КАРТА ТАЙН ГРАВИТИ ФОЛЗ</div>
+                    <div class="backgrounds-grid" id="bgGrid"></div>
+                    <div class="mystery-map"><h3>🗺️ КАРТА ТАЙН ГРАВИТИ ФОЛЗ</h3><p class="map-instruction">Нажимай на клетки, чтобы найти секреты. Найдено: <span id="secretCount">3</span>/20</p><div class="map-grid" id="mapGrid"></div><p class="map-footer">★ Найди все секреты и получи приз от Билла</p></div>
+                </div>`;
+                setTimeout(() => {
+                    const bgGrid = document.getElementById('bgGrid');
+                    if(bgGrid) {
+                        bgGrid.innerHTML = bgItems.map(b => `
+                            <div class="background-card">
+                                <div class="background-image">
+                                    <span class="background-icon">${b.icon}</span>
+                                    <span class="background-time">${b.time}</span>
+                                    <span class="background-danger">${b.danger}</span>
+                                    <span class="background-secret">${b.secret}</span>
+                                </div>
+                                <h3>${b.name}</h3>
+                                <p>${b.desc}</p>
+                            </div>
+                        `).join('');
+                    }
+                    const mapGrid = document.getElementById('mapGrid');
+                    if(mapGrid) {
+                        let mapHtml = '';
+                        for(let i = 1; i <= 20; i++) {
+                            mapHtml += `<div class="map-cell" onclick="revealSecret(this, ${i}, 'Тайна #${i}')"><div class="map-marker">?</div><div class="map-tooltip">Секрет ${i}</div></div>`;
+                        }
+                        mapGrid.innerHTML = mapHtml;
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'illustrations') {
+                const titles = ['Портрет Диппера', 'Мэйбл и Пухля', 'Билл в лесу', 'Хижина ночью', 'Гномы на поляне', 'Зус играет', 'Венди на скейте', 'Дядя Стэн', 'Тайный портал', 'Летающая свинья'];
+                html = `<div class="content-section">
+                    <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
+                    <div class="illustrations-filter">
+                        <button class="filter-btn active" data-filter="all">Все (124)</button>
+                        <button class="filter-btn" data-filter="2024">2024</button>
+                        <button class="filter-btn" data-filter="2023">2023</button>
+                        <button class="filter-btn" data-filter="portrait">Портреты</button>
+                    </div>
+                    <div class="masonry-grid" id="masonryGrid"></div>
+                    <div class="pagination"><a href="#" class="page-link active">1</a><a href="#" class="page-link">2</a><a href="#" class="page-link">3</a></div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('masonryGrid');
+                    if(grid) {
+                        grid.innerHTML = titles.map((t, i) => `
+                            <div class="masonry-item ${i%3===0?'portrait':'square'}" data-year="${2022 + (i%3)}" data-category="${i%2===0?'portrait':'landscape'}">
+                                <div class="masonry-image">
+                                    <div class="masonry-overlay"><span class="masonry-view">🔍</span></div>
+                                    <div class="masonry-year">${2022 + (i%3)}</div>
+                                    <div class="masonry-emoji">🎨</div>
+                                </div>
+                                <div class="masonry-info"><h4>${t}</h4><p>№${String(i+1).padStart(3,'0')}</p></div>
+                            </div>
+                        `).join('');
+                        applyFilters('.masonry-item', 'year');
+                    }
+                }, 10);
+            }
+            
+            document.getElementById('mainContent').innerHTML = html;
+        }
+        
+        // Инициализация
+        window.addEventListener('load', () => {
+            renderNav();
+            renderContent();
+            document.getElementById('randomCounter').innerText = Math.floor(3000 + Math.random() * 7000);
+            
+            // Обработка кликов по навигации
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if(href && href.includes('?page=')) {
+                        e.preventDefault();
+                        currentPage = href.split('?page=')[1];
+                        history.pushState({}, '', href);
+                        renderNav();
+                        renderContent();
+                    }
+                });
+            });
+            
+            // Консольные пасхалки
+            console.log('%c🔍 ТЫ НАШЁЛ СЕКРЕТНУЮ КОНСОЛЬ!', 'font-size: 20px; color: #b537f2;');
+            console.log('%c⬟ Билл Шифр наблюдает за тобой...', 'font-size: 16px; color: #a0e7e5;');
+            
+            // Код Konami
+            let konami = [];
+            document.addEventListener('keydown', (e) => {
+                konami.push(e.keyCode);
+                if(konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
+                    alert('🎉 КОД АКТИВИРОВАН! ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН!');
+                    document.body.style.animation = 'flicker 0.1s infinite';
+                    setTimeout(() => document.body.style.animation = '', 3000);
+                    konami = [];
+                }
+            });
+        });
+        
+        window.onclick = (e) => { if(e.target === document.getElementById('imageModal')) closeModal(); };
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.billClick = billClick;
+        window.revealSecret = revealSecret;
     </script>
 </body>
 </html>

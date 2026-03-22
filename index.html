@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>CHANEL MAYOR - Gravity Falls Portal</title>
+    <title>Edasartistry - Gravity Falls Portal</title>
     
     <style>
         /* ========== RESET ========== */
@@ -2040,7 +2040,40 @@
             
             if(currentPage === 'about') {
                 html = `<div class="content-section">
-                    <h2 class="section-title">📖 ABOUT - ХУДОЖНИК ИЗ ХИЖИНЫ ТАЙН</h2>
+                   <h2 class="section-title">
+    📖 ABOUT - ХУДОЖНИК ИЗ ХИЖИНЫ ТАЙН
+    <img src="./img/у.jpg" alt="logo" class="title-logo">
+</h2>
+
+<style>
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* логотип */
+.title-logo {
+    width: 28px; /* маленький размер */
+    height: 28px;
+    object-fit: cover;
+    border-radius: 6px;
+    
+    transform: rotate(-12deg); /* чуть криво */
+    
+    animation: floatLogo 2s ease-in-out infinite alternate;
+}
+
+/* лёгкое движение */
+@keyframes floatLogo {
+    from {
+        transform: rotate(-12deg) translateY(0px);
+    }
+    to {
+        transform: rotate(-8deg) translateY(-4px);
+    }
+}
+</style>
                     <div class="about-container">
                         <div class="about-image">
 
@@ -2082,20 +2115,16 @@
 
                    
                        
-                            <div class="social-links">
-                                <a href="#" class="social-link">📷 Instagram</a>
-                                <a href="#" class="social-link">🐦 Twitter</a>
-                                <a href="#" class="social-link">🎨 DeviantArt</a>
-                            </div>
+                       
                         </div>
                         <div class="about-content">
                             <p class="about-greeting">🔆 ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН! 🔆</p>
-                            <p class="about-paragraph">Меня зовут <strong>CHANEL MAYOR</strong> (настоящее имя секретно, как страница 19). Я художник, иллюстратор и искатель приключений, уже 12 лет живущий в самом загадочном городке Америки - Гравити Фолз.</p>
+                            <p class="about-paragraph">Меня зовут <strong>Edasartistry</strong> (настоящее имя секретно, как страница 19). Я художник, иллюстратор и искатель приключений, уже 12 лет живущий в самом загадочном городке Америки - Гравити Фолз.</p>
                             <p class="about-paragraph">Всё началось летом 2012 года, когда я случайно забрёл в этот город и увидел Хижину Тайн. С тех пор я не могу уехать - каждый день приносит новые открытия, странные встречи и вдохновение для новых работ.</p>
                             <p class="about-paragraph">Я рисую всё, что вижу вокруг: гномов на поляне, появления Билла Шифра в отражениях, Пухлю за едой, тени на стенах хижины. Каждый рисунок - это страница моего личного дневника наблюдений.</p>
                             <div class="about-quote">
                                 <p>"Тайна этого портала в том, что за каждой картинкой скрывается целая вселенная. Готовы ли вы её исследовать?"</p>
-                                <p class="quote-author">- CHANEL MAYOR</p>
+                                <p class="quote-author">- Edasartistry</p>
                             </div>
                             <div class="about-stats">
                                 <div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div>
@@ -2244,7 +2273,7 @@
                             <p>"За 12 лет я создал более 1500 работ. Каждая из них - это окно в другой мир, другой момент времени. И тайна продолжается... Билл Шифр всё ещё наблюдает за мной."</p>
                             <p class="journal-ps">P.S. Сегодня ночью я снова видел треугольник в небе. Он подмигнул мне.</p>
                         </div>
-                        <div class="journal-signature">- CHANEL MAYOR</div>
+                        <div class="journal-signature">- Edasartistry</div>
                         <div class="invisible-text" onclick="this.innerHTML='👁️ БИЛЛ ЗДЕСЬ 👁️'">ТЫ НАШЁЛ ЭТОТ ТЕКСТ! ЗНАЧИТ, БИЛЛ ШИФР УЖЕ РЯДОМ...</div>
                     </div>
                     <div class="story-stats">

@@ -1750,6 +1750,20 @@
             font-size: 0.9em;
             opacity: 0.7;
         }
+
+
+
+
+
+
+        .site-header {
+    position: fixed;
+    top: -120px; /* уводим вверх за экран */
+    left: 0;
+    width: 100%;
+    transition: top 0.4s ease;
+    z-index: 1000;
+}
     </style>
 </head>
 <body>
@@ -1781,9 +1795,9 @@
         <div class="journal-corner corner-br"></div>
         
         <header class="site-header">
-         
+            <h1 class="site-title">Edasartistry</h1>
             <nav class="nav-bar">
-      
+                <ul class="nav-menu" id="navMenu"></ul>
             </nav>
         </header>
         

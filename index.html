@@ -3,654 +3,2509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Edasartistry | Mystery Artist — Gravity Falls Infinite Portfolio</title>
+    <title>Edasartistry - Gravity Falls Portal</title>
     
     <style>
-        /* ========== RESET & MODERN GLASS ========== */
+        /* ========== RESET ========== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap');
+        
+        /* ========== FONTS ========== */
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Patrick+Hand&family=Rock+Salt&display=swap');
         
         :root {
-            --glass-bg: rgba(20, 15, 35, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             --primary: #ff6b9d;
-            --primary-dark: #e05483;
-            --secondary: #5e9eff;
-            --accent: #c27eff;
-            --pine: #ffdd88;
-            --dark-bg: #0b0720;
-            --text-light: #fef9ff;
-            --cipher-glow: #a3ffc3;
-            --card-bg: rgba(30, 20, 55, 0.65);
+            --secondary: #00ccff;
+            --accent: #b537f2;
+            --pine: #ffd966;
+            --sky: #ff99c8;
+            --mystery: #a0e7e5;
+            --journal: #ffffff;
+            --wood: #ffb347;
+            --shadow: #4a154b;
+            --cipher: #39ff14;
         }
-
+        
         body {
-            font-family: 'Inter', 'Space Grotesk', sans-serif;
-            background: radial-gradient(circle at 10% 20%, #1c1135, #09051a);
+            font-family: 'Patrick Hand', 'Courier New', cursive;
+            background-color: var(--shadow);
+            background-image: 
+                repeating-linear-gradient(45deg,
+                    rgba(255,107,157,0.12) 0px,
+                    rgba(255,107,157,0.12) 20px,
+                    rgba(0,204,255,0.12) 20px,
+                    rgba(0,204,255,0.12) 40px
+                );
+            background-size: 80px 80px;
             min-height: 100vh;
-            color: var(--text-light);
+            position: relative;
             overflow-x: hidden;
+            width: 100%;
         }
-
-        /* animated orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.35;
-            z-index: 0;
-            animation: floatOrb 22s infinite alternate ease-in-out;
-        }
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, -60px) scale(1.3); }
-        }
-        .orb-1 { width: 500px; height: 500px; background: #ff6b9d; top: -200px; left: -150px; }
-        .orb-2 { width: 550px; height: 550px; background: #5e9eff; bottom: -200px; right: -150px; animation-duration: 28s; }
-        .orb-3 { width: 400px; height: 400px; background: #b96eff; top: 40%; right: 5%; animation-duration: 18s; }
-
-        /* main container */
-        .infinite-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.8rem 2rem 3rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* glass card base */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            box-shadow: var(--glass-shadow);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        .glass-card:hover {
-            background: rgba(30, 22, 55, 0.6);
-            border-color: rgba(255, 255, 255, 0.35);
-            transform: translateY(-4px);
-        }
-
-        /* header section */
-        .hero-header {
-            padding: 2rem 2rem;
-            margin-bottom: 2.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        .logo-badge {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-        .avatar-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, var(--primary), var(--accent));
-            border-radius: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.8rem;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-        }
-        .title-group h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(130deg, #fff, var(--pine), #ffb7e0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .title-group p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        .bill-mini {
-            background: rgba(255,235,100,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            backdrop-filter: blur(4px);
-            cursor: pointer;
-        }
-
-        /* section titles */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border-left: 6px solid var(--primary);
-            padding-left: 24px;
-        }
-        .section-sub {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            padding-left: 30px;
-        }
-
-        /* gallery masonry grid */
-        .masonry-grid {
-            column-count: 4;
-            column-gap: 1.8rem;
-        }
-        .art-piece {
-            break-inside: avoid;
-            margin-bottom: 1.8rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 1.6rem;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .art-piece:hover {
-            transform: scale(1.01);
-            border-color: var(--primary);
-            box-shadow: 0 18px 35px rgba(0,0,0,0.4);
-        }
-        .art-visual {
-            height: 210px;
-            background: linear-gradient(145deg, #352759, #1e133c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            position: relative;
-        }
-        .year-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--primary);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        .art-info {
-            padding: 1rem;
-        }
-        .art-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        /* observations grid */
-        .obs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 1.5rem;
-        }
-        .obs-card {
-            background: rgba(10, 6, 25, 0.55);
-            backdrop-filter: blur(8px);
-            border-radius: 1.5rem;
-            padding: 1.3rem;
-            border-left: 4px solid var(--secondary);
-        }
-
-        /* timeline row */
-        .timeline-vertical {
-            display: flex;
-            flex-direction: column;
-            gap: 1.3rem;
-        }
-        .timeline-item {
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
-            border-radius: 1.3rem;
-            padding: 1rem 1.5rem;
-            border-left: 5px solid var(--accent);
-        }
-
-        /* stats & skills */
-        .stat-cluster {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .stat-block {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px);
-            border-radius: 1.5rem;
-            padding: 1rem 1.8rem;
-            text-align: center;
-            flex: 1;
-        }
-        .skills-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        .skill-chip {
-            background: rgba(94, 158, 255, 0.2);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-        }
-
-        /* footer */
-        .footer-grace {
-            margin-top: 3.5rem;
-            text-align: center;
-            padding: 1.8rem;
-            border-radius: 2rem;
-        }
-
-        /* modal glass */
-        .modal-modern {
-            display: none;
+        
+        /* Эффект старой плёнки */
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(20px);
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            background: repeating-linear-gradient(0deg,
+                rgba(255,105,180,0.05) 0px,
+                rgba(255,105,180,0.05) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
         }
-        .modal-inner {
-            background: rgba(25, 18, 48, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 2.2rem;
-            max-width: 520px;
-            width: 90%;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* responsive */
-        @media (max-width: 1024px) {
-            .masonry-grid { column-count: 3; }
-        }
-        @media (max-width: 768px) {
-            .infinite-container { padding: 1rem; }
-            .hero-header { flex-direction: column; text-align: center; }
-            .masonry-grid { column-count: 2; }
-            .section-title { font-size: 1.8rem; }
-        }
-        @media (max-width: 480px) {
-            .masonry-grid { column-count: 1; }
-        }
-
-        /* floating bill cipher */
-        .bill-floating {
+        
+        /* ========== ЗВЕЗДОЧКИ ========== */
+        .star {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 65px;
-            height: 65px;
-            background: #e6ff00;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            cursor: pointer;
-            z-index: 999;
-            filter: drop-shadow(0 0 8px #00ffff);
-            transition: 0.2s;
-            opacity: 0.85;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.6;
+            color: var(--cipher);
+            text-shadow: 0 0 10px var(--accent);
+            filter: drop-shadow(0 0 5px var(--secondary));
+            will-change: transform;
+            animation: floatStar linear infinite;
         }
-        .bill-floating:hover {
+        
+        @keyframes floatStar {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -20px) rotate(15deg); }
+            50% { transform: translate(60px, 0) rotate(30deg); }
+            75% { transform: translate(30px, 20px) rotate(15deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        /* ========== АНИМАЦИИ ========== */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(-2deg); }
+            100% { transform: translateY(0px) rotate(-2deg); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 1; }
+            25% { opacity: 0.7; }
+            50% { opacity: 1; }
+            75% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--accent); }
+            50% { text-shadow: 0 0 30px var(--accent), 0 0 50px var(--primary); }
+            100% { text-shadow: 0 0 5px var(--accent); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(30px) rotate(-2deg); }
+            to { opacity: 1; transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes cyberpunkGlow {
+            0% { filter: drop-shadow(0 0 5px var(--secondary)); }
+            50% { filter: drop-shadow(0 0 20px var(--accent)); }
+            100% { filter: drop-shadow(0 0 5px var(--secondary)); }
+        }
+        
+        @keyframes kawaiiBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* ========== MAIN CONTAINER ========== */
+        .journal-container {
+            max-width: 1400px;
+            width: 95%;
+            margin: 20px auto;
+            background: var(--journal);
+            background-image: 
+                radial-gradient(circle at 20px 20px, rgba(255,217,102,0.25) 2px, transparent 2px),
+                linear-gradient(var(--journal), rgba(255,153,200,0.12));
+            background-size: 40px 40px, 100%;
+            border: 15px solid var(--primary);
+            border-radius: 50px;
+            box-shadow: 20px 20px 40px rgba(74,21,75,0.5), inset 0 0 80px rgba(181,55,242,0.12);
+            position: relative;
+            padding: 0 20px;
+            animation: appear 0.8s ease-out;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .journal-container {
+                width: 98%;
+                margin: 10px auto;
+                border-width: 10px;
+                padding: 0 10px;
+                border-radius: 40px;
+            }
+        }
+        
+        /* Уголки дневника */
+        .journal-corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--accent);
+            opacity: 0.3;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .journal-corner {
+                width: 40px;
+                height: 40px;
+                border-width: 4px;
+            }
+        }
+        
+        .corner-tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+        .corner-tr { top: -8px; right: -8px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
+        .corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+        
+        /* Билл Шифр */
+        .bill-cipher {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: var(--cipher);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.15;
+            right: 20px;
+            bottom: 20px;
+            animation: spin 20s linear infinite, cyberpunkGlow 4s infinite;
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .bill-cipher {
+                width: 70px;
+                height: 70px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+        
+        .bill-cipher:hover {
+            opacity: 1;
+            animation: shake 0.5s infinite, spin 1s linear infinite;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .bill-cipher::before {
+            content: "▲";
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--shadow);
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .bill-cipher::after {
+            content: "BILL";
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--shadow);
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        /* ========== HEADER ========== */
+        .site-header {
+            text-align: center;
+            padding: 30px 10px;
+            position: relative;
+        }
+        
+        .site-title {
+            font-family: 'Rock Salt', cursive;
+            font-size: 4em;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 
+                4px 4px 0 var(--primary),
+                7px 7px 0 var(--secondary),
+                10px 10px 10px var(--shadow);
+            letter-spacing: 5px;
+            transform: rotate(-2deg);
+            display: inline-block;
+            padding: 0 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 60px;
+            margin-bottom: 20px;
+            animation: float 5s ease-in-out infinite, cyberpunkGlow 3s infinite;
+            border: 3px solid var(--secondary);
+            word-break: break-word;
+            max-width: 100%;
+        }
+        
+        @media (max-width: 1024px) {
+            .site-title { font-size: 3em; }
+        }
+        
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2.2em;
+                padding: 10px 20px;
+            }
+        }
+        
+        .site-title::before,
+        .site-title::after {
+            content: "★";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: var(--cipher);
+            text-shadow: 2px 2px 0 var(--secondary);
+            animation: spin 6s linear infinite;
+        }
+        
+        .site-title::before { left: -15px; }
+        .site-title::after { right: -15px; }
+        
+        /* ========== НАВИГАЦИЯ ========== */
+        .nav-bar {
+            margin: 15px 0 20px;
+            padding: 20px;
+            background: var(--pine);
+            border: 6px dashed var(--accent);
+            border-radius: 60px;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0,204,255,0.5);
+            animation: pulse 4s infinite;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 15px;
+                border-width: 4px;
+                border-radius: 40px;
+            }
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-item {
+                width: 100%;
+            }
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 12px 20px;
+            background: var(--journal);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 4px solid var(--secondary);
+            border-radius: 40px;
+            transform: rotate(var(--rot, 0deg));
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 5px 5px 0 var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-link {
+                white-space: normal;
+                text-align: center;
+                width: 100%;
+                transform: rotate(0deg) !important;
+            }
+        }
+        
+        .nav-link:hover {
+            transform: rotate(0deg) scale(1.1);
+            background: var(--accent);
+            color: var(--journal);
+            box-shadow: 8px 8px 0 var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .nav-link.active {
+            background: var(--accent);
+            color: var(--journal);
+            border-color: var(--primary);
+            box-shadow: inset 3px 3px 8px var(--shadow);
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        /* ========== КОНТЕНТ ========== */
+        .content-section {
+            padding: 30px;
+            margin: 30px 0;
+            background: rgba(255,255,255,0.8);
+            border: 5px dotted var(--primary);
+            border-radius: 50px;
+            position: relative;
+            backdrop-filter: blur(3px);
+            animation: appear 0.6s ease-out;
+            width: 100%;
+            overflow-x: hidden;
+            z-index: 20;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px 15px;
+                margin: 20px 0;
+                border-width: 4px;
+                border-radius: 30px;
+            }
+        }
+        
+        .section-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.5em;
+            color: var(--primary);
+            text-shadow: 2px 2px 0 var(--accent);
+            margin-bottom: 30px;
+            border-bottom: 4px solid var(--secondary);
+            padding-bottom: 12px;
+            display: inline-block;
+            position: relative;
+            word-break: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8em;
+            }
+        }
+        
+        .section-title::after {
+            content: "⬟";
+            position: absolute;
+            right: -30px;
+            top: 0;
+            font-size: 1.2em;
+            color: var(--cipher);
+            opacity: 0.5;
+        }
+        
+        /* ========== ГАЛЕРЕЯ ========== */
+        .gallery-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .filter-btn {
+            padding: 12px 20px;
+            background: var(--journal);
+            border: 3px solid var(--primary);
+            border-radius: 40px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-btn {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                min-width: calc(50% - 10px);
+            }
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--journal);
+            border-color: var(--accent);
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 5px 5px 0 var(--secondary);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .gallery-item {
+            background: var(--journal);
+            border: 5px solid var(--secondary);
+            border-radius: 35px;
+            overflow: hidden;
+            transform: rotate(var(--rot, -1deg));
+            transition: all 0.4s;
+            box-shadow: 10px 10px 0 var(--primary);
+            animation: appear 0.5s ease-out;
+        }
+        
+        .gallery-item:nth-child(even) {
+            --rot: 2deg;
+        }
+        
+        .gallery-item:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 15px 15px 0 var(--accent);
+            border-color: var(--primary);
+        }
+        
+        .gallery-image {
+            height: 200px;
+            background: var(--pine);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: radial-gradient(circle at 30% 30%, var(--accent) 10px, transparent 10px),
+                linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%);
+        }
+        
+        .gallery-emoji {
+            font-size: 4em;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-emoji {
             transform: scale(1.1) rotate(5deg);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74,21,75,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 3;
+        }
+        
+        .gallery-image:hover .gallery-overlay {
             opacity: 1;
         }
-
-        /* star sparkles */
-        .star-twinkle {
+        
+        .gallery-icon {
+            font-size: 2.5em;
+            color: var(--cipher);
+            animation: kawaiiBounce 1s infinite;
+        }
+        
+        .gallery-year {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 2;
+        }
+        
+        .gallery-info {
+            padding: 15px;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.3em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .gallery-info p {
+            color: var(--secondary);
+            font-size: 0.95em;
+        }
+        
+        /* ========== МОДАЛЬНОЕ ОКНО ========== */
+        .modal {
+            display: none;
             position: fixed;
+            z-index: 10001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(74,21,75,0.94);
+            animation: flicker 0.3s;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--journal);
+            margin: 20px auto;
+            padding: 30px;
+            border: 15px solid var(--secondary);
+            border-radius: 60px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: appear 0.4s;
+            box-shadow: 25px 25px 50px var(--shadow);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px 15px;
+                border-width: 10px;
+                border-radius: 40px;
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 2.5em;
+            cursor: pointer;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: var(--cipher);
+            transform: scale(1.2) rotate(90deg);
+        }
+        
+        .modal-emoji {
+            font-size: 6em;
+            margin: 20px 0;
+            animation: spin 6s linear infinite;
+        }
+        
+        .modal-body h2 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .modal-story {
+            font-style: italic;
+            background: rgba(181,55,242,0.1);
+            padding: 15px;
+            border-radius: 20px;
+            margin: 15px 0;
+        }
+        
+        .modal-year {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--journal);
+            padding: 8px 25px;
+            border-radius: 40px;
+            margin-top: 15px;
+        }
+        
+        /* ========== ABOUT ========== */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 1024px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .about-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .polaroid {
+            background: var(--journal);
+            padding: 15px 15px 30px;
+            border: 5px solid var(--secondary);
+            transform: rotate(-3deg);
+            box-shadow: 15px 15px 0 var(--primary);
+            transition: all 0.4s;
+            cursor: pointer;
+            max-width: 300px;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 20px 20px 0 var(--accent);
+        }
+        
+        .polaroid-image {
+            height: 280px;
+            background: var(--pine);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            background-image: radial-gradient(circle at 30% 30%, var(--accent) 15px, transparent 15px),
+                linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%);
+            border-radius: 5px;
+        }
+        
+        .badge-logo {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            border: 3px solid var(--cipher);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .social-link {
+            padding: 12px;
+            background: var(--journal);
+            border: 3px solid var(--secondary);
+            border-radius: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--journal);
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+        
+        .about-greeting {
+            font-size: 1.8em;
+            color: var(--accent);
+            text-shadow: 2px 2px 0 var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-paragraph {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .about-quote {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255,217,102,0.2);
+            border-left: 6px solid var(--accent);
+            border-radius: 20px;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+        
+        .quote-author {
+            text-align: right;
+            margin-top: 10px;
+            font-style: normal;
+            color: var(--primary);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: var(--journal);
+            padding: 15px;
+            border-radius: 25px;
+            border: 3px solid var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-color: var(--accent);
+            box-shadow: 5px 5px 0 var(--primary);
+        }
+        
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--primary);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            padding: 8px 15px;
+            background: var(--journal);
+            border: 2px solid var(--secondary);
+            border-radius: 30px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .testimonials {
+            margin-top: 30px;
+        }
+        
+        .testimonials h4 {
+            font-size: 1.3em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-item {
+            background: rgba(255,217,102,0.2);
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            font-style: italic;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+        
+        /* ========== OBSERVATIONAL ========== */
+        .intro-big {
+            font-size: 1.8em;
+            color: var(--accent);
+            text-shadow: 2px 2px 0 var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stats-mini {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-mini-item {
+            background: rgba(255,107,157,0.2);
+            padding: 10px 15px;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+        
+        .observational-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .observation-card {
+            background: var(--journal);
+            padding: 25px 20px;
+            border-radius: 35px;
+            border: 4px solid var(--primary);
+            position: relative;
+            transition: all 0.4s;
+            cursor: pointer;
+            animation: cyberpunkGlow 5s infinite;
+        }
+        
+        .observation-card:hover {
+            transform: scale(1.02) rotate(1deg);
+            border-color: var(--accent);
+            box-shadow: 10px 10px 0 var(--accent);
+        }
+        
+        .observation-icon {
+            font-size: 3.5em;
+            text-align: center;
+            margin: 15px 0;
+            animation: kawaiiBounce 4s infinite;
+        }
+        
+        .observation-time {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9em;
+        }
+        
+        .observation-location {
+            font-size: 0.9em;
+            color: var(--mystery);
+            margin: 10px 0 5px;
+        }
+        
+        .observation-footnote {
+            font-size: 0.85em;
+            color: rgba(255,107,157,0.5);
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .journal-notes {
+            background: var(--journal);
+            padding: 30px;
+            border-radius: 40px;
+            box-shadow: inset 0 0 30px rgba(0,204,255,0.12);
+            margin-top: 30px;
+        }
+        
+        .journal-notes h3 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        
+        .notes-list {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .note-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px;
+            background: rgba(255,217,102,0.1);
+            border-radius: 15px;
+        }
+        
+        .note-marker {
+            font-size: 1.3em;
+            color: var(--accent);
+        }
+        
+        .daily-cipher {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--mystery);
+            border-radius: 30px;
+            color: var(--shadow);
+            text-align: center;
+        }
+        
+        .cipher-label {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+        
+        .cipher-code {
+            font-family: monospace;
+            font-size: 1.8em;
+            margin: 15px 0;
+            letter-spacing: 8px;
+            word-break: break-word;
+        }
+        
+        .cipher-hint {
+            font-size: 0.9em;
+            opacity: 0.8;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .cipher-answer {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: var(--journal);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cipher-answer:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+        }
+        
+        /* ========== TIMELINE ========== */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+            margin: 30px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--accent);
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px var(--cipher);
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            animation: appear 0.5s ease-out forwards;
+            opacity: 0;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                width: 100%;
+                left: 0;
+                padding: 15px 20px 15px 50px;
+            }
+        }
+        
+        .timeline-left {
+            left: 0;
+            padding-right: 50px;
+        }
+        
+        .timeline-right {
+            left: 50%;
+            padding-left: 50px;
+        }
+        
+        .timeline-content {
+            background: var(--journal);
+            padding: 25px;
+            border-radius: 40px;
+            border: 4px solid var(--primary);
+            box-shadow: 10px 10px 0 var(--secondary);
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 15px 15px 0 var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            border: 3px solid var(--primary);
+            animation: spin 8s linear infinite;
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--journal);
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            margin: 10px 0;
+        }
+        
+        .timeline-details {
+            font-size: 0.9em;
+            color: var(--mystery);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--cipher);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: pulse 2s infinite;
+        }
+        
+        .timeline-left .timeline-dot {
+            right: -42.5px;
+        }
+        
+        .timeline-right .timeline-dot {
+            left: -42.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-left .timeline-dot,
+            .timeline-right .timeline-dot {
+                left: -32px;
+            }
+        }
+        
+        .journal-page {
+            margin-top: 40px;
+            padding: 40px;
+            background: var(--journal);
+            border-radius: 50px;
+            transform: rotate(0.3deg);
+            border: 5px double var(--secondary);
+            position: relative;
+        }
+        
+        .journal-page-number {
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            background: var(--secondary);
+            color: var(--journal);
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+        
+        .journal-page-title {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .journal-page-content {
+            font-size: 1.1em;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .journal-ps {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: var(--mystery);
+        }
+        
+        .journal-signature {
+            text-align: right;
+            font-size: 1.2em;
+            color: var(--primary);
+            margin-top: 15px;
+        }
+        
+        .invisible-text {
+            color: transparent;
+            text-shadow: 0 0 6px var(--cipher);
+            cursor: help;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255,217,102,0.2);
+            border-radius: 20px;
+        }
+        
+        .invisible-text:hover {
+            color: var(--accent);
+            text-shadow: none;
+        }
+        
+        .story-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .story-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .story-stat-item {
+            background: rgba(255,107,157,0.2);
+            padding: 15px;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+        
+        .story-stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .story-stat-label {
+            font-size: 0.9em;
+            color: var(--primary);
+        }
+        
+        /* ========== BACKGROUNDS ========== */
+        .backgrounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .background-card {
+            background: var(--journal);
+            border-radius: 45px;
+            overflow: hidden;
+            border: 4px solid var(--secondary);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        
+        .background-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            border-color: var(--accent);
+            box-shadow: 15px 15px 0 var(--primary);
+        }
+        
+        .background-image {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--sky), var(--pine));
+        }
+        
+        .background-icon {
+            font-size: 4em;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        
+        .background-card:hover .background-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .background-time {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            z-index: 2;
+        }
+        
+        .background-secret {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: var(--journal);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .background-card:hover .background-secret {
+            opacity: 1;
+            transform: rotate(360deg);
+        }
+        
+        .background-danger {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(255,0,0,0.7);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        
+        .background-card h3 {
+            padding: 15px 15px 5px;
+            font-size: 1.3em;
+            color: var(--primary);
+        }
+        
+        .background-card p {
+            padding: 0 15px 15px;
+            color: var(--secondary);
+        }
+        
+        .mystery-map {
+            margin-top: 50px;
+            padding: 30px;
+            background: var(--mystery);
+            border-radius: 50px;
+            color: var(--shadow);
+        }
+        
+        .mystery-map h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .map-instruction {
+            margin-bottom: 20px;
+        }
+        
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .map-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .map-cell {
+            aspect-ratio: 1;
+            background: rgba(255,217,102,0.5);
+            border: 2px solid rgba(181,55,242,0.6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5em;
+        }
+        
+        .map-cell:hover {
+            background: var(--accent);
+            color: var(--journal);
+            transform: scale(1.1) rotate(3deg);
+            border-color: white;
+        }
+        
+        .map-cell.revealed {
+            background: var(--cipher);
+            color: var(--shadow);
+        }
+        
+        .map-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
             pointer-events: none;
-            font-size: 14px;
-            opacity: 0.5;
-            animation: twinkleStar 12s infinite alternate;
+            z-index: 100;
         }
-        @keyframes twinkleStar {
-            0% { opacity: 0.1; transform: translate(0,0); }
-            100% { opacity: 0.9; transform: translate(12px, -8px); }
+        
+        .map-cell:hover .map-tooltip {
+            opacity: 1;
         }
+        
+        .map-footer {
+            margin-top: 20px;
+            text-align: right;
+            font-style: italic;
+        }
+        
+        /* ========== ILLUSTRATIONS ========== */
+        .illustrations-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0 30px;
+            justify-content: center;
+        }
+        
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: var(--journal);
+            border-radius: 35px;
+            overflow: hidden;
+            border: 4px solid var(--secondary);
+            transition: all 0.4s;
+            cursor: pointer;
+            animation: appear 0.5s;
+        }
+        
+        .masonry-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 10px 10px 0 var(--primary);
+        }
+        
+        .masonry-image {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--mystery));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .masonry-item.portrait .masonry-image {
+            height: 280px;
+        }
+        
+        .masonry-emoji {
+            font-size: 3.5em;
+            z-index: 2;
+        }
+        
+        .masonry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74,21,75,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 3;
+        }
+        
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+        
+        .masonry-view {
+            font-size: 2.5em;
+            color: var(--cipher);
+            animation: kawaiiBounce 1s infinite;
+        }
+        
+        .masonry-year {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .masonry-info {
+            padding: 15px;
+        }
+        
+        .masonry-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .masonry-info p {
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--journal);
+            border: 3px solid var(--primary);
+            border-radius: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .page-link:hover,
+        .page-link.active {
+            background: var(--primary);
+            color: var(--journal);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        /* ========== PERSONAL WORKS ========== */
+        .personal-works {
+            margin-top: 40px;
+        }
+        
+        .personal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .personal-card {
+            background: var(--journal);
+            padding: 25px;
+            border-radius: 40px;
+            border: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        
+        .personal-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            border-color: var(--accent);
+            box-shadow: 15px 15px 0 var(--primary);
+        }
+        
+        .personal-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: rgba(181,55,242,0.2);
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            transition: all 0.4s;
+        }
+        
+        .personal-card:hover .personal-number {
+            color: rgba(181,55,242,0.4);
+            transform: scale(1.2) rotate(-5deg);
+        }
+        
+        .personal-card h4 {
+            font-size: 1.4em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .personal-stats {
+            margin-top: 15px;
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+        
+        /* ========== CRYPTO ========== */
+        .cipher-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--mystery);
+            border-radius: 40px;
+            color: var(--shadow);
+            text-align: center;
+        }
+        
+        .cipher-title {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .cipher-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            word-break: break-word;
+        }
+        
+        .easter-egg {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,107,157,0.2);
+            border-radius: 30px;
+            font-size: 1.2em;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* ========== FOOTER ========== */
+        .site-footer {
+            background: var(--pine);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 12px solid var(--secondary);
+            border-radius: 0 0 40px 40px;
+            width: 100%;
+            z-index: 20;
+        }
+        
+        .footer-email {
+            font-size: 2.2em;
+            color: var(--accent);
+            text-decoration: none;
+            border: 4px dashed var(--accent);
+            padding: 15px 30px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.4s;
+            animation: cyberpunkGlow 2s infinite;
+            word-break: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-email {
+                font-size: 1.3em;
+                padding: 10px 20px;
+            }
+        }
+        
+        .footer-email:hover {
+            background: var(--accent);
+            color: var(--journal);
+            transform: scale(1.1) rotate(1deg);
+            border-style: solid;
+            box-shadow: 15px 15px 0 var(--primary);
+        }
+        
+        .cipher-footer {
+            font-family: monospace;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: rgba(181,55,242,0.8);
+        }
+        
+        .counter {
+            display: inline-block;
+            background: var(--shadow);
+            color: var(--cipher);
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 1.3em;
+            margin-top: 20px;
+            border: 3px solid var(--accent);
+            animation: flicker 3s infinite;
+        }
+        
+        .footer-text {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+
+
+
+
+
+
+
+
+        .nav-bar {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+        .site-header {
+    position: fixed;
+    top: -120px; /* уводим вверх за экран */
+    left: 0;
+    width: 100%;
+    transition: top 0.4s ease;
+    z-index: 1000;
+}
     </style>
 </head>
 <body>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
-<div class="infinite-container">
-    <!-- header glass -->
-    <div class="glass-card hero-header">
-        <div class="logo-badge">
-            <div class="avatar-icon">🎨✨</div>
-            <div class="title-group">
-                <h1>Edasartistry <span style="background: linear-gradient(135deg,#ffd966,#ff99c8); -webkit-background-clip:text; background-clip:text; color:transparent;">✦ Mystery Archive</span></h1>
-                <p>✧ Gravity Falls chronicler | Cryptid illustrator | 1500+ anomalies captured ✧</p>
+    <!-- Звездочки (Kawaii Punk) -->
+    <div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div>
+    <div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div>
+    <div class="star" style="top: 12%; left: 10%; animation-duration: 22s;">🌟</div>
+    <div class="star" style="top: 20%; right: 15%; animation-duration: 16s;">💫</div>
+    <div class="star" style="top: 25%; left: 20%; animation-duration: 20s;">⭐</div>
+    <div class="star" style="top: 35%; right: 25%; animation-duration: 24s;">✨</div>
+    <div class="star" style="top: 45%; left: 30%; animation-duration: 19s;">🌟</div>
+    <div class="star" style="top: 55%; right: 35%; animation-duration: 21s;">💫</div>
+    <div class="star" style="top: 65%; left: 40%; animation-duration: 23s;">⭐</div>
+    <div class="star" style="top: 75%; right: 45%; animation-duration: 17s;">✨</div>
+    <div class="star" style="top: 85%; left: 50%; animation-duration: 25s;">🌟</div>
+    <div class="star" style="top: 15%; left: 70%; animation-duration: 19s;">💫</div>
+    <div class="star" style="top: 30%; right: 80%; animation-duration: 22s;">⭐</div>
+    <div class="star" style="top: 50%; left: 85%; animation-duration: 18s;">✨</div>
+    <div class="star" style="top: 70%; right: 90%; animation-duration: 20s;">🌟</div>
+    
+    <!-- Билл Шифр -->
+    <div class="bill-cipher" title="Билл Шифр" onclick="billClick()"></div>
+    
+    <!-- Главный контейнер -->
+    <div class="journal-container">
+        <div class="journal-corner corner-tl"></div>
+        <div class="journal-corner corner-tr"></div>
+        <div class="journal-corner corner-bl"></div>
+        <div class="journal-corner corner-br"></div>
+        
+        <header class="site-header">
+           
+            <nav class="nav-bar">
+                <ul class="nav-menu" id="navMenu"></ul>
+            </nav>
+        </header>
+        
+        <main id="mainContent"></main>
+        
+        <footer class="site-footer">
+            <div class="footer-text">📬 СВЯЗАТЬСЯ С ХИЖИНОЙ ТАЙН:</div>
+            <a href="mailto:chanelmayor@gmail.com" class="footer-email">chanelmayor@gmail.com</a>
+            <div class="cipher-footer">⬟⬟⬟ ◆◆◆</div>
+            <div class="copyright">© 2025 - ХИЖИНА ТАЙН ГРАВИТИ ФОЛЗ</div>
+            <div class="counter">⏳ СТРАННЫХ СОБЫТИЙ: <span id="randomCounter">4231</span></div>
+        </footer>
+    </div>
+    
+    <!-- Модальное окно -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-emoji" id="modalEmoji"></div>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <p class="modal-story" id="modalStory"></p>
+                <div class="modal-year" id="modalYear"></div>
             </div>
         </div>
-        <div class="bill-mini" id="billMiniTrigger">
-            🔺 BILL CIPHER WATCHES 🔺
-        </div>
     </div>
-
-    <!-- ========== ABOUT SECTION ========== -->
-    <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
-        <div class="section-title">🌲 About — The Artist Beyond Dimensions</div>
-        <p style="font-size: 1.1rem; margin-bottom: 1rem;">🔮 <strong>Edasartistry</strong> — more than a decade immersed in the weirdness of Gravity Falls. Every sketch, every painting holds a hidden cipher. This digital journal collects 78+ gallery pieces, 40+ field observations, and the artist’s personal timeline of supernatural discoveries.</p>
-        <div class="stat-cluster">
-            <div class="stat-block"><div style="font-size: 2.2rem; font-weight: bold;">1500+</div><div>Artworks</div></div>
-            <div class="stat-block"><div style="font-size: 2.2rem; font-weight: bold;">247</div><div>Strange events</div></div>
-            <div class="stat-block"><div style="font-size: 2.2rem; font-weight: bold;">12</div><div>Years in Falls</div></div>
-            <div class="stat-block"><div style="font-size: 2.2rem; font-weight: bold;">#19</div><div>Journal page</div></div>
-        </div>
-        <div class="skills-cloud" style="margin-top: 1rem;">
-            <span class="skill-chip">📖 Journal keeper</span>
-            <span class="skill-chip">🔺 Bill's eye</span>
-            <span class="skill-chip">🐷 Waddles muse</span>
-            <span class="skill-chip">🌲 Forest whisperer</span>
-        </div>
-    </div>
-
-    <!-- ========== GALLERY SECTION (78+ PIECES) ========== -->
-    <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
-        <div class="section-title">🎨 Infinite Gallery — 78+ Mystical Works</div>
-        <div class="section-sub">click any piece to reveal secret story & cipher</div>
-        <div class="masonry-grid" id="galleryMasonry"></div>
-    </div>
-
-    <!-- ========== OBSERVATIONS SECTION (40+ notes) ========== -->
-    <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
-        <div class="section-title">🔍 Observational Journal — Field Anomalies</div>
-        <div class="section-sub">real sightings near Mystery Shack & deep woods</div>
-        <div class="obs-grid" id="observationsGrid"></div>
-    </div>
-
-    <!-- ========== TIMELINE SECTION ========== -->
-    <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
-        <div class="section-title">📖 Artist Timeline — Weird History</div>
-        <div class="timeline-vertical" id="timelineList"></div>
-    </div>
-
-    <!-- ========== SKILLS & TOOLS ========== -->
-    <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
-        <div class="section-title">⚡ Arcane Arsenal & Techniques</div>
-        <div class="skills-cloud" id="skillsContainer"></div>
-        <div style="margin-top: 1.8rem;">
-            <p>✨ <strong>Featured in:</strong> Mystery Shack Anthology, Weirdmageddon Zine, Bill’s Nightmare Gallery, Gravity Falls: Lost Legends tribute</p>
-            <p style="margin-top: 12px;">🔮 <em>"Every artwork contains a hidden message. Atbash, Caesar, or Bill's own cipher..."</em></p>
-        </div>
-    </div>
-
-    <!-- footer -->
-    <div class="glass-card footer-grace">
-        <p>📬 contact: <strong>chanelmayor@gmail.com</strong> | 🏚️ Mystery Shack, Gravity Falls, OR</p>
-        <p style="font-size: 0.8rem; margin-top: 8px;">© 2025 Edasartistry — infinite weirdness edition • all anomalies documented with love & glitter ✨</p>
-        <div id="counterSecret" style="margin-top: 12px; font-size:0.7rem; opacity:0.7;">⚡ STRANGE COUNTER: <span id="eventCounter">4812</span> events recorded</div>
-    </div>
-</div>
-
-<!-- modal for art pieces -->
-<div id="artModal" class="modal-modern">
-    <div class="modal-inner">
-        <span id="closeModalBtn" style="float: right; font-size: 2rem; cursor: pointer;">&times;</span>
-        <div id="modalEmoji" style="font-size: 4rem; margin: 1rem 0;">🎨</div>
-        <h2 id="modalTitle">Title</h2>
-        <p id="modalDesc" style="margin: 0.8rem 0;">description</p>
-        <div id="modalStory" style="background: rgba(255,255,255,0.1); border-radius: 1rem; padding: 1rem; margin: 1rem 0;">📖 mystical story</div>
-        <div id="modalYear" style="font-weight: bold;"></div>
-    </div>
-</div>
-
-<div class="bill-floating" id="floatingBill"></div>
-
-<script>
-    // --------------------------------------------------------------
-    // 1) GALLERY: 82 unique art pieces (more than 78)
-    const categoriesList = ['characters', 'landscapes', 'mystery', 'portraits', 'creatures', 'portal', 'cipher'];
-    const titlesPool = [
-        'Mystery Shack at Dusk', 'Bill’s Dreamscape', 'Gnome King Ritual', 'Waddles Cosmic Flight', 'Journal 3 Revelation',
-        'Mabel’s Infinity Sweater', 'Dipper & the Portal', 'Stan’s Gold Memory', 'Soos Quantum Leap', 'Wendy Axe Sigil',
-        'Cipher Zodiac Wheel', 'Forest Cryptogram', 'Lake Ghost Reflection', 'Summerween Trickster', 'Time Baby Anomaly',
-        'The Author Returns', 'Blendin’s Gamble', 'Unicorn Hair Spell', 'Shape Shifter Rift', 'Hide-Behind Sketch',
-        'Gideon’s Amulet', 'Robbie’s Dark Melody', 'Bill Statue Awakening', 'Memory Gun Blast', 'Weirdmageddon Sky',
-        'Shacktron Battle', 'Mabeland Chaos', 'Xyler & Craz', 'Gompers Dimension', 'Manotaurs Ceremony',
-        'Pterodactyl Nest', 'Multibear Cave', 'The Tooth Ferry', 'Ghost of Northwest', 'Bottomless Pit',
-        'Mer-Gnomes Cove', 'Pizza Monster Attack', 'Giffany.exe', 'Golf War Legends', 'Roadside Oddities',
-        'Northwest Mansion Ghost', 'Love God Arrow', 'Tale of Two Stans', 'Ford’s Portal Blueprint',
-        'Cipher Triangles', 'Infinite Falls', 'Glow Forest', 'Crystal Cave Entities', 'Secret Society Sigil',
-        'Fairy Ring', 'Nightmare Realm', 'Portal Core', 'Bill’s Puppet', 'Ciphertology', 'Gravity Anomaly'
-    ];
-    let galleryItems = [];
-    // generate 82 works
-    for(let i=1; i<=82; i++) {
-        let cat = categoriesList[i % categoriesList.length];
-        let year = 2021 + (i % 5);
-        let title = titlesPool[i % titlesPool.length] + ` #${i}`;
-        let desc = `Mixed media • ${cat} • captured weirdness from Gravity Falls. Hidden symbol: ${['🔺','⬟','★','🌀','👁️'][i%5]}`;
-        let story = `This piece emerged after a strange dream with Bill Cipher. It contains a reverse atbash message: "TRUST NO ONE". Page ${19 + (i%12)} in the secret journal.`;
-        let emojiList = ['🔺','🌲','🏚️','🐷','👓','🎸','✨','🌀','📖','👁️','🪶','🌙','⭐','💀','🕳️','🎨','🖌️','🔮','🧸','🗝️','🔮','👾','🍄'];
-        let img = emojiList[i % emojiList.length];
-        galleryItems.push({ title, category: cat, year: year.toString(), desc, img, story });
-    }
-
-    // 2) OBSERVATIONS: 44+ entries
-    const observationsPool = [
-        { title:"Gnome Procession", desc:"Dozen gnomes march at 2 AM around old stump. Carrying tiny lanterns.", icon:"🍄", time:"02:00", loc:"Stump Grove" },
-        { title:"Bill’s Mirror Glitch", desc:"Yellow triangle winks from bathroom mirror, vanishes when approached.", icon:"🔺", time:"03:33", loc:"Mystery Shack bathroom" },
-        { title:"Floating Pine Cones", desc:"Cones levitate mid-air for 7 seconds after thunder.", icon:"🌲", time:"17:30", loc:"Forest trail" },
-        { title:"Waddles Levitation", desc:"Waddles floated 3 feet during solar eclipse.", icon:"🐷", time:"13:17", loc:"Backyard" },
-        { title:"Cipher Stone Rotation", desc:"Statue rotates 1 degree per night, always facing north.", icon:"🗿", time:"00:00", loc:"Bill Memorial" },
-        { title:"Journal Pages Rustle", desc:"Dipper's journal pages flip by themselves, showing unknown entries.", icon:"📖", time:"random", loc:"Attic" },
-        { title:"Gravity Drop Zone", desc:"Objects fall sideways near portal room.", icon:"🌀", time:"unstable", loc:"Basement" },
-        { title:"Time Anomaly", desc:"Clock tower ticks backwards every 47th minute.", icon:"⏳", time:"??", loc:"Downtown" },
-        { title:"Multibear Growl", desc:"Deep roar echoes from cave entrance at dusk.", icon:"🐻", time:"19:30", loc:"Cave of Mystery" },
-        { title:"Manotaurs Chant", desc:"Distant chanting and drumming from mountains.", icon:"🏹", time:"18:45", loc:"Mountainside" },
-        { title:"Gompers Stare", desc:"Goat stares at the sky for hours, unblinking.", icon:"🐐", time:"noon", loc:"Shack roof" },
-        { title:"Rainbow Unicorn Trail", desc:"Glittering hoofprints appear after rain.", icon:"🦄", time:"dawn", loc:"Meadow" },
-        { title:"Cipher Fog", desc:"Triangular yellow mist rolls in at 4:44 AM.", icon:"🌫️", time:"04:44", loc:"Forest edge" },
-        { title:"Mabel’s Sweater Shift", desc:"Pattern on sweater changes overnight.", icon:"🧶", time:"morning", loc:"Attic" },
-        { title:"Soos Quantum Burp", desc:"Soos burps and light flickers for 3 seconds.", icon:"⚡", time:"any", loc:"Kitchen" },
-        { title:"Stan’s Gold Tooth Glow", desc:"Stan’s gold tooth flashes when lying.", icon:"🦷", time:"daytime", loc:"Gift shop" },
-        { title:"Dipper’s Birthmark", desc:"Big dipper constellation glows faintly under UV.", icon:"🌟", time:"night", loc:"Observatory" },
-        { title:"Wendy’s Axe Echo", desc:"Axe handle vibrates when near portal.", icon:"🪓", time:"evening", loc:"Shed" },
-        { title:"Candy Chiu's Prophecy", desc:"Candy draws accurate future events without knowing.", icon:"🔮", time:"after school", loc:"Greasy's Diner" },
-        { title:"Grenda’s Strength Surge", desc:"Grenda lifts vending machine during weirdness spikes.", icon:"💪", time:"random", loc:"Shack" },
-        { title:"Pacifica’s Silver Bell", desc:"Bell rings at midnight, bringing northwest ghosts.", icon:"🔔", time:"00:00", loc:"Northwest Mansion" },
-        { title:"Toby Determined’s Camera", desc:"Camera takes photos of invisible entities.", icon:"📸", time:"any", loc:"News station" }
-    ];
-    // duplicate and extend to 44
-    let extendedObs = [...observationsPool];
-    while(extendedObs.length < 44) {
-        extendedObs.push({ ...observationsPool[extendedObs.length % observationsPool.length], title: extendedObs.length % observationsPool.length + " variant", time: "??" });
-    }
-    const finalObservations = extendedObs.slice(0,44);
-
-    // 3) TIMELINE (18 major events)
-    const timelineEvents = [
-        { year:"2012", title:"Arrival in Gravity Falls", desc:"First sketch of Mystery Shack, met gnomes.", icon:"✏️" },
-        { year:"2013", title:"Journal 3 Discovery", desc:"Found hidden pages near the totem pole.", icon:"📘" },
-        { year:"2014", title:"First Bill Cipher Sighting", desc:"Dream visit — triangle offered a deal.", icon:"🔺" },
-        { year:"2015", title:"Mystery Shack Exhibition", desc:"First solo gallery inside gift shop.", icon:"🖼️" },
-        { year:"2016", title:"Graphic Novel 'Tales of Falls'", desc:"128 pages of weird stories.", icon:"📚" },
-        { year:"2017", title:"Cipher Zodiac Series", desc:"12 paintings based on the wheel.", icon:"🎡" },
-        { year:"2018", title:"Digital Art Surge", desc:"Procreate mastery, online following grows.", icon:"💻" },
-        { year:"2019", title:"Weirdmaggedon Tribute", desc:"Massive mural in downtown Gravity Falls.", icon:"🌌" },
-        { year:"2020", title:"Virtual Reality Experience", desc:"3D walkthrough of Mystery Shack.", icon:"🕶️" },
-        { year:"2021", title:"10 Year Anniversary Show", desc:"Retrospective with 200+ visitors.", icon:"🎉" },
-        { year:"2022", title:"Portal Series", desc:"36 abstract portal paintings.", icon:"🌀" },
-        { year:"2023", title:"Bill's Nightmare Gallery Collab", desc:"AR exhibition with cipher puzzles.", icon:"👁️" },
-        { year:"2024", title:"Forest Cryptid Expedition", desc:"Documented 15 new cryptids.", icon:"🌲" },
-        { year:"2025", title:"Infinite Journal — Digital Archive", desc:"Launch of ultimate portfolio.", icon:"✨" }
-    ];
-
-    // 4) SKILLS LIST
-    const skillsList = [
-        "Traditional Ink", "Digital Painting (Procreate)", "Concept Art", "Storyboarding", 
-        "Watercolor & Gouache", "Acrylics on Wood", "3D Sculpting (Blender)", "Animation (After Effects)",
-        "Cryptozoology Illustration", "Atbash & Caesar Cipher Integration", "Mixed Media Assemblage",
-        "AR Filters & Interactive Art", "Journal Making", "Urban Sketching", "Portrait Mastery"
-    ];
-
-    // Render Functions
-    function renderGallery() {
-        const container = document.getElementById("galleryMasonry");
-        if(!container) return;
-        container.innerHTML = galleryItems.map((item, idx) => `
-            <div class="art-piece" onclick="openArtModal(${idx})">
-                <div class="art-visual">
-                    <span class="year-badge">${item.year}</span>
-                    <span style="font-size:3rem;">${item.img}</span>
-                </div>
-                <div class="art-info">
-                    <h3>${item.title}</h3>
-                    <p style="font-size:0.75rem; opacity:0.7;">${item.category} • ${item.desc.substring(0,60)}</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderObservations() {
-        const obsGrid = document.getElementById("observationsGrid");
-        if(!obsGrid) return;
-        obsGrid.innerHTML = finalObservations.map(obs => `
-            <div class="obs-card">
-                <div style="display:flex; gap:12px; align-items:center; margin-bottom:8px;">
-                    <span style="font-size:2rem;">${obs.icon}</span>
-                    <h3 style="margin:0;">${obs.title}</h3>
-                </div>
-                <p>${obs.desc}</p>
-                <div style="display:flex; justify-content:space-between; margin-top:12px; font-size:0.75rem;">
-                    <span>⏰ ${obs.time}</span>
-                    <span>📍 ${obs.loc}</span>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function renderTimeline() {
-        const timelineDiv = document.getElementById("timelineList");
-        if(!timelineDiv) return;
-        timelineDiv.innerHTML = timelineEvents.map(ev => `
-            <div class="timeline-item">
-                <div style="display:flex; gap:12px; align-items:center;">
-                    <span style="font-size:1.7rem;">${ev.icon}</span>
-                    <span style="background: var(--primary); padding:2px 12px; border-radius:40px; font-weight:bold;">${ev.year}</span>
-                </div>
-                <h3 style="margin: 8px 0 4px;">${ev.title}</h3>
-                <p>${ev.desc}</p>
-            </div>
-        `).join('');
-    }
-
-    function renderSkills() {
-        const skillsDiv = document.getElementById("skillsContainer");
-        if(skillsDiv) {
-            skillsDiv.innerHTML = skillsList.map(skill => `<span class="skill-chip">${skill}</span>`).join('');
+    
+    <script>
+        // ========== ПОЛНЫЙ СПИСОК ГАЛЕРЕИ (54+ работ) ==========
+        const galleryItems = [
+            {title:'Тайна леса', category:'landscapes', year:'2023', desc:'Серия работ о существах из Гравити Фолз', img:'🌲', story:'Эта работа была создана после наблюдения за странными огнями в лесу'},
+            {title:'Хижина Тайн', category:'landscapes', year:'2023', desc:'Интерьеры и экстерьеры загадочного места', img:'🏚️', story:'Каждая деталь хижины прорисована по реальным фотографиям'},
+            {title:'Билл Шифр', category:'characters', year:'2024', desc:'Портреты всеведущего демона', img:'🔺', story:'Билл появлялся в снах художника 3 раза'},
+            {title:'Близнецы', category:'characters', year:'2023', desc:'Диппер и Мэйбл в разных стилях', img:'👥', story:'Серия из 12 портретов в разных художественных стилях'},
+            {title:'Пухля', category:'characters', year:'2024', desc:'Хроники короля свиней', img:'🐷', story:'Пухля позировал лично'},
+            {title:'Зус', category:'characters', year:'2023', desc:'Серия комиксов о жизни Зуса', img:'👨', story:'Комикс из 24 страниц о приключениях Зуса'},
+            {title:'Венди', category:'characters', year:'2024', desc:'Скейт-культура и лесные пейзажи', img:'🛹', story:'Вдохновлено реальными скейтерами из Орегона'},
+            {title:'Дядя Стэн', category:'characters', year:'2023', desc:'Портреты и карикатуры', img:'👴', story:'Серия шаржей на любимого персонажа'},
+            {title:'Пухля 2', category:'characters', year:'2024', desc:'Возвращение короля', img:'🐖', story:'Продолжение хроник самого известного поросенка'},
+            {title:'Тайна номер 3', category:'mystery', year:'2024', desc:'Секретные материалы', img:'📖', story:'Работа основана на страницах из дневника номер 3'},
+            {title:'Гидеон', category:'characters', year:'2023', desc:'Маленький злодей', img:'🎩', story:'Портрет главного антагониста первого сезона'},
+            {title:'Робби', category:'characters', year:'2023', desc:'Скейт-панк', img:'🎸', story:'Серия работ о самом мрачном подростке городка'},
+            {title:'Лес осенью', category:'landscapes', year:'2024', desc:'Золотая осень в Гравити Фолз', img:'🍂', story:'Пленэрные зарисовки в национальном парке'},
+            {title:'Ночная хижина', category:'landscapes', year:'2024', desc:'Хижина при свете луны', img:'🌙', story:'Ночные наблюдения за тенями вокруг хижины'},
+            {title:'Водопад', category:'landscapes', year:'2023', desc:'Тайный водопад', img:'💧', story:'Водопад, скрывающий вход в пещеру'},
+            {title:'Пещера', category:'landscapes', year:'2023', desc:'Вход в подземелье', img:'🕳️', story:'Исследование пещер под Гравити Фолз'},
+            {title:'Гномий совет', category:'characters', year:'2024', desc:'Собрание гномов', img:'👺', story:'Наблюдение за гномьим советом под полной луной'},
+            {title:'Летающая тарелка', category:'mystery', year:'2023', desc:'НЛО над лесом', img:'🛸', story:'Зарисовка странного объекта в небе'},
+            {title:'Статуя Билла', category:'mystery', year:'2024', desc:'Каменное изваяние', img:'🗿', story:'Таинственная статуя в глубине леса'},
+            {title:'Поляна желаний', category:'landscapes', year:'2023', desc:'Место силы', img:'✨', story:'Поляна, где сбываются желания'},
+            {title:'Заброшенная шахта', category:'landscapes', year:'2022', desc:'Вход в подземелья', img:'⛏️', story:'Старая шахта, где пропадают люди'},
+            {title:'Библиотека', category:'landscapes', year:'2022', desc:'Хранилище знаний', img:'📚', story:'Место, где хранятся все секреты'},
+            {title:'Кладбище', category:'landscapes', year:'2023', desc:'Место упокоения', img:'🪦', story:'Старое кладбище с движущимися тенями'},
+            {title:'Магазин сувениров', category:'landscapes', year:'2024', desc:'Туристический рай', img:'🏪', story:'Магазин с самыми странными сувенирами'},
+            {title:'Подвал хижины', category:'mystery', year:'2023', desc:'Запретная зона', img:'⬇️', story:'То, что скрыто от глаз посетителей'},
+            {title:'Чердак', category:'mystery', year:'2024', desc:'Хранилище тайн', img:'🏚️', story:'Старые вещи, хранящие воспоминания'},
+            {title:'Секретная комната', category:'mystery', year:'2024', desc:'Тайное убежище', img:'🚪', story:'Комната, о которой знают только избранные'},
+            {title:'Портрет Диппера', category:'characters', year:'2023', desc:'Главный исследователь', img:'👦', story:'Портрет в стиле старых мастеров'},
+            {title:'Мэйбл и Пухля', category:'characters', year:'2024', desc:'Неразлучные друзья', img:'👧🐷', story:'Самая трогательная работа в коллекции'},
+            {title:'Билл в лесу', category:'mystery', year:'2024', desc:'Треугольник среди деревьев', img:'🔺🌲', story:'Билл появляется в каждом дереве'},
+            {title:'Хижина ночью', category:'landscapes', year:'2023', desc:'Ночная жизнь', img:'🏚️🌙', story:'Что происходит в хижине после заката'},
+            {title:'Гномы на поляне', category:'characters', year:'2024', desc:'Хоровод гномов', img:'👺👺👺', story:'Ночные пляски маленьких существ'},
+            {title:'Зус играет', category:'characters', year:'2023', desc:'Игровая зависимость', img:'🎮', story:'Зус и его видеоигры'},
+            {title:'Венди на скейте', category:'characters', year:'2024', desc:'Скейт-трюки', img:'🛹💨', story:'Самая динамичная работа'},
+            {title:'Дядя Стэн за работой', category:'characters', year:'2023', desc:'Бизнесмен', img:'💰', story:'Стэн продаёт очередной сувенир'},
+            {title:'Тайный портал', category:'mystery', year:'2024', desc:'Вход в другое измерение', img:'🌀', story:'Портал, открывающийся раз в 100 лет'},
+            {title:'Летающая свинья', category:'mystery', year:'2024', desc:'Пухля в небе', img:'🐷✈️', story:'Когда свиньи летают - это Гравити Фолз'},
+            {title:'Гидеон смеётся', category:'characters', year:'2023', desc:'Зловещий смех', img:'🎭', story:'Портрет самого хитрого малыша'},
+            {title:'Робби и Тэмби', category:'characters', year:'2023', desc:'Панки', img:'👥🎸', story:'Друзья-панки на фоне заката'},
+            {title:'Лес осенью', category:'landscapes', year:'2022', desc:'Золотая осень', img:'🍁🌲', story:'Осенний лес в лучах солнца'},
+            {title:'Зимнее утро', category:'landscapes', year:'2022', desc:'Первый снег', img:'❄️🌲', story:'Хижина после снегопада'},
+            {title:'Весенний ручей', category:'landscapes', year:'2023', desc:'Таяние снегов', img:'💧🌿', story:'Ручей, питаемый талыми водами'},
+            {title:'Летний закат', category:'landscapes', year:'2024', desc:'Краски лета', img:'🌅🌲', story:'Самый красивый закат в году'},
+            {title:'Близнецы', category:'characters', year:'2023', desc:'Диппер и Мэйбл', img:'👦👧', story:'Брат и сестра на фоне хижины'},
+            {title:'Дневник 3', category:'mystery', year:'2024', desc:'Главная книга', img:'📕', story:'Страницы из самого важного дневника'},
+            {title:'Статуя Билла', category:'mystery', year:'2023', desc:'Каменный истукан', img:'🗿🔺', story:'Статуя, которая двигается по ночам'},
+            {title:'Пещера чудес', category:'landscapes', year:'2024', desc:'Подземный мир', img:'🕳️✨', story:'Кристаллы и странные существа'},
+            {title:'Магазин сувениров', category:'landscapes', year:'2023', desc:'Всякая всячина', img:'🏪🎁', story:'Что можно купить в Хижине Тайн'},
+            {title:'Подвал хижины', category:'mystery', year:'2024', desc:'Тайная комната', img:'⬇️🔦', story:'То, что Стэн скрывает от всех'},
+            {title:'Чердак', category:'mystery', year:'2023', desc:'Пыльные тайны', img:'🏚️📦', story:'Старые коробки с секретами'},
+            {title:'Секретная комната', category:'mystery', year:'2024', desc:'Святая святых', img:'🚪🔐', story:'Комната, куда вход только посвящённым'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК НАБЛЮДЕНИЙ (20) ==========
+        const observations = [
+            {title:'Лесные гномы', desc:'Поведение в естественной среде. Замечены за сбором ягод и танцами под луной.', time:'14:30', icon:'👺', loc:'Старый пень у ручья'},
+            {title:'Билл Шифр', desc:'Появление в отражениях. Мелькает в зеркалах и экранах телефонов.', time:'03:15', icon:'🔺', loc:'В каждом зеркале'},
+            {title:'Пухля', desc:'Режим питания и поведение. Ест каждые 2 часа, любит лежать в лужах.', time:'12:00', icon:'🐷', loc:'Загон у хижины'},
+            {title:'Хижина', desc:'Странные звуки по ночам. Скрипы, шорохи, иногда голоса.', time:'02:00', icon:'🏚️', loc:'Подвал'},
+            {title:'Лес', desc:'Изменение цвета листьев не по сезону. Осенью листья фиолетовые.', time:'18:30', icon:'🌳', loc:'Северная часть леса'},
+            {title:'Озеро', desc:'Отражения луны странной формы. Луна отражается как треугольник.', time:'21:45', icon:'🌊', loc:'Озеро Миннегага'},
+            {title:'Горы', desc:'Форма облаков над вершинами. Облака складываются в символы.', time:'16:20', icon:'⛰️', loc:'Скала Смерти'},
+            {title:'Тени', desc:'Движение в сумерках. Тени живут своей жизнью.', time:'19:30', icon:'👤', loc:'Везде'},
+            {title:'Звёзды', desc:'Необычные созвездия. Большая Медведица иногда превращается в треугольник.', time:'23:15', icon:'⭐', loc:'Ночное небо'},
+            {title:'Гномий совет', desc:'Собрание под пнём. Раз в месяц гномы проводят совет.', time:'04:30', icon:'👥', loc:'Старый дуб'},
+            {title:'Летающие тарелки', desc:'НЛО над лесом. Замечены 3 раза за год.', time:'01:20', icon:'🛸', loc:'Над поляной'},
+            {title:'Криптограммы', desc:'Послания на стенах. Появляются и исчезают.', time:'13:45', icon:'⬟', loc:'Стены хижины'},
+            {title:'Мерцающие огни', desc:'Блуждающие огоньки в болоте. Водят путников в трясину.', time:'22:00', icon:'✨', loc:'Топь за лесом'},
+            {title:'Шепчущие камни', desc:'Камни, издающие звуки. Слышны только ночью.', time:'00:30', icon:'🪨', loc:'Каменный круг'},
+            {title:'Призрачные фигуры', desc:'Прозрачные силуэты на кладбище. Исчезают при приближении.', time:'23:45', icon:'👻', loc:'Старое кладбище'},
+            {title:'Говорящие деревья', desc:'Деревья со странными лицами. Иногда шепчут.', time:'15:30', icon:'🌲👁️', loc:'Заповедный лес'},
+            {title:'Портал в небе', desc:'Разрыв в облаках. Виден раз в месяц.', time:'14:00', icon:'🌀', loc:'Небо над хижиной'},
+            {title:'Каменные истуканы', desc:'Статуи, меняющие позы. За ночь поворачивают головы.', time:'05:15', icon:'🗿', loc:'Поляна статуй'},
+            {title:'Светящиеся грибы', desc:'Грибы, светящиеся в темноте. Растут только в полнолуние.', time:'21:00', icon:'🍄✨', loc:'Гнилой пень'},
+            {title:'Летающие рыбы', desc:'Рыбы, выпрыгивающие из воды и не падающие. Парят в воздухе.', time:'17:45', icon:'🐟✈️', loc:'Озеро'}
+        ];
+        
+        // ========== ПОЛНЫЙ ТАЙМЛАЙН (16 событий) ==========
+        const timelineData = [
+            {year:'Лето 2012', title:'ПРИБЫТИЕ В ГРАВИТИ ФОЛЗ', desc:'Первые наброски и знакомство с городом. Хижина Тайн показалась просто сувенирной лавкой. Как же я ошибался...', icon:'🚌', details:'Сделано 47 первых набросков'},
+            {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Случайно нашёл страницу из дневника. Начал искать вдохновение в старых историях и легендах.', icon:'📖', details:'Найдено 3 страницы'},
+            {year:'Зима 2012', title:'СНЕЖНЫЕ МОНСТРЫ', desc:'Серия зимних зарисовок. В снегу видны странные следы, не похожие на звериные.', icon:'❄️', details:'24 зимних этюда'},
+            {year:'Весна 2013', title:'ПРОБУЖДЕНИЕ', desc:'Новые техники и стили. Природа просыпается, и тайны становятся активнее.', icon:'🌱', details:'Освоено 5 новых техник'},
+            {year:'Лето 2013', title:'ВЫСТАВКА В ХИЖИНЕ', desc:'Первая персональная выставка. Дядя Стэн согласился повесить работы в Хижине Тайн.', icon:'🏛️', details:'Продано 12 работ'},
+            {year:'2014', title:'ПУТЕШЕСТВИЯ', desc:'Поиск новых тайн. Объехал весь штат в поисках аномалий.', icon:'🗺️', details:'5000 км пути'},
+            {year:'2015', title:'ГРАФИЧЕСКИЙ РОМАН', desc:'Работа над книгой. Решил собрать все наблюдения в графический роман.', icon:'📚', details:'128 страниц'},
+            {year:'2016', title:'ВОЗВРАЩЕНИЕ', desc:'Новая серия работ. Переосмысление старых тем.', icon:'🏠', details:'36 новых работ'},
+            {year:'2017', title:'КОЛЛАБОРАЦИИ', desc:'Совместные проекты с другими художниками, вдохновлёнными Гравити Фолз.', icon:'🤝', details:'8 совместных проектов'},
+            {year:'2018', title:'АНИМАЦИЯ', desc:'Первые опыты в анимации. Оживил персонажей.', icon:'🎬', details:'3 коротких фильма'},
+            {year:'2019', title:'ФЕСТИВАЛИ', desc:'Участие в выставках и фестивалях. Работы увидели тысячи людей.', icon:'🎪', details:'7 фестивалей'},
+            {year:'2020', title:'ОНЛАЙН-ГАЛЕРЕЯ', desc:'Цифровые выставки. Создал первый сайт.', icon:'💻', details:'10000 посетителей'},
+            {year:'2021', title:'СБОРНИК', desc:'Книга иллюстраций. Официальное издание.', icon:'📕', details:'Тираж 1000 экз.'},
+            {year:'2022', title:'10 ЛЕТ СПУСТЯ', desc:'Юбилейная выставка в Хижине Тайн. Вернулся туда, где всё начиналось.', icon:'🎉', details:'100 гостей'},
+            {year:'2023', title:'НОВАЯ ГЛАВА', desc:'Эксперименты с AI и новыми технологиями. Тайны в цифровую эпоху.', icon:'🤖', details:'50 AI-работ'},
+            {year:'2024', title:'НАШИ ДНИ', desc:'Работа над главной тайной. Готовлю самый большой проект.', icon:'🔍', details:'Скоро открытие'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК ФОНОВ (20) ==========
+        const bgItems = [
+            {name:'Хижина Тайн', time:'День', desc:'Главное здание. Здесь всё началось.', icon:'🏚️', danger:'Безопасно', secret:'🔼'},
+            {name:'Лесная опушка', time:'Закат', desc:'Место встреч гномов. Ночью здесь опасно.', icon:'🌅', danger:'⚠️ Опасно ночью', secret:'🌲'},
+            {name:'Водопад', time:'Утро', desc:'Скрытый вход в пещеру за водой.', icon:'💦', danger:'Скользко', secret:'💧'},
+            {name:'Магазин', time:'Ночь', desc:'Таинственная хижина после закрытия.', icon:'🏪', danger:'Закрыто', secret:'🔺'},
+            {name:'Пещера', time:'Сумерки', desc:'Древние рисунки на стенах.', icon:'🕳️', danger:'Темно', secret:'⬟'},
+            {name:'Гора', time:'Рассвет', desc:'Смотровая площадка. Вид на весь город.', icon:'🏔️', danger:'Высоко', secret:'⛰️'},
+            {name:'Озеро', time:'Полдень', desc:'Отражения. Иногда видно небо в воде.', icon:'🏞️', danger:'Глубоко', secret:'🌊'},
+            {name:'Поляна', time:'Вечер', desc:'Кострище гномов. Следы их плясок.', icon:'🔥', danger:'Жарко', secret:'🔥'},
+            {name:'Кладбище', time:'Ночь', desc:'Старые могилы. Тени двигаются.', icon:'⚰️', danger:'Очень опасно', secret:'🪦'},
+            {name:'Дорога', time:'Туман', desc:'Въезд в город. В тумане видно странное.', icon:'🛤️', danger:'Плохая видимость', secret:'🛣️'},
+            {name:'Порт', time:'Шторм', desc:'Заброшенные лодки. Кто-то живёт внутри.', icon:'⚓', danger:'Шторм', secret:'⛵'},
+            {name:'Парк', time:'Осень', desc:'Статуи. Некоторые моргают.', icon:'🍂', danger:'Следи за статуями', secret:'🗿'},
+            {name:'Старый мост', time:'Вечер', desc:'Место легенд. Здесь видели призрака.', icon:'🌉', danger:'Скрипит', secret:'🌉'},
+            {name:'Заброшенная шахта', time:'Ночь', desc:'Вход в подземелье. Оттуда слышны звуки.', icon:'⛏️', danger:'Обвал', secret:'⛏️'},
+            {name:'Радиовышка', time:'Закат', desc:'Сигналы из космоса. Ловит странное.', icon:'📡', danger:'Излучение', secret:'📡'},
+            {name:'Лагерь', time:'Утро', desc:'Место стоянки туристов. Пропадают вещи.', icon:'⛺', danger:'Воры', secret:'⛺'},
+            {name:'Болото', time:'Ночь', desc:'Топь с огоньками. Водят по кругу.', icon:'💧', danger:'Утонуть', secret:'🪷'},
+            {name:'Каменный круг', time:'Полнолуние', desc:'Древнее святилище. Место силы.', icon:'🔄', danger:'Магия', secret:'🪨'},
+            {name:'Заброшенная церковь', time:'Полночь', desc:'Старое здание. Там поют.', icon:'⛪', danger:'Призраки', secret:'⛪'},
+            {name:'Поляна желаний', time:'Рассвет', desc:'Место, где сбываются мечты.', icon:'🌟', danger:'Будь осторожен с желаниями', secret:'✨'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК ИЛЛЮСТРАЦИЙ (124 названия) ==========
+        const illustrationTitles = [];
+        for(let i = 1; i <= 124; i++) {
+            const names = [
+                'Портрет Диппера', 'Мэйбл и Пухля', 'Билл в лесу', 'Хижина ночью',
+                'Гномы на поляне', 'Зус играет', 'Венди на скейте', 'Дядя Стэн',
+                'Тайный портал', 'Летающая свинья', 'Гидеон смеётся', 'Робби и Тэмби',
+                'Лес осенью', 'Зимнее утро', 'Весенний ручей', 'Летний закат',
+                'Близнецы', 'Дневник 3', 'Статуя Билла', 'Пещера чудес',
+                'Магазин сувениров', 'Подвал хижины', 'Чердак', 'Секретная комната',
+                'Гномий король', 'Феи', 'Лесные духи', 'Озерное чудовище',
+                'Билл в портале', 'Пухля летит', 'Венди и друзья', 'Зус и роботы',
+                'Ночной лес', 'Тени на стене', 'Отражение в луже', 'Криптограмма',
+                'Стэн за прилавком', 'Мэйбл вяжет', 'Диппер читает', 'Пухля спит'
+            ];
+            illustrationTitles.push(names[i % names.length] + ' #' + i);
         }
-    }
-
-    // Modal logic
-    window.openArtModal = function(idx) {
-        const art = galleryItems[idx];
-        document.getElementById("modalEmoji").innerHTML = art.img;
-        document.getElementById("modalTitle").innerHTML = art.title;
-        document.getElementById("modalDesc").innerHTML = art.desc;
-        document.getElementById("modalStory").innerHTML = `📖 Secret story: ${art.story} <br> 🔎 Hidden cipher: "⬟◆⬟◆ ${art.year} REVEAL"`;
-        document.getElementById("modalYear").innerHTML = `✨ Year: ${art.year} | Category: ${art.category} | Bill Cipher approves ✨`;
-        document.getElementById("artModal").style.display = "flex";
-    };
-    const closeModal = () => document.getElementById("artModal").style.display = "none";
-    document.getElementById("closeModalBtn")?.addEventListener("click", closeModal);
-    window.onclick = (e) => { if(e.target === document.getElementById("artModal")) closeModal(); };
-
-    // Bill click & counter
-    const billBtn = document.getElementById("floatingBill");
-    const miniBill = document.getElementById("billMiniTrigger");
-    function billEaster() {
-        alert("🔺 BILL CIPHER: 'REALITY IS AN ILLUSION, ARTIST! LOVE YOUR GALLERY... BUT DON'T TRUST THE EYE.' 🔺");
-        const container = document.querySelector(".infinite-container");
-        container.style.transform = "rotate(0.5deg)";
-        setTimeout(() => container.style.transform = "", 300);
-    }
-    if(billBtn) billBtn.addEventListener("click", billEaster);
-    if(miniBill) miniBill.addEventListener("click", billEaster);
-
-    // random starfield generator
-    function generateStars() {
-        for(let i=0;i<90;i++) {
-            let star = document.createElement("div");
-            star.className = "star-twinkle";
-            star.innerHTML = ['⭐','✨','🌟','💫','🔺','⬟'][Math.floor(Math.random()*6)];
-            star.style.left = Math.random() * 100 + "%";
-            star.style.top = Math.random() * 100 + "%";
-            star.style.fontSize = (6 + Math.random() * 18) + "px";
-            star.style.animationDuration = (8 + Math.random() * 20) + "s";
-            document.body.appendChild(star);
+        
+        const pages = {
+            about: 'О себе',
+            portfolio: 'Портфолио',
+            observational: 'Наблюдения',
+            story: 'История',
+            backgrounds: 'Фоны',
+            illustrations: 'Иллюстрации'
+        };
+        
+        let currentPage = new URLSearchParams(window.location.search).get('page') || 'about';
+        let secretCount = 3;
+        
+        function renderNav() {
+            const nav = document.getElementById('navMenu');
+            nav.innerHTML = Object.entries(pages).map(([key, title]) => 
+                `<li class="nav-item"><a href="?page=${key}" class="nav-link ${currentPage === key ? 'active' : ''}" style="--rot:${Math.floor(Math.random() * 9) - 4}deg">${title}</a></li>`
+            ).join('');
         }
-    }
+        
+        function openModal(item) {
+            document.getElementById('modalEmoji').innerHTML = item.img;
+            document.getElementById('modalTitle').innerHTML = item.title;
+            document.getElementById('modalDesc').innerHTML = item.desc;
+            document.getElementById('modalStory').innerHTML = '📖 ' + item.story;
+            document.getElementById('modalYear').innerHTML = 'Год: ' + item.year;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        function billClick() {
+            const messages = [
+                '📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"',
+                '🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!',
+                '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!',
+                '★ Я ВЕРНУСЬ!',
+                '💀 ТЫ НЕ СПИШЬ? Я РЯДОМ...',
+                '👁️ ОДИН ГЛАЗ ВИДИТ БОЛЬШЕ',
+                '🌀 СКОРО ВСЁ ИЗМЕНИТСЯ'
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            const bill = document.querySelector('.bill-cipher');
+            bill.style.animation = 'shake 0.5s, spin 0.5s linear';
+            setTimeout(() => {
+                bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite';
+            }, 500);
+        }
+        
+        function revealSecret(cell, num, msg) {
+            if(!cell.classList.contains('revealed')) {
+                cell.classList.add('revealed');
+                cell.innerHTML = '🔍';
+                secretCount++;
+                const cntSpan = document.getElementById('secretCount');
+                if(cntSpan) cntSpan.innerText = secretCount;
+                alert('🎉 СЕКРЕТ НАЙДЕН! ' + msg);
+                if(secretCount >= 20) {
+                    alert('🎉🎉🎉 ПОЗДРАВЛЯЮ! ТЫ НАШЁЛ ВСЕ 20 СЕКРЕТОВ! БИЛЛ ШИФР ГОРДИТСЯ ТОБОЙ!');
+                }
+            }
+        }
+        
+        function applyFilters(selector, attr) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll(selector).forEach(item => {
+                        if(filter === 'all' || item.dataset[attr] === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        function renderContent() {
+            let html = '';
+            
+            if(currentPage === 'about') {
+                html = `<div class="content-section">
+                   <h2 class="section-title">
+    
+    <img src="./img/у.jpg" alt="logo" class="title-logo">
+</h2>
 
-    // random counter
-    document.getElementById("eventCounter").innerText = Math.floor(3800 + Math.random() * 4000);
-
-    // initialize everything
-    window.addEventListener("DOMContentLoaded", () => {
-        renderGallery();
-        renderObservations();
-        renderTimeline();
-        renderSkills();
-        generateStars();
-        // additional style for smoothness
-    });
-</script>
 <style>
-    .modal-modern { transition: all 0.2s ease; }
-    .art-piece, .obs-card, .timeline-item, .stat-block, .skill-chip { transition: all 0.25s; }
-    .bill-floating::before {
-        content: "▲";
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #1e0b2f;
-        font-size: 1.8rem;
-        font-weight: bold;
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* центрирование по горизонтали */
+    gap: 10px;
+}
+
+/* логотип */
+.title-logo {
+    width: 78px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 6px;
+    
+    transform: rotate(-12deg);
+    
+    animation: floatLogo 2s ease-in-out infinite alternate;
+    
+    /* дополнительное центрирование внутри flex-контейнера */
+    display: block;
+    flex-shrink: 0; /* предотвращает сжатие логотипа */
+}
+
+/* лёгкое движение */
+@keyframes floatLogo {
+    from {
+        transform: rotate(-12deg) translateY(0px);
     }
-    .bill-floating::after {
-        content: "BILL";
-        position: absolute;
-        bottom: 12%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #1e0b2f;
-        font-size: 0.5rem;
-        font-weight: bold;
+    to {
+        transform: rotate(-8deg) translateY(-4px);
     }
-    ::-webkit-scrollbar { width: 8px; background: #1c1135; }
-    ::-webkit-scrollbar-thumb { background: #ff6b9d; border-radius: 20px; }
+}
+
+/* если нужно центрировать по вертикали и горизонтали весь блок */
+.section-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 </style>
+                    <div class="about-container">
+                        <div class="about-image">
+
+
+
+
+<div class="photo-card" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
+    
+    <div class="photo-box">
+        <img src="./img/й.jpg" alt="photo">
+    </div>
+
+    <div class="photo-title">Eda </div>
+
+</div>
+
+<style>
+.photo-card {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.photo-box img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 18px; /* аккуратное скругление */
+    display: block;
+    margin: 0 auto;
+}
+
+.photo-title {
+    margin-top: 8px;
+    font-size: 14px;
+}
+</style>
+
+
+                   
+                       
+                       
+                        </div>
+                        <div class="about-content">
+                            <p class="about-greeting">🔆 ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН! 🔆</p>
+                            <p class="about-paragraph">Меня зовут <strong>Edasartistry</strong> (настоящее имя секретно, как страница 19). Я художник, иллюстратор и искатель приключений, уже 12 лет живущий в самом загадочном городке Америки - Гравити Фолз.</p>
+                            <p class="about-paragraph">Всё началось летом 2012 года, когда я случайно забрёл в этот город и увидел Хижину Тайн. С тех пор я не могу уехать - каждый день приносит новые открытия, странные встречи и вдохновение для новых работ.</p>
+                            <p class="about-paragraph">Я рисую всё, что вижу вокруг: гномов на поляне, появления Билла Шифра в отражениях, Пухлю за едой, тени на стенах хижины. Каждый рисунок - это страница моего личного дневника наблюдений.</p>
+                            <div class="about-quote">
+                                <p>"Тайна этого портала в том, что за каждой картинкой скрывается целая вселенная. Готовы ли вы её исследовать?"</p>
+                                <p class="quote-author">- Edasartistry</p>
+                            </div>
+                            <div class="about-stats">
+                                <div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div>
+                                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">лет опыта</div></div>
+                                <div class="stat-item"><div class="stat-number">247</div><div class="stat-label">наблюдений</div></div>
+                            </div>
+                            <div class="about-skills">
+                                <h4>🔧 ИНСТРУМЕНТЫ И ТЕХНИКИ</h4>
+                                <div class="skills-list">
+                                    <span class="skill-tag">✏️ Традиционный рисунок</span>
+                                    <span class="skill-tag">💻 Цифровая иллюстрация</span>
+                                    <span class="skill-tag">🎨 Акварель</span>
+                                    <span class="skill-tag">🖊️ Маркеры</span>
+                                    <span class="skill-tag">📸 Фотография</span>
+                                    <span class="skill-tag">🎬 Анимация</span>
+                                    <span class="skill-tag">📝 Скетчинг</span>
+                                    <span class="skill-tag">🖌️ Масло</span>
+                                    <span class="skill-tag">✒️ Тушь</span>
+                                    <span class="skill-tag">🖍️ Пастель</span>
+                                    <span class="skill-tag">💻 Adobe Photoshop</span>
+                                    <span class="skill-tag">📱 Procreate</span>
+                                    <span class="skill-tag">🎥 Storyboarding</span>
+                                    <span class="skill-tag">🎨 Concept Art</span>
+                                    <span class="skill-tag">🤖 AI Art</span>
+                                    <span class="skill-tag">🖨️ Линогравюра</span>
+                                </div>
+                            </div>
+                            <div class="testimonials">
+                                <h4>🗣️ ЧТО ГОВОРЯТ</h4>
+                                <div class="testimonial-item"><p>"Лучший художник в Гравити Фолз! Рисует даже то, чего никто не видит."</p><p class="testimonial-author">- Дядя Стэн</p></div>
+                                <div class="testimonial-item"><p>"Её рисунки такие живые, как будто сейчас выпрыгнут!"</p><p class="testimonial-author">- Мэйбл</p></div>
+                                <div class="testimonial-item"><p>"Нужно зарисовать Билла, пока он не исчез..."</p><p class="testimonial-author">- Диппер</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>`;
+            }
+            else if(currentPage === 'portfolio') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🎨 PORTFOLIO + PERSONAL WORK</h2>
+                    <div class="gallery-filter">
+                        <button class="filter-btn active" data-filter="all">Все работы</button>
+                        <button class="filter-btn" data-filter="2024">2024</button>
+                        <button class="filter-btn" data-filter="2023">2023</button>
+                        <button class="filter-btn" data-filter="2022">2022</button>
+                        <button class="filter-btn" data-filter="characters">Персонажи</button>
+                        <button class="filter-btn" data-filter="landscapes">Пейзажи</button>
+                        <button class="filter-btn" data-filter="mystery">Тайны</button>
+                    </div>
+                    <div class="gallery-grid" id="galleryGrid"></div>
+                    <div class="personal-works">
+                        <h3 class="section-title" style="font-size:2em;">✨ PERSONAL WORK</h3>
+                        <div class="personal-grid">
+                            <div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>Серия работ, вдохновленных текстурой старой бумаги из дневников</p><div class="personal-stats">24 работы • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>Короткие анимационные сцены с персонажами (3-5 минут)</p><div class="personal-stats">8 видео • 2023-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">03</div><h4>Концепт-арт</h4><p>Идеи для несуществующих эпизодов и альтернативных вселенных</p><div class="personal-stats">45 концептов • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">04</div><h4>Скетчбук</h4><p>Ежедневные наброски, идеи, наблюдения и заметки на полях</p><div class="personal-stats">500+ страниц • 2022-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">05</div><h4>Комиксы</h4><p>Короткие истории о жизни в Гравити Фолз</p><div class="personal-stats">12 историй • 2023-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">06</div><h4>3D модели</h4><p>Объёмные персонажи и предметы</p><div class="personal-stats">15 моделей • 2024</div></div>
+                        </div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('galleryGrid');
+                    if(grid) {
+                        grid.innerHTML = galleryItems.map(item => `
+                            <div class="gallery-item" data-category="${item.category}" data-year="${item.year}">
+                                <div class="gallery-image" onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})'>
+                                    <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+                                    <div class="gallery-emoji">${item.img}</div>
+                                    <div class="gallery-year">${item.year}</div>
+                                </div>
+                                <div class="gallery-info"><h3>${item.title}</h3><p>${item.desc}</p></div>
+                            </div>
+                        `).join('');
+                        applyFilters('.gallery-item', 'category');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'observational') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🔍 OBSERVATIONAL STUDIES</h2>
+                    <div class="intro-big">ДНЕВНИК НАБЛЮДЕНИЙ #19</div>
+                    <p>Как Диппер с дневником, я записываю всё, что вижу вокруг. Здесь собраны наброски с натуры и наблюдения за странными явлениями за 12 лет.</p>
+                    <div class="stats-mini">
+                        <div class="stat-mini-item">📊 Всего наблюдений: 247</div>
+                        <div class="stat-mini-item">👁️ Подтверждённых явлений: 89</div>
+                        <div class="stat-mini-item">❓ Необъяснимых: 34</div>
+                    </div>
+                    <div class="observational-grid" id="obsGrid"></div>
+                    <div class="journal-notes">
+                        <h3>📝 ЗАМЕТКИ НА ПОЛЯХ ДНЕВНИКА</h3>
+                        <div class="notes-list">
+                            <div class="note-item"><span class="note-marker">✦</span><span>Гномы предпочитают селиться в старых пнях (наблюдается 24 раза)</span></div>
+                            <div class="note-item"><span class="note-marker">✧</span><span>Летающие свиньи - редкое, но возможное явление (зафиксировано 5 раз)</span></div>
+                            <div class="note-item"><span class="note-marker">★</span><span>Билл Шифр чаще появляется в отражениях и на экранах (наблюдается 47 раз)</span></div>
+                            <div class="note-item"><span class="note-marker">⬟</span><span>Водопады скрывают входы в пещеры (обследовано 4, найдено 2 входа)</span></div>
+                            <div class="note-item"><span class="note-marker">◆</span><span>Статуи оживают в полнолуние (проверить 7 раз, подтверждено 3 раза)</span></div>
+                            <div class="note-item"><span class="note-marker">🔺</span><span>Билл разговаривает во сне (записано 12 сообщений)</span></div>
+                            <div class="note-item"><span class="note-marker">📖</span><span>Страница 19 самая важная (никому не показывать!)</span></div>
+                        </div>
+                        <div class="daily-cipher">
+                            <div class="cipher-label">🔐 КРИПТОГРАММА ДНЯ:</div>
+                            <div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆ ⬟◆⬟⬟ ⬟⬟⬟◆ ◆◆◆⬟ ⬟⬟⬟⬟ ◆◆◆◆</div>
+                            <div class="cipher-hint">Подсказка: ATBASH + 3 цифры назад</div>
+                            <div class="cipher-answer" onclick="this.innerHTML='▶ ПОСЛАНИЕ: БИЛЛ ШИФР СМОТРИТ'">🔍 Показать ответ</div>
+                        </div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('obsGrid');
+                    if(grid) {
+                        grid.innerHTML = observations.map((obs, idx) => `
+                            <div class="observation-card">
+                                <div class="observation-time">⏰ ${obs.time}</div>
+                                <div class="observation-icon">${obs.icon}</div>
+                                <h4>${obs.title}</h4>
+                                <p>${obs.desc}</p>
+                                <div class="observation-location">📍 ${obs.loc}</div>
+                                <div class="observation-footnote">Запись #${String(idx + 1).padStart(3, '0')}</div>
+                            </div>
+                        `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'story') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">📚 STORY - ХРОНИКИ ХИЖИНЫ</h2>
+                    <div class="story-intro">
+                        <p class="intro-big">12 ЛЕТ ТАЙН И ОТКРЫТИЙ</p>
+                        <p>Полная история художника, чья жизнь неразрывно связана с Гравити Фолз. Каждый год - новая глава, новые тайны и новые работы.</p>
+                    </div>
+                    <div class="timeline" id="timelineContainer"></div>
+                    <div class="journal-page" onclick="this.style.transform='rotate(1deg) scale(1.01)';setTimeout(()=>this.style.transform='',300)">
+                        <div class="journal-page-number">№ 19</div>
+                        <div class="journal-page-content">
+                            <p class="journal-page-title">САМАЯ ВАЖНАЯ ЗАПИСЬ</p>
+                            <p>"Сегодня я понял, что каждая история заслуживает быть рассказнной. Мои рисунки - это способ запечатлеть моменты, которые иначе исчезли бы навсегда. Как старый дневник хранит тайны, так и мои работы хранят частичку лета в Гравити Фолз."</p>
+                            <p>"За 12 лет я создал более 1500 работ. Каждая из них - это окно в другой мир, другой момент времени. И тайна продолжается... Билл Шифр всё ещё наблюдает за мной."</p>
+                            <p class="journal-ps">P.S. Сегодня ночью я снова видел треугольник в небе. Он подмигнул мне.</p>
+                        </div>
+                        <div class="journal-signature">- Edasartistry</div>
+                        <div class="invisible-text" onclick="this.innerHTML='👁️ БИЛЛ ЗДЕСЬ 👁️'">ТЫ НАШЁЛ ЭТОТ ТЕКСТ! ЗНАЧИТ, БИЛЛ ШИФР УЖЕ РЯДОМ...</div>
+                    </div>
+                    <div class="story-stats">
+                        <div class="story-stat-item"><div class="story-stat-number">12</div><div class="story-stat-label">лет в Гравити Фолз</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">1500+</div><div class="story-stat-label">созданных работ</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">247</div><div class="story-stat-label">наблюдений</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">19</div><div class="story-stat-label">страниц дневника</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">3</div><div class="story-stat-label">встречи с Биллом</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">∞</div><div class="story-stat-label">нераскрытых тайн</div></div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const container = document.getElementById('timelineContainer');
+                    if(container) {
+                        container.innerHTML = `<div class="timeline-line"></div>` + 
+                            timelineData.map((t, i) => `
+                                <div class="timeline-item ${i % 2 === 0 ? 'timeline-left' : 'timeline-right'}" style="--delay:${i * 0.1}s">
+                                    <div class="timeline-content">
+                                        <div class="timeline-icon">${t.icon}</div>
+                                        <div class="timeline-year">${t.year}</div>
+                                        <h3>${t.title}</h3>
+                                        <p class="timeline-desc">${t.desc}</p>
+                                        <div class="timeline-details">${t.details}</div>
+                                        <div class="timeline-dot"></div>
+                                    </div>
+                                </div>
+                            `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'backgrounds') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2>
+                    <div class="backgrounds-intro">
+                        <p class="intro-big">КАРТА ТАЙН ГРАВИТИ ФОЛЗ</p>
+                        <p>Фоны и окружение - как лес вокруг Гравити Фолз, полный тайн и скрытых деталей. Каждое место хранит свою историю. Найди все секреты на карте.</p>
+                    </div>
+                    <div class="backgrounds-grid" id="bgGrid"></div>
+                    <div class="mystery-map">
+                        <h3>🗺️ КАРТА ТАЙН ГРАВИТИ ФОЛЗ</h3>
+                        <p class="map-instruction">Нажимай на клетки, чтобы найти секреты. Найдено: <span id="secretCount">3</span>/20</p>
+                        <div class="map-grid" id="mapGrid"></div>
+                        <p class="map-footer">★ Найди все секреты и получи приз от Билла</p>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const bgGrid = document.getElementById('bgGrid');
+                    if(bgGrid) {
+                        bgGrid.innerHTML = bgItems.map(b => `
+                            <div class="background-card">
+                                <div class="background-image">
+                                    <span class="background-icon">${b.icon}</span>
+                                    <span class="background-time">${b.time}</span>
+                                    <span class="background-danger">${b.danger}</span>
+                                    <span class="background-secret">${b.secret}</span>
+                                </div>
+                                <h3>${b.name}</h3>
+                                <p>${b.desc}</p>
+                            </div>
+                        `).join('');
+                    }
+                    const mapGrid = document.getElementById('mapGrid');
+                    if(mapGrid) {
+                        const secretMessages = [
+                            'Здесь спрятан дневник', 'Билл был тут', 'Клад гномов', 'Портал в другое измерение', 'Говорящее дерево',
+                            'Камень желаний', 'Следы дракона', 'Вход в пещеру', 'Старый колодец', 'Зарыто сокровище',
+                            'Место силы', 'Гномий совет', 'Проклятое место', 'Феи живут здесь', 'Летающая тарелка',
+                            'Секретный вход', 'Магический круг', 'Тень Билла', 'Страница 19', 'Послание из космоса'
+                        ];
+                        let mapHtml = '';
+                        for(let i = 1; i <= 20; i++) {
+                            mapHtml += `<div class="map-cell" onclick="revealSecret(this, ${i}, '${secretMessages[i-1]}')"><div class="map-marker">?</div><div class="map-tooltip">${secretMessages[i-1]}</div></div>`;
+                        }
+                        mapGrid.innerHTML = mapHtml;
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'illustrations') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
+                    <div class="illustrations-intro">
+                        <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
+                        <p>Более 100 иллюстраций в разных стилях и техниках. От быстрых набросков до детальных полотен.</p>
+                    </div>
+                    <div class="illustrations-filter">
+                        <button class="filter-btn active" data-filter="all">Все (124)</button>
+                        <button class="filter-btn" data-filter="2024">2024 (34)</button>
+                        <button class="filter-btn" data-filter="2023">2023 (42)</button>
+                        <button class="filter-btn" data-filter="2022">2022 (28)</button>
+                        <button class="filter-btn" data-filter="portrait">Портреты (45)</button>
+                        <button class="filter-btn" data-filter="landscape">Пейзажи (52)</button>
+                        <button class="filter-btn" data-filter="sketch">Наброски (27)</button>
+                    </div>
+                    <div class="masonry-grid" id="masonryGrid"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">4</a>
+                        <a href="#" class="page-link">5</a>
+                        <span class="page-dots">...</span>
+                        <a href="#" class="page-link">12</a>
+                        <a href="#" class="page-link">13</a>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('masonryGrid');
+                    if(grid) {
+                        const styles = ['portrait', 'landscape', 'square', 'wide', 'sketch'];
+                        let illusHtml = '';
+                        for(let i = 0; i < illustrationTitles.length; i++) {
+                            const style = styles[i % styles.length];
+                            const year = 2020 + (i % 5);
+                            const category = style === 'portrait' ? 'portrait' : (style === 'landscape' ? 'landscape' : 'sketch');
+                            illusHtml += `
+                                <div class="masonry-item ${style}" data-year="${year}" data-category="${category}">
+                                    <div class="masonry-image">
+                                        <div class="masonry-overlay"><span class="masonry-view">🔍</span></div>
+                                        <div class="masonry-year">${year}</div>
+                                        <div class="masonry-emoji">🎨</div>
+                                    </div>
+                                    <div class="masonry-info">
+                                        <h4>${illustrationTitles[i]}</h4>
+                                        <p>№${String(i + 1).padStart(3, '0')} • ${category}</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        grid.innerHTML = illusHtml;
+                        applyFilters('.masonry-item', 'year');
+                    }
+                }, 10);
+            }
+            
+            document.getElementById('mainContent').innerHTML = html;
+        }
+        
+        // Инициализация
+        window.addEventListener('load', () => {
+            renderNav();
+            renderContent();
+            document.getElementById('randomCounter').innerText = Math.floor(3000 + Math.random() * 7000);
+            
+            // Обработка кликов по навигации
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if(href && href.includes('?page=')) {
+                        e.preventDefault();
+                        currentPage = href.split('?page=')[1];
+                        history.pushState({}, '', href);
+                        renderNav();
+                        renderContent();
+                    }
+                });
+            });
+            
+            // Консольные пасхалки
+            console.log('%c🔍 ТЫ НАШЁЛ СЕКРЕТНУЮ КОНСОЛЬ!', 'font-size: 20px; color: #b537f2; text-shadow: 2px 2px 0 #ff6b9d;');
+            console.log('%c⬟ Билл Шифр наблюдает за тобой...', 'font-size: 16px; color: #a0e7e5;');
+            console.log('%c⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆ ⬟◆⬟⬟', 'font-size: 24px; color: #39ff14;');
+            console.log('%cСтраница 19 - самая важная', 'font-size: 14px; color: #00ccff;');
+            
+            // Код Konami
+            let konami = [];
+            document.addEventListener('keydown', (e) => {
+                konami.push(e.keyCode);
+                if(konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
+                    alert('🎉 КОД АКТИВИРОВАН! ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН!');
+                    document.body.style.animation = 'flicker 0.1s infinite';
+                    const container = document.querySelector('.journal-container');
+                    container.style.transform = 'rotate(360deg) scale(1.1)';
+                    container.style.transition = 'all 1s';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        container.style.transform = '';
+                    }, 3000);
+                    konami = [];
+                }
+            });
+            
+            // Периодическое создание звездочек
+            setInterval(() => {
+                if(Math.random() < 0.1) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.innerHTML = ['⭐','✨','🌟','💫'][Math.floor(Math.random() * 4)];
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.animationDuration = (10 + Math.random() * 20) + 's';
+                    star.style.fontSize = (15 + Math.random() * 25) + 'px';
+                    document.body.appendChild(star);
+                    setTimeout(() => star.remove(), 30000);
+                }
+            }, 2000);
+        });
+        
+        window.onclick = (e) => { if(e.target === document.getElementById('imageModal')) closeModal(); };
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.billClick = billClick;
+        window.revealSecret = revealSecret;
+    </script>
 </body>
 </html>

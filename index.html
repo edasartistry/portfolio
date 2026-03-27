@@ -802,6 +802,25 @@
             border-radius: 30px;
             border: 1px solid var(--accent);
         }
+
+
+        .site-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+        .title-logo:hover {
+    transform: rotate(10deg) scale(1.1);
+    transition: 0.3s;
+}
+.title-logo {
+    width: 30px;       /* регулируй размер */
+    height: 30px;
+    object-fit: cover;
+    transform: rotate(-10deg); /* лёгкий стиль */
+}
     </style>
 </head>
 <body>
@@ -820,9 +839,14 @@
         <div class="journal-corner corner-br"></div>
         
         <header class="site-header">
-            <div style="text-align: center;">
-                <h1 class="site-title">🔮 Edasartistry 🔮</h1>
-            </div>
+           <div style="text-align: center;">
+    <h1 class="site-title">
+        <img src="./img/у.jpg" alt="logo" class="title-logo">
+        Edasartistry
+        <img src="./img/у.jpg" alt="logo" class="title-logo">
+    </h1>
+</div>
+            
             <nav class="nav-bar">
                 <ul class="nav-menu" id="navMenu"></ul>
             </nav>

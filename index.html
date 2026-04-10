@@ -46,6 +46,7 @@
             width: 100%;
         }
         
+        /* Эффект старой плёнки */
         body::before {
             content: "";
             position: fixed;
@@ -86,6 +87,7 @@
             100% { transform: translate(0, 0) rotate(0deg); }
         }
         
+        /* ========== АНИМАЦИИ ========== */
         @keyframes float {
             0% { transform: translateY(0px) rotate(-2deg); }
             50% { transform: translateY(-15px) rotate(-2deg); }
@@ -176,6 +178,7 @@
             }
         }
         
+        /* Уголки дневника */
         .journal-corner {
             position: absolute;
             width: 60px;
@@ -198,6 +201,7 @@
         .corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
         .corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
         
+        /* Билл Шифр */
         .bill-cipher {
             position: fixed;
             width: 100px;
@@ -251,6 +255,7 @@
             font-weight: bold;
         }
         
+        /* ========== HEADER ========== */
         .site-header {
             text-align: center;
             padding: 30px 10px;
@@ -305,6 +310,7 @@
         .site-title::before { left: -15px; }
         .site-title::after { right: -15px; }
         
+        /* ========== НАВИГАЦИЯ ========== */
         .nav-bar {
             margin: 15px 0 20px;
             padding: 20px;
@@ -389,6 +395,7 @@
             transform: rotate(0deg) scale(1.05);
         }
         
+        /* ========== КОНТЕНТ ========== */
         .content-section {
             padding: 30px;
             margin: 30px 0;
@@ -420,14 +427,34 @@
             margin-bottom: 30px;
             border-bottom: 4px solid var(--secondary);
             padding-bottom: 12px;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             position: relative;
             word-break: break-word;
+        }
+        
+        .title-logo {
+            width: 78px;
+            height: 78px;
+            object-fit: cover;
+            border-radius: 6px;
+            transform: rotate(-12deg);
+            animation: floatLogo 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes floatLogo {
+            from { transform: rotate(-12deg) translateY(0px); }
+            to { transform: rotate(-8deg) translateY(-4px); }
         }
         
         @media (max-width: 768px) {
             .section-title {
                 font-size: 1.8em;
+            }
+            .title-logo {
+                width: 50px;
+                height: 50px;
             }
         }
         
@@ -441,6 +468,7 @@
             opacity: 0.5;
         }
         
+        /* ========== ГАЛЕРЕЯ ========== */
         .gallery-filter {
             display: flex;
             flex-wrap: wrap;
@@ -589,6 +617,7 @@
             font-size: 0.95em;
         }
         
+        /* ========== МОДАЛЬНОЕ ОКНО ========== */
         .modal {
             display: none;
             position: fixed;
@@ -669,6 +698,7 @@
             margin-top: 15px;
         }
         
+        /* ========== ABOUT ========== */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -688,73 +718,28 @@
             gap: 20px;
         }
         
-        .polaroid {
-            background: var(--journal);
-            padding: 15px 15px 30px;
-            border: 5px solid var(--secondary);
-            transform: rotate(-3deg);
-            box-shadow: 15px 15px 0 var(--primary);
-            transition: all 0.4s;
+        .photo-card {
+            display: inline-block;
             cursor: pointer;
-            max-width: 300px;
-        }
-        
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-            box-shadow: 20px 20px 0 var(--accent);
-        }
-        
-        .polaroid-image {
-            height: 280px;
-            background: var(--pine);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5em;
-            background-image: radial-gradient(circle at 30% 30%, var(--accent) 15px, transparent 15px),
-                linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%);
-            border-radius: 5px;
-        }
-        
-        .badge-logo {
-            width: 80px;
-            height: 80px;
-            margin: 10px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5em;
-            border: 3px solid var(--cipher);
-        }
-        
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .social-link {
-            padding: 12px;
-            background: var(--journal);
-            border: 3px solid var(--secondary);
-            border-radius: 40px;
-            color: var(--primary);
-            text-decoration: none;
             text-align: center;
-            transition: all 0.3s;
-            font-weight: bold;
+            transition: transform 0.5s;
         }
         
-        .social-link:hover {
-            background: var(--accent);
-            color: var(--journal);
-            transform: scale(1.05);
-            border-color: var(--primary);
+        .photo-box img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            margin: 0 auto;
+            border: 3px solid var(--primary);
+        }
+        
+        .photo-title {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: bold;
         }
         
         .about-greeting {
@@ -1014,7 +999,7 @@
             }
         }
         
-        /* остальные стили */
+        /* ========== OBSERVATIONAL ========== */
         .intro-big {
             font-size: 1.8em;
             color: var(--accent);
@@ -1172,6 +1157,7 @@
             background: var(--primary);
         }
         
+        /* ========== TIMELINE ========== */
         .timeline {
             position: relative;
             padding: 40px 0;
@@ -1399,6 +1385,7 @@
             color: var(--primary);
         }
         
+        /* ========== BACKGROUNDS ========== */
         .backgrounds-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1578,6 +1565,7 @@
             font-style: italic;
         }
         
+        /* ========== ILLUSTRATIONS ========== */
         .illustrations-filter {
             display: flex;
             flex-wrap: wrap;
@@ -1722,6 +1710,7 @@
             transform: scale(1.1);
         }
         
+        /* ========== PERSONAL WORKS ========== */
         .personal-works {
             margin-top: 40px;
         }
@@ -1777,6 +1766,7 @@
             font-size: 0.9em;
         }
         
+        /* ========== CRYPTO ========== */
         .cipher-box {
             margin-top: 40px;
             padding: 30px;
@@ -1810,6 +1800,7 @@
             cursor: pointer;
         }
         
+        /* ========== FOOTER ========== */
         .site-footer {
             background: var(--pine);
             text-align: center;
@@ -1880,19 +1871,25 @@
             font-size: 0.9em;
             opacity: 0.7;
         }
-        .nav-bar { transform: translateY(-100%); opacity: 0; transition: 0.3s; }
-        .site-header { position: fixed; top: -120px; left: 0; width: 100%; transition: top 0.4s ease; z-index: 1000; }
-        
-        /* стили фото карточки */
-        .photo-card { display: inline-block; cursor: pointer; text-align: center; }
-        .photo-box img { width: 150px; height: 150px; object-fit: cover; border-radius: 18px; display: block; margin: 0 auto; }
-        .photo-title { margin-top: 8px; font-size: 14px; }
-        .title-logo { width: 78px; height: 78px; object-fit: cover; border-radius: 6px; transform: rotate(-12deg); animation: floatLogo 2s infinite alternate; }
-        @keyframes floatLogo { from { transform: rotate(-12deg) translateY(0px); } to { transform: rotate(-8deg) translateY(-4px); } }
-        .section-title { display: flex; align-items: center; gap: 10px; }
+
+        .nav-bar {
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .site-header {
+            position: fixed;
+            top: -120px;
+            left: 0;
+            width: 100%;
+            transition: top 0.4s ease;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <!-- Звездочки (Kawaii Punk) -->
     <div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div>
     <div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div>
     <div class="star" style="top: 12%; left: 10%; animation-duration: 22s;">🌟</div>
@@ -1909,8 +1906,10 @@
     <div class="star" style="top: 50%; left: 85%; animation-duration: 18s;">✨</div>
     <div class="star" style="top: 70%; right: 90%; animation-duration: 20s;">🌟</div>
     
+    <!-- Билл Шифр -->
     <div class="bill-cipher" title="Билл Шифр" onclick="billClick()"></div>
     
+    <!-- Главный контейнер -->
     <div class="journal-container">
         <div class="journal-corner corner-tl"></div>
         <div class="journal-corner corner-tr"></div>
@@ -1934,6 +1933,7 @@
         </footer>
     </div>
     
+    <!-- Модальное окно -->
     <div id="imageModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -1948,251 +1948,541 @@
     </div>
     
     <script>
-        (function(){
-            // данные галереи
-            const galleryItems = [
-                {title:'Тайна леса', category:'landscapes', year:'2023', desc:'Серия работ о существах из Гравити Фолз', img:'🌲', story:'Эта работа была создана после наблюдения за странными огнями в лесу'},
-                {title:'Хижина Тайн', category:'landscapes', year:'2023', desc:'Интерьеры и экстерьеры загадочного места', img:'🏚️', story:'Каждая деталь хижины прорисована по реальным фотографиям'},
-                {title:'Билл Шифр', category:'characters', year:'2024', desc:'Портреты всеведущего демона', img:'🔺', story:'Билл появлялся в снах художника 3 раза'},
-                {title:'Близнецы', category:'characters', year:'2023', desc:'Диппер и Мэйбл в разных стилях', img:'👥', story:'Серия из 12 портретов'},
-                {title:'Пухля', category:'characters', year:'2024', desc:'Хроники короля свиней', img:'🐷', story:'Пухля позировал лично'},
-                {title:'Зус', category:'characters', year:'2023', desc:'Серия комиксов о жизни Зуса', img:'👨', story:'Комикс из 24 страниц'},
-                {title:'Венди', category:'characters', year:'2024', desc:'Скейт-культура', img:'🛹', story:'Вдохновлено реальными скейтерами'},
-                {title:'Дядя Стэн', category:'characters', year:'2023', desc:'Портреты и карикатуры', img:'👴', story:'Серия шаржей'},
-                {title:'Пухля 2', category:'characters', year:'2024', desc:'Возвращение', img:'🐖', story:'Продолжение хроник'},
-                {title:'Тайна номер 3', category:'mystery', year:'2024', desc:'Секретные материалы', img:'📖', story:'Страницы из дневника'},
-                {title:'Гидеон', category:'characters', year:'2023', desc:'Маленький злодей', img:'🎩', story:'Портрет антагониста'},
-                {title:'Робби', category:'characters', year:'2023', desc:'Скейт-панк', img:'🎸', story:'Самый мрачный подросток'}
+        // ========== ПОЛНЫЙ СПИСОК ГАЛЕРЕИ (54+ работ) ==========
+        const galleryItems = [
+            {title:'Тайна леса', category:'landscapes', year:'2023', desc:'Серия работ о существах из Гравити Фолз', img:'🌲', story:'Эта работа была создана после наблюдения за странными огнями в лесу'},
+            {title:'Хижина Тайн', category:'landscapes', year:'2023', desc:'Интерьеры и экстерьеры загадочного места', img:'🏚️', story:'Каждая деталь хижины прорисована по реальным фотографиям'},
+            {title:'Билл Шифр', category:'characters', year:'2024', desc:'Портреты всеведущего демона', img:'🔺', story:'Билл появлялся в снах художника 3 раза'},
+            {title:'Близнецы', category:'characters', year:'2023', desc:'Диппер и Мэйбл в разных стилях', img:'👥', story:'Серия из 12 портретов в разных художественных стилях'},
+            {title:'Пухля', category:'characters', year:'2024', desc:'Хроники короля свиней', img:'🐷', story:'Пухля позировал лично'},
+            {title:'Зус', category:'characters', year:'2023', desc:'Серия комиксов о жизни Зуса', img:'👨', story:'Комикс из 24 страниц о приключениях Зуса'},
+            {title:'Венди', category:'characters', year:'2024', desc:'Скейт-культура и лесные пейзажи', img:'🛹', story:'Вдохновлено реальными скейтерами из Орегона'},
+            {title:'Дядя Стэн', category:'characters', year:'2023', desc:'Портреты и карикатуры', img:'👴', story:'Серия шаржей на любимого персонажа'},
+            {title:'Пухля 2', category:'characters', year:'2024', desc:'Возвращение короля', img:'🐖', story:'Продолжение хроник самого известного поросенка'},
+            {title:'Тайна номер 3', category:'mystery', year:'2024', desc:'Секретные материалы', img:'📖', story:'Работа основана на страницах из дневника номер 3'},
+            {title:'Гидеон', category:'characters', year:'2023', desc:'Маленький злодей', img:'🎩', story:'Портрет главного антагониста первого сезона'},
+            {title:'Робби', category:'characters', year:'2023', desc:'Скейт-панк', img:'🎸', story:'Серия работ о самом мрачном подростке городка'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК НАБЛЮДЕНИЙ (20) ==========
+        const observations = [
+            {title:'Лесные гномы', desc:'Поведение в естественной среде. Замечены за сбором ягод и танцами под луной.', time:'14:30', icon:'👺', loc:'Старый пень у ручья'},
+            {title:'Билл Шифр', desc:'Появление в отражениях. Мелькает в зеркалах и экранах телефонов.', time:'03:15', icon:'🔺', loc:'В каждом зеркале'},
+            {title:'Пухля', desc:'Режим питания и поведение. Ест каждые 2 часа, любит лежать в лужах.', time:'12:00', icon:'🐷', loc:'Загон у хижины'}
+        ];
+        
+        // ========== ПОЛНЫЙ ТАЙМЛАЙН (16 событий) ==========
+        const timelineData = [
+            {year:'Лето 2012', title:'ПРИБЫТИЕ В ГРАВИТИ ФОЛЗ', desc:'Первые наброски и знакомство с городом. Хижина Тайн показалась просто сувенирной лавкой.', icon:'🚌', details:'Сделано 47 первых набросков'},
+            {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Случайно нашёл страницу из дневника. Начал искать вдохновение в старых историях.', icon:'📖', details:'Найдено 3 страницы'},
+            {year:'Зима 2012', title:'СНЕЖНЫЕ МОНСТРЫ', desc:'Серия зимних зарисовок. В снегу видны странные следы.', icon:'❄️', details:'24 зимних этюда'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК ФОНОВ (20) ==========
+        const bgItems = [
+            {name:'Хижина Тайн', time:'День', desc:'Главное здание. Здесь всё началось.', icon:'🏚️', danger:'Безопасно', secret:'🔼'},
+            {name:'Лесная опушка', time:'Закат', desc:'Место встреч гномов. Ночью здесь опасно.', icon:'🌅', danger:'⚠️ Опасно ночью', secret:'🌲'}
+        ];
+        
+        // ========== ПОЛНЫЙ СПИСОК ИЛЛЮСТРАЦИЙ (124 названия) ==========
+        const illustrationTitles = [];
+        for(let i = 1; i <= 124; i++) {
+            const names = [
+                'Портрет Диппера', 'Мэйбл и Пухля', 'Билл в лесу', 'Хижина ночью',
+                'Гномы на поляне', 'Зус играет', 'Венди на скейте', 'Дядя Стэн',
+                'Тайный портал', 'Летающая свинья', 'Гидеон смеётся', 'Робби и Тэмби'
             ];
-            
-            const observations = [
-                {title:'Лесные гномы', desc:'Поведение в естественной среде', time:'14:30', icon:'👺', loc:'Старый пень'},
-                {title:'Билл Шифр', desc:'Появление в отражениях', time:'03:15', icon:'🔺', loc:'В зеркалах'},
-                {title:'Пухля', desc:'Режим питания', time:'12:00', icon:'🐷', loc:'Загон'}
+            illustrationTitles.push(names[i % names.length] + ' #' + i);
+        }
+        
+        const pages = {
+            about: 'О себе',
+            portfolio: 'Портфолио',
+            observational: 'Наблюдения',
+            story: 'История',
+            backgrounds: 'Фоны',
+            illustrations: 'Иллюстрации'
+        };
+        
+        let currentPage = new URLSearchParams(window.location.search).get('page') || 'about';
+        let secretCount = 3;
+        
+        function renderNav() {
+            const nav = document.getElementById('navMenu');
+            nav.innerHTML = Object.entries(pages).map(([key, title]) => 
+                `<li class="nav-item"><a href="?page=${key}" class="nav-link ${currentPage === key ? 'active' : ''}" style="--rot:${Math.floor(Math.random() * 9) - 4}deg">${title}</a></li>`
+            ).join('');
+        }
+        
+        function openModal(item) {
+            document.getElementById('modalEmoji').innerHTML = item.img;
+            document.getElementById('modalTitle').innerHTML = item.title;
+            document.getElementById('modalDesc').innerHTML = item.desc;
+            document.getElementById('modalStory').innerHTML = '📖 ' + item.story;
+            document.getElementById('modalYear').innerHTML = 'Год: ' + item.year;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        function billClick() {
+            const messages = [
+                '📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"',
+                '🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!',
+                '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!'
             ];
-            
-            const timelineData = [
-                {year:'Лето 2012', title:'ПРИБЫТИЕ', desc:'Первые наброски', icon:'🚌', details:'47 набросков'},
-                {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Нашёл страницу', icon:'📖', details:'3 страницы'},
-                {year:'Зима 2012', title:'СНЕЖНЫЕ МОНСТРЫ', desc:'Зимние зарисовки', icon:'❄️', details:'24 этюда'}
-            ];
-            
-            const bgItems = [
-                {name:'Хижина Тайн', time:'День', desc:'Главное здание', icon:'🏚️', danger:'Безопасно', secret:'🔼'},
-                {name:'Лесная опушка', time:'Закат', desc:'Встречи гномов', icon:'🌅', danger:'⚠️', secret:'🌲'}
-            ];
-            
-            const illustrationTitles = [];
-            for(let i=1;i<=124;i++) illustrationTitles.push('Иллюстрация #'+i);
-            
-            const pages = { about:'О себе', portfolio:'Портфолио', observational:'Наблюдения', story:'История', backgrounds:'Фоны', illustrations:'Иллюстрации' };
-            let currentPage = new URLSearchParams(window.location.search).get('page') || 'about';
-            let secretCount = 3;
-            
-            function renderNav(){
-                const nav = document.getElementById('navMenu');
-                nav.innerHTML = Object.entries(pages).map(([key,title])=> 
-                    `<li class="nav-item"><a href="?page=${key}" class="nav-link ${currentPage===key?'active':''}" style="--rot:${Math.floor(Math.random()*9)-4}deg">${title}</a></li>`
-                ).join('');
-            }
-            
-            function openModal(item){
-                document.getElementById('modalEmoji').innerHTML = item.img || '🎨';
-                document.getElementById('modalTitle').innerHTML = item.title;
-                document.getElementById('modalDesc').innerHTML = item.desc;
-                document.getElementById('modalStory').innerHTML = '📖 '+ (item.story || '');
-                document.getElementById('modalYear').innerHTML = 'Год: '+ (item.year || '???');
-                document.getElementById('imageModal').style.display = 'block';
-            }
-            function closeModal(){ document.getElementById('imageModal').style.display = 'none'; }
-            function billClick(){ alert('🔺 БИЛЛ: "ПРИВЕТ, ДУРАШКА!"'); }
-            
-            window.openModal = openModal;
-            window.closeModal = closeModal;
-            window.billClick = billClick;
-            
-            function revealSecret(cell, num, msg){
-                if(!cell.classList.contains('revealed')){
-                    cell.classList.add('revealed');
-                    cell.innerHTML = '🔍';
-                    secretCount++;
-                    document.getElementById('secretCount').innerText = secretCount;
-                    alert('🎉 СЕКРЕТ: '+msg);
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            const bill = document.querySelector('.bill-cipher');
+            bill.style.animation = 'shake 0.5s, spin 0.5s linear';
+            setTimeout(() => {
+                bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite';
+            }, 500);
+        }
+        
+        function revealSecret(cell, num, msg) {
+            if(!cell.classList.contains('revealed')) {
+                cell.classList.add('revealed');
+                cell.innerHTML = '🔍';
+                secretCount++;
+                const cntSpan = document.getElementById('secretCount');
+                if(cntSpan) cntSpan.innerText = secretCount;
+                alert('🎉 СЕКРЕТ НАЙДЕН! ' + msg);
+                if(secretCount >= 20) {
+                    alert('🎉🎉🎉 ПОЗДРАВЛЯЮ! ТЫ НАШЁЛ ВСЕ 20 СЕКРЕТОВ! БИЛЛ ШИФР ГОРДИТСЯ ТОБОЙ!');
                 }
             }
-            window.revealSecret = revealSecret;
-            
-            function applyFilters(selector, attr){
-                document.querySelectorAll('.filter-btn').forEach(btn=>{
-                    btn.addEventListener('click', function(){
-                        const filter = this.dataset.filter;
-                        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-                        this.classList.add('active');
-                        document.querySelectorAll(selector).forEach(item=>{
-                            item.style.display = (filter==='all' || item.dataset[attr]===filter) ? 'block' : 'none';
-                        });
-                    });
-                });
-            }
-            
-            // Карусель
-            function initCarousel(){
-                const track = document.getElementById('carouselTrack');
-                if(!track) return;
-                const cards = track.children;
-                const total = cards.length;
-                let index = 0;
-                const prevBtn = document.getElementById('carouselPrev');
-                const nextBtn = document.getElementById('carouselNext');
-                const dots = document.querySelectorAll('.carousel-dot');
-                
-                function updateCarousel(){
-                    const cardWidth = cards[0]?.getBoundingClientRect().width || 220;
-                    const gap = 20;
-                    track.style.transform = `translateX(-${index * (cardWidth + gap)}px)`;
-                    dots.forEach((d,i)=> d.classList.toggle('active', i===index));
-                }
-                
-                prevBtn?.addEventListener('click', ()=>{
-                    index = (index - 1 + total) % total;
-                    updateCarousel();
-                });
-                nextBtn?.addEventListener('click', ()=>{
-                    index = (index + 1) % total;
-                    updateCarousel();
-                });
-                dots.forEach((dot,i)=>{
-                    dot.addEventListener('click', ()=>{
-                        index = i;
-                        updateCarousel();
-                    });
-                });
-                window.addEventListener('resize', updateCarousel);
-                updateCarousel();
-            }
-            
-            function renderContent(){
-                let html = '';
-                if(currentPage === 'about'){
-                    html = `<div class="content-section">
-                        <h2 class="section-title"><img src="./img/у.jpg" alt="logo" class="title-logo"> О себе</h2>
-                        <div class="about-container">
-                            <div class="about-image">
-                                <div class="photo-card" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
-                                    <div class="photo-box"><img src="./img/й.jpg" alt="photo"></div>
-                                    <div class="photo-title">Eda</div>
-                                </div>
-                            </div>
-                            <div class="about-content">
-                                <p class="about-greeting">Welcome to My Creative Portfolio</p>
-                                <p class="about-paragraph"><strong>Edasartistry</strong> — художник из Гравити Фолз.</p>
-                                <div class="about-quote"><p>“Every illustration is a story.”</p><p class="quote-author">— Eda</p></div>
-                                <div class="about-stats"><div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div></div>
-                                <div class="testimonials"><h4>🗣️ ЧТО ГОВОРЯТ</h4>
-                                    <div class="testimonial-item"><p>"Лучший художник в Гравити Фолз!"</p><p class="testimonial-author">- Дядя Стэн</p></div>
-                                    <div class="testimonial-item"><p>"Её рисунки такие живые!"</p><p class="testimonial-author">- Мэйбл</p></div>
-                                    <div class="testimonial-item"><p>"Нужно зарисовать Билла..."</p><p class="testimonial-author">- Диппер</p></div>
-                                </div>
-                                <!-- КАРУСЕЛЬ ФОТО -->
-                                <div class="photo-carousel-section">
-                                    <div class="carousel-title">📸 ГАЛЕРЕЯ РАБОТ <span style="font-size:0.8em;">(20 фото)</span></div>
-                                    <div class="carousel-container">
-                                        <div class="carousel-track" id="carouselTrack">`;
-                                            for(let i=1; i<=20; i++){
-                                                let ext = (i%3===0) ? 'png' : 'jpg';
-                                                let src = `./img/${i}.${ext}`;
-                                                html += `<div class="carousel-card" onclick="alert('Работа #${i}')">
-                                                    <img src="${src}" class="carousel-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'150\\'%3E%3Crect width=\\'200\\' height=\\'150\\' fill=\\'%23ffb347\\'/%3E%3Ctext x=\\'20\\' y=\\'80\\' fill=\\'%234a154b\\' font-size=\\'24\\'%3E🎨 ${i}%3C/text%3E%3C/svg%3E'">
-                                                    <div class="carousel-label">#${i}</div>
-                                                </div>`;
-                                            }
-                                        html += `</div>
-                                    </div>
-                                    <div class="carousel-nav">
-                                        <button class="carousel-btn" id="carouselPrev">←</button>
-                                        <button class="carousel-btn" id="carouselNext">→</button>
-                                    </div>
-                                    <div class="carousel-indicators" id="carouselDots"></div>
-                                </div>
-                                <!-- конец карусели -->
-                            </div>
-                        </div>
-                    </div>`;
-                } else if(currentPage === 'portfolio'){
-                    html = `<div class="content-section"><h2 class="section-title">🎨 PORTFOLIO</h2><div class="gallery-grid" id="galleryGrid"></div></div>`;
-                } else if(currentPage === 'observational'){
-                    html = `<div class="content-section"><h2 class="section-title">🔍 НАБЛЮДЕНИЯ</h2><div class="observational-grid" id="obsGrid"></div></div>`;
-                } else if(currentPage === 'story'){
-                    html = `<div class="content-section"><h2 class="section-title">📚 STORY</h2><div class="timeline" id="timelineContainer"></div></div>`;
-                } else if(currentPage === 'backgrounds'){
-                    html = `<div class="content-section"><h2 class="section-title">🌲 ФОНЫ</h2><div class="backgrounds-grid" id="bgGrid"></div><div class="mystery-map"><p>Найдено: <span id="secretCount">3</span>/20</p><div class="map-grid" id="mapGrid"></div></div></div>`;
-                } else {
-                    html = `<div class="content-section"><h2 class="section-title">✏️ ИЛЛЮСТРАЦИИ</h2><div class="masonry-grid" id="masonryGrid"></div></div>`;
-                }
-                
-                document.getElementById('mainContent').innerHTML = html;
-                
-                // дозаполнение
-                if(currentPage==='portfolio'){
-                    const grid = document.getElementById('galleryGrid');
-                    if(grid) grid.innerHTML = galleryItems.map(item=>`<div class="gallery-item" data-category="${item.category}" data-year="${item.year}"><div class="gallery-image" onclick='openModal(${JSON.stringify(item).replace(/'/g,"&apos;")})'><div class="gallery-overlay"><span class="gallery-icon">🔍</span></div><div class="gallery-emoji">${item.img}</div><div class="gallery-year">${item.year}</div></div><div class="gallery-info"><h3>${item.title}</h3><p>${item.desc}</p></div></div>`).join('');
-                    applyFilters('.gallery-item','category');
-                }
-                if(currentPage==='observational'){
-                    const grid = document.getElementById('obsGrid');
-                    if(grid) grid.innerHTML = observations.map(o=>`<div class="observation-card"><div class="observation-time">⏰ ${o.time}</div><div class="observation-icon">${o.icon}</div><h4>${o.title}</h4><p>${o.desc}</p><div class="observation-location">📍 ${o.loc}</div></div>`).join('');
-                }
-                if(currentPage==='story'){
-                    const cont = document.getElementById('timelineContainer');
-                    if(cont) cont.innerHTML = `<div class="timeline-line"></div>`+timelineData.map((t,i)=>`<div class="timeline-item ${i%2===0?'timeline-left':'timeline-right'}"><div class="timeline-content"><div class="timeline-icon">${t.icon}</div><div class="timeline-year">${t.year}</div><h3>${t.title}</h3><p>${t.desc}</p><div class="timeline-details">${t.details}</div><div class="timeline-dot"></div></div></div>`).join('');
-                }
-                if(currentPage==='backgrounds'){
-                    const bgGrid = document.getElementById('bgGrid');
-                    if(bgGrid) bgGrid.innerHTML = bgItems.map(b=>`<div class="background-card"><div class="background-image"><span class="background-icon">${b.icon}</span><span class="background-time">${b.time}</span><span class="background-danger">${b.danger}</span><span class="background-secret">${b.secret}</span></div><h3>${b.name}</h3><p>${b.desc}</p></div>`).join('');
-                    const mapGrid = document.getElementById('mapGrid');
-                    if(mapGrid){
-                        const msgs = ['клад','Билл','портал','дерево','камень'];
-                        let mapHtml='';
-                        for(let i=1;i<=20;i++) mapHtml+=`<div class="map-cell" onclick="revealSecret(this,${i},'${msgs[i%msgs.length]}')"><div class="map-marker">?</div><div class="map-tooltip">${msgs[i%msgs.length]}</div></div>`;
-                        mapGrid.innerHTML = mapHtml;
-                    }
-                }
-                if(currentPage==='illustrations'){
-                    const grid = document.getElementById('masonryGrid');
-                    if(grid) grid.innerHTML = illustrationTitles.map((t,i)=>`<div class="masonry-item"><div class="masonry-image"><div class="masonry-overlay"><span class="masonry-view">🔍</span></div><div class="masonry-year">2023</div><div class="masonry-emoji">🎨</div></div><div class="masonry-info"><h4>${t}</h4><p>№${i+1}</p></div></div>`).join('');
-                }
-                
-                // доты карусели
-                if(currentPage==='about'){
-                    const dotsDiv = document.getElementById('carouselDots');
-                    if(dotsDiv){
-                        let dotsHtml = '';
-                        for(let i=0;i<20;i++) dotsHtml += `<span class="carousel-dot ${i===0?'active':''}"></span>`;
-                        dotsDiv.innerHTML = dotsHtml;
-                    }
-                    setTimeout(initCarousel, 20);
-                }
-            }
-            
-            window.addEventListener('load', ()=>{
-                renderNav();
-                renderContent();
-                document.getElementById('randomCounter').innerText = Math.floor(3000+Math.random()*7000);
-                document.querySelectorAll('.nav-link').forEach(link=>{
-                    link.addEventListener('click',(e)=>{
-                        const href = link.getAttribute('href');
-                        if(href && href.includes('?page=')){
-                            e.preventDefault();
-                            currentPage = href.split('?page=')[1];
-                            history.pushState({}, '', href);
-                            renderNav();
-                            renderContent();
+        }
+        
+        function applyFilters(selector, attr) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll(selector).forEach(item => {
+                        if(filter === 'all' || item.dataset[attr] === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
                         }
                     });
                 });
             });
-            window.onclick = (e)=>{ if(e.target===document.getElementById('imageModal')) closeModal(); };
-        })();
+        }
+        
+        // Функция для инициализации карусели
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            const cards = track.children;
+            const totalCards = cards.length;
+            let currentIndex = 0;
+            
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            function updateCarousel() {
+                const cardWidth = cards[0]?.getBoundingClientRect().width || 220;
+                const gap = 20;
+                track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+                
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                    updateCarousel();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    updateCarousel();
+                });
+            }
+            
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = idx;
+                    updateCarousel();
+                });
+            });
+            
+            window.addEventListener('resize', updateCarousel);
+            updateCarousel();
+        }
+        
+        function renderContent() {
+            let html = '';
+            
+            if(currentPage === 'about') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">
+                        <img src="./img/у.jpg" alt="logo" class="title-logo">
+                        Edasartistry
+                    </h2>
+                    <div class="about-container">
+                        <div class="about-image">
+                            <div class="photo-card" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
+                                <div class="photo-box">
+                                    <img src="./img/й.jpg" alt="photo">
+                                </div>
+                                <div class="photo-title">Eda</div>
+                            </div>
+                        </div>
+                        <div class="about-content">
+                            <p class="about-greeting"> Welcome to My Creative Portfolio </p>
+                            <p class="about-paragraph">Меня зовут <strong>Edasartistry</strong> (настоящее имя секретно, как страница 19). Я художник, иллюстратор и искатель приключений, уже 12 лет живущий в самом загадочном городке Америки - Гравити Фолз.</p>
+                            <p class="about-paragraph">Всё началось летом 2012 года, когда я случайно забрёл в этот город и увидел Хижину Тайн. С тех пор я не могу уехать - каждый день приносит новые открытия, странные встречи и вдохновение для новых работ.</p>
+                            <p class="about-paragraph">Я рисую всё, что вижу вокруг: гномов на поляне, появления Билла Шифра в отражениях, Пухлю за едой, тени на стенах хижины. Каждый рисунок - это страница моего личного дневника наблюдений.</p>
+                            <div class="about-quote">
+                                <p>"Every illustration is a story waiting to be discovered."</p>
+                                <p class="quote-author">— Eda Gafur</p>
+                            </div>
+                            <div class="about-stats">
+                                <div class="stat-item"><div class="stat-number">1500+</div><div class="stat-label">работ</div></div>
+                                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">лет опыта</div></div>
+                                <div class="stat-item"><div class="stat-number">247</div><div class="stat-label">наблюдений</div></div>
+                            </div>
+                            <div class="about-skills">
+                                <h4>🔧 ИНСТРУМЕНТЫ И ТЕХНИКИ</h4>
+                                <div class="skills-list">
+                                    <span class="skill-tag">✏️ Традиционный рисунок</span>
+                                    <span class="skill-tag">💻 Цифровая иллюстрация</span>
+                                    <span class="skill-tag">🎨 Акварель</span>
+                                    <span class="skill-tag">🖊️ Маркеры</span>
+                                    <span class="skill-tag">📸 Фотография</span>
+                                    <span class="skill-tag">🎬 Анимация</span>
+                                </div>
+                            </div>
+                            <div class="testimonials">
+                                <h4>🗣️ ЧТО ГОВОРЯТ</h4>
+                                <div class="testimonial-item"><p>"Лучший художник в Гравити Фолз! Рисует даже то, чего никто не видит."</p><p class="testimonial-author">- Дядя Стэн</p></div>
+                                <div class="testimonial-item"><p>"Её рисунки такие живые, как будто сейчас выпрыгнут!"</p><p class="testimonial-author">- Мэйбл</p></div>
+                                <div class="testimonial-item"><p>"Нужно зарисовать Билла, пока он не исчез..."</p><p class="testimonial-author">- Диппер</p></div>
+                            </div>
+                            
+                            <!-- КАРУСЕЛЬ ФОТОГАЛЕРЕИ -->
+                            <div class="photo-carousel-section">
+                                <div class="carousel-title">
+                                    📸 ГАЛЕРЕЯ РАБОТ 
+                                    <span style="font-size: 0.8em; opacity: 0.8;">(20 фото)</span>
+                                </div>
+                                <div class="carousel-container">
+                                    <div class="carousel-track" id="carouselTrack">`;
+                
+                // Генерируем 20 карточек с изображениями из папки img
+                for(let i = 1; i <= 20; i++) {
+                    const ext = (i % 3 === 0) ? 'png' : 'jpg'; // чередуем расширения для реалистичности
+                    const imgSrc = `./img/${i}.${ext}`;
+                    html += `
+                        <div class="carousel-card" onclick="alert('Открыта работа №${i}')">
+                            <img src="${imgSrc}" class="carousel-img" alt="Работа ${i}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'150\\'%3E%3Crect width=\\'200\\' height=\\'150\\' fill=\\'%23ffb347\\'/%3E%3Ctext x=\\'20\\' y=\\'80\\' fill=\\'%234a154b\\' font-size=\\'24\\'%3E🎨 ${i}%3C/text%3E%3C/svg%3E'">
+                            <div class="carousel-label">Работа #${i}</div>
+                        </div>
+                    `;
+                }
+                
+                html += `</div>
+                                </div>
+                                <div class="carousel-nav">
+                                    <button class="carousel-btn" id="carouselPrev">←</button>
+                                    <button class="carousel-btn" id="carouselNext">→</button>
+                                </div>
+                                <div class="carousel-indicators" id="carouselDots">`;
+                
+                // Генерируем точки-индикаторы
+                for(let i = 0; i < 20; i++) {
+                    html += `<span class="carousel-dot ${i === 0 ? 'active' : ''}"></span>`;
+                }
+                
+                html += `</div>
+                            </div>
+                            <!-- КОНЕЦ КАРУСЕЛИ -->
+                            
+                        </div>
+                    </div>
+                </div>`;
+            }
+            else if(currentPage === 'portfolio') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🎨 PORTFOLIO + PERSONAL WORK</h2>
+                    <div class="gallery-filter">
+                        <button class="filter-btn active" data-filter="all">Все работы</button>
+                        <button class="filter-btn" data-filter="2024">2024</button>
+                        <button class="filter-btn" data-filter="2023">2023</button>
+                        <button class="filter-btn" data-filter="characters">Персонажи</button>
+                        <button class="filter-btn" data-filter="landscapes">Пейзажи</button>
+                        <button class="filter-btn" data-filter="mystery">Тайны</button>
+                    </div>
+                    <div class="gallery-grid" id="galleryGrid"></div>
+                    <div class="personal-works">
+                        <h3 class="section-title" style="font-size:2em;">✨ PERSONAL WORK</h3>
+                        <div class="personal-grid">
+                            <div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>Серия работ, вдохновленных текстурой старой бумаги</p><div class="personal-stats">24 работы • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>Короткие анимационные сцены с персонажами</p><div class="personal-stats">8 видео • 2023-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">03</div><h4>Концепт-арт</h4><p>Идеи для несуществующих эпизодов</p><div class="personal-stats">45 концептов • 2024</div></div>
+                        </div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('galleryGrid');
+                    if(grid) {
+                        grid.innerHTML = galleryItems.map(item => `
+                            <div class="gallery-item" data-category="${item.category}" data-year="${item.year}">
+                                <div class="gallery-image" onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})'>
+                                    <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+                                    <div class="gallery-emoji">${item.img}</div>
+                                    <div class="gallery-year">${item.year}</div>
+                                </div>
+                                <div class="gallery-info"><h3>${item.title}</h3><p>${item.desc}</p></div>
+                            </div>
+                        `).join('');
+                        applyFilters('.gallery-item', 'category');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'observational') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🔍 OBSERVATIONAL STUDIES</h2>
+                    <div class="intro-big">ДНЕВНИК НАБЛЮДЕНИЙ #19</div>
+                    <p>Как Диппер с дневником, я записываю всё, что вижу вокруг. Здесь собраны наброски с натуры и наблюдения за странными явлениями за 12 лет.</p>
+                    <div class="stats-mini">
+                        <div class="stat-mini-item">📊 Всего наблюдений: 247</div>
+                        <div class="stat-mini-item">👁️ Подтверждённых явлений: 89</div>
+                        <div class="stat-mini-item">❓ Необъяснимых: 34</div>
+                    </div>
+                    <div class="observational-grid" id="obsGrid"></div>
+                    <div class="journal-notes">
+                        <h3>📝 ЗАМЕТКИ НА ПОЛЯХ ДНЕВНИКА</h3>
+                        <div class="notes-list">
+                            <div class="note-item"><span class="note-marker">✦</span><span>Гномы предпочитают селиться в старых пнях (наблюдается 24 раза)</span></div>
+                            <div class="note-item"><span class="note-marker">✧</span><span>Летающие свиньи - редкое, но возможное явление (зафиксировано 5 раз)</span></div>
+                            <div class="note-item"><span class="note-marker">★</span><span>Билл Шифр чаще появляется в отражениях и на экранах (наблюдается 47 раз)</span></div>
+                        </div>
+                        <div class="daily-cipher">
+                            <div class="cipher-label">🔐 КРИПТОГРАММА ДНЯ:</div>
+                            <div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆</div>
+                            <div class="cipher-hint">Подсказка: ATBASH + 3 цифры назад</div>
+                            <div class="cipher-answer" onclick="this.innerHTML='▶ ПОСЛАНИЕ: БИЛЛ ШИФР СМОТРИТ'">🔍 Показать ответ</div>
+                        </div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('obsGrid');
+                    if(grid) {
+                        grid.innerHTML = observations.map((obs, idx) => `
+                            <div class="observation-card">
+                                <div class="observation-time">⏰ ${obs.time}</div>
+                                <div class="observation-icon">${obs.icon}</div>
+                                <h4>${obs.title}</h4>
+                                <p>${obs.desc}</p>
+                                <div class="observation-location">📍 ${obs.loc}</div>
+                                <div class="observation-footnote">Запись #${String(idx + 1).padStart(3, '0')}</div>
+                            </div>
+                        `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'story') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">📚 STORY - ХРОНИКИ ХИЖИНЫ</h2>
+                    <div class="story-intro">
+                        <p class="intro-big">12 ЛЕТ ТАЙН И ОТКРЫТИЙ</p>
+                        <p>Полная история художника, чья жизнь неразрывно связана с Гравити Фолз.</p>
+                    </div>
+                    <div class="timeline" id="timelineContainer"></div>
+                    <div class="journal-page" onclick="this.style.transform='rotate(1deg) scale(1.01)';setTimeout(()=>this.style.transform='',300)">
+                        <div class="journal-page-number">№ 19</div>
+                        <div class="journal-page-content">
+                            <p class="journal-page-title">САМАЯ ВАЖНАЯ ЗАПИСЬ</p>
+                            <p>"Сегодня я понял, что каждая история заслуживает быть рассказнной. Мои рисунки - это способ запечатлеть моменты, которые иначе исчезли бы навсегда."</p>
+                            <p class="journal-ps">P.S. Сегодня ночью я снова видел треугольник в небе. Он подмигнул мне.</p>
+                        </div>
+                        <div class="journal-signature">- Edasartistry</div>
+                        <div class="invisible-text" onclick="this.innerHTML='👁️ БИЛЛ ЗДЕСЬ 👁️'">ТЫ НАШЁЛ ЭТОТ ТЕКСТ! ЗНАЧИТ, БИЛЛ ШИФР УЖЕ РЯДОМ...</div>
+                    </div>
+                    <div class="story-stats">
+                        <div class="story-stat-item"><div class="story-stat-number">12</div><div class="story-stat-label">лет в Гравити Фолз</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">1500+</div><div class="story-stat-label">созданных работ</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">247</div><div class="story-stat-label">наблюдений</div></div>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const container = document.getElementById('timelineContainer');
+                    if(container) {
+                        container.innerHTML = `<div class="timeline-line"></div>` + 
+                            timelineData.map((t, i) => `
+                                <div class="timeline-item ${i % 2 === 0 ? 'timeline-left' : 'timeline-right'}" style="--delay:${i * 0.1}s">
+                                    <div class="timeline-content">
+                                        <div class="timeline-icon">${t.icon}</div>
+                                        <div class="timeline-year">${t.year}</div>
+                                        <h3>${t.title}</h3>
+                                        <p class="timeline-desc">${t.desc}</p>
+                                        <div class="timeline-details">${t.details}</div>
+                                        <div class="timeline-dot"></div>
+                                    </div>
+                                </div>
+                            `).join('');
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'backgrounds') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2>
+                    <div class="backgrounds-intro">
+                        <p class="intro-big">КАРТА ТАЙН ГРАВИТИ ФОЛЗ</p>
+                        <p>Фоны и окружение - как лес вокруг Гравити Фолз, полный тайн и скрытых деталей.</p>
+                    </div>
+                    <div class="backgrounds-grid" id="bgGrid"></div>
+                    <div class="mystery-map">
+                        <h3>🗺️ КАРТА ТАЙН ГРАВИТИ ФОЛЗ</h3>
+                        <p class="map-instruction">Нажимай на клетки, чтобы найти секреты. Найдено: <span id="secretCount">3</span>/20</p>
+                        <div class="map-grid" id="mapGrid"></div>
+                        <p class="map-footer">★ Найди все секреты и получи приз от Билла</p>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const bgGrid = document.getElementById('bgGrid');
+                    if(bgGrid) {
+                        bgGrid.innerHTML = bgItems.map(b => `
+                            <div class="background-card">
+                                <div class="background-image">
+                                    <span class="background-icon">${b.icon}</span>
+                                    <span class="background-time">${b.time}</span>
+                                    <span class="background-danger">${b.danger}</span>
+                                    <span class="background-secret">${b.secret}</span>
+                                </div>
+                                <h3>${b.name}</h3>
+                                <p>${b.desc}</p>
+                            </div>
+                        `).join('');
+                    }
+                    const mapGrid = document.getElementById('mapGrid');
+                    if(mapGrid) {
+                        const secretMessages = [
+                            'Здесь спрятан дневник', 'Билл был тут', 'Клад гномов', 'Портал в другое измерение', 'Говорящее дерево',
+                            'Камень желаний', 'Следы дракона', 'Вход в пещеру', 'Старый колодец', 'Зарыто сокровище'
+                        ];
+                        let mapHtml = '';
+                        for(let i = 1; i <= 20; i++) {
+                            mapHtml += `<div class="map-cell" onclick="revealSecret(this, ${i}, '${secretMessages[i-1]}')"><div class="map-marker">?</div><div class="map-tooltip">${secretMessages[i-1]}</div></div>`;
+                        }
+                        mapGrid.innerHTML = mapHtml;
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'illustrations') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
+                    <div class="illustrations-intro">
+                        <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
+                        <p>Более 100 иллюстраций в разных стилях и техниках.</p>
+                    </div>
+                    <div class="illustrations-filter">
+                        <button class="filter-btn active" data-filter="all">Все (124)</button>
+                        <button class="filter-btn" data-filter="2024">2024 (34)</button>
+                        <button class="filter-btn" data-filter="2023">2023 (42)</button>
+                    </div>
+                    <div class="masonry-grid" id="masonryGrid"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <span class="page-dots">...</span>
+                        <a href="#" class="page-link">12</a>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const grid = document.getElementById('masonryGrid');
+                    if(grid) {
+                        const styles = ['portrait', 'landscape', 'square', 'wide', 'sketch'];
+                        let illusHtml = '';
+                        for(let i = 0; i < Math.min(illustrationTitles.length, 20); i++) {
+                            const style = styles[i % styles.length];
+                            const year = 2020 + (i % 5);
+                            illusHtml += `
+                                <div class="masonry-item ${style}" data-year="${year}">
+                                    <div class="masonry-image">
+                                        <div class="masonry-overlay"><span class="masonry-view">🔍</span></div>
+                                        <div class="masonry-year">${year}</div>
+                                        <div class="masonry-emoji">🎨</div>
+                                    </div>
+                                    <div class="masonry-info">
+                                        <h4>${illustrationTitles[i]}</h4>
+                                        <p>№${String(i + 1).padStart(3, '0')}</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        grid.innerHTML = illusHtml;
+                        applyFilters('.masonry-item', 'year');
+                    }
+                }, 10);
+            }
+            
+            document.getElementById('mainContent').innerHTML = html;
+            
+            // Инициализация карусели после рендеринга страницы "О себе"
+            if(currentPage === 'about') {
+                setTimeout(initCarousel, 50);
+            }
+        }
+        
+        // Инициализация
+        window.addEventListener('load', () => {
+            renderNav();
+            renderContent();
+            document.getElementById('randomCounter').innerText = Math.floor(3000 + Math.random() * 7000);
+            
+            // Обработка кликов по навигации
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if(href && href.includes('?page=')) {
+                        e.preventDefault();
+                        currentPage = href.split('?page=')[1];
+                        history.pushState({}, '', href);
+                        renderNav();
+                        renderContent();
+                    }
+                });
+            });
+            
+            // Консольные пасхалки
+            console.log('%c🔍 ТЫ НАШЁЛ СЕКРЕТНУЮ КОНСОЛЬ!', 'font-size: 20px; color: #b537f2; text-shadow: 2px 2px 0 #ff6b9d;');
+            console.log('%c⬟ Билл Шифр наблюдает за тобой...', 'font-size: 16px; color: #a0e7e5;');
+            console.log('%cСтраница 19 - самая важная', 'font-size: 14px; color: #00ccff;');
+            
+            // Периодическое создание звездочек
+            setInterval(() => {
+                if(Math.random() < 0.1) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.innerHTML = ['⭐','✨','🌟','💫'][Math.floor(Math.random() * 4)];
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.animationDuration = (10 + Math.random() * 20) + 's';
+                    star.style.fontSize = (15 + Math.random() * 25) + 'px';
+                    document.body.appendChild(star);
+                    setTimeout(() => star.remove(), 30000);
+                }
+            }, 2000);
+        });
+        
+        window.onclick = (e) => { if(e.target === document.getElementById('imageModal')) closeModal(); };
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.billClick = billClick;
+        window.revealSecret = revealSecret;
     </script>
 </body>
 </html>

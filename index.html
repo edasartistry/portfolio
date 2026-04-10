@@ -148,6 +148,19 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+
+        /* НОВАЯ АНИМАЦИЯ ДЛЯ КНОПКИ */
+        @keyframes mysticalPulse {
+            0% { box-shadow: 0 0 10px var(--accent), 0 0 20px var(--cipher); border-color: var(--secondary); }
+            50% { box-shadow: 0 0 30px var(--cipher), 0 0 60px var(--accent); border-color: var(--cipher); }
+            100% { box-shadow: 0 0 10px var(--accent), 0 0 20px var(--cipher); border-color: var(--secondary); }
+        }
+
+        @keyframes keyholeGlow {
+            0% { text-shadow: 0 0 5px var(--cipher); }
+            50% { text-shadow: 0 0 20px var(--cipher), 0 0 40px var(--secondary); }
+            100% { text-shadow: 0 0 5px var(--cipher); }
+        }
         
         /* ========== MAIN CONTAINER ========== */
         .journal-container {
@@ -427,34 +440,14 @@
             margin-bottom: 30px;
             border-bottom: 4px solid var(--secondary);
             padding-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-block;
             position: relative;
             word-break: break-word;
-        }
-        
-        .title-logo {
-            width: 78px;
-            height: 78px;
-            object-fit: cover;
-            border-radius: 6px;
-            transform: rotate(-12deg);
-            animation: floatLogo 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes floatLogo {
-            from { transform: rotate(-12deg) translateY(0px); }
-            to { transform: rotate(-8deg) translateY(-4px); }
         }
         
         @media (max-width: 768px) {
             .section-title {
                 font-size: 1.8em;
-            }
-            .title-logo {
-                width: 50px;
-                height: 50px;
             }
         }
         
@@ -718,28 +711,73 @@
             gap: 20px;
         }
         
-        .photo-card {
-            display: inline-block;
+        .polaroid {
+            background: var(--journal);
+            padding: 15px 15px 30px;
+            border: 5px solid var(--secondary);
+            transform: rotate(-3deg);
+            box-shadow: 15px 15px 0 var(--primary);
+            transition: all 0.4s;
             cursor: pointer;
+            max-width: 300px;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 20px 20px 0 var(--accent);
+        }
+        
+        .polaroid-image {
+            height: 280px;
+            background: var(--pine);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            background-image: radial-gradient(circle at 30% 30%, var(--accent) 15px, transparent 15px),
+                linear-gradient(45deg, var(--primary) 0%, var(--mystery) 100%);
+            border-radius: 5px;
+        }
+        
+        .badge-logo {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            border: 3px solid var(--cipher);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .social-link {
+            padding: 12px;
+            background: var(--journal);
+            border: 3px solid var(--secondary);
+            border-radius: 40px;
+            color: var(--primary);
+            text-decoration: none;
             text-align: center;
-            transition: transform 0.5s;
-        }
-        
-        .photo-box img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 18px;
-            display: block;
-            margin: 0 auto;
-            border: 3px solid var(--primary);
-        }
-        
-        .photo-title {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--accent);
+            transition: all 0.3s;
             font-weight: bold;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--journal);
+            transform: scale(1.05);
+            border-color: var(--primary);
         }
         
         .about-greeting {
@@ -853,149 +891,87 @@
             margin-top: 5px;
         }
 
-        /* ========== КАРУСЕЛЬ ФОТО ========== */
-        .photo-carousel-section {
-            margin: 40px 0 30px;
-            padding: 25px 20px;
-            background: rgba(255,217,102,0.15);
-            border-radius: 50px;
-            border: 3px dashed var(--secondary);
-            position: relative;
-        }
-
-        .carousel-title {
-            font-family: 'Special Elite', cursive;
-            font-size: 2em;
-            color: var(--accent);
-            text-shadow: 2px 2px 0 var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .carousel-container {
-            position: relative;
+        /* ========== НОВАЯ КРЕАТИВНАЯ КНОПКА ========== */
+        .mystical-gateway-btn {
+            display: block;
             width: 100%;
-            overflow: hidden;
-            padding: 15px 0;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 20px;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform;
-        }
-
-        .carousel-card {
-            flex: 0 0 220px;
-            height: 260px;
-            background: var(--journal);
-            border: 4px solid var(--primary);
-            border-radius: 35px;
-            overflow: hidden;
-            box-shadow: 10px 10px 0 var(--secondary);
-            transform: rotate(var(--rot, -2deg));
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .carousel-card:nth-child(even) {
-            --rot: 2deg;
-            box-shadow: 10px 10px 0 var(--accent);
-        }
-
-        .carousel-card:hover {
-            transform: rotate(0deg) scale(1.05);
-            box-shadow: 15px 15px 0 var(--primary);
-            border-color: var(--accent);
-            z-index: 5;
-        }
-
-        .carousel-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background: linear-gradient(45deg, var(--pine), var(--sky));
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .carousel-label {
-            padding: 12px 10px;
-            text-align: center;
-            font-weight: bold;
-            color: var(--shadow);
-            background: var(--journal);
-            font-size: 1.2em;
-        }
-
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
-        }
-
-        .carousel-btn {
-            background: var(--accent);
-            color: var(--journal);
-            border: none;
-            border-radius: 50px;
-            width: 55px;
-            height: 55px;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 6px 6px 0 var(--primary);
+            max-width: 320px;
+            margin: 30px auto 0;
+            padding: 18px 15px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
             border: 3px solid var(--secondary);
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 8px 8px 0 var(--shadow);
-            background: var(--cipher);
-            color: black;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .carousel-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 2px solid var(--accent);
+            border-radius: 50px;
+            color: var(--cipher);
+            font-family: 'Special Elite', cursive;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 0 var(--shadow);
+            animation: mysticalPulse 3s infinite;
+            z-index: 10;
         }
 
-        .carousel-dot.active {
-            background: var(--cipher);
-            transform: scale(1.3);
-            box-shadow: 0 0 10px var(--secondary);
+        .mystical-gateway-btn:hover {
+            transform: translateY(-3px) scale(1.05) rotate(-1deg);
+            box-shadow: 0 8px 0 var(--shadow), 0 0 30px var(--accent);
+            background: rgba(74, 21, 75, 0.6);
+            border-color: var(--cipher);
+            color: white;
         }
 
-        @media (max-width: 600px) {
-            .carousel-card {
-                flex: 0 0 170px;
-                height: 220px;
+        .mystical-gateway-btn::before {
+            content: "⬟⬟⬟";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
+            opacity: 0.6;
+            animation: keyholeGlow 2s infinite;
+        }
+
+        .mystical-gateway-btn::after {
+            content: "⬟⬟⬟";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
+            opacity: 0.6;
+            animation: keyholeGlow 2s infinite reverse;
+        }
+
+        .mystical-gateway-btn .btn-icon {
+            margin: 0 10px;
+            font-size: 1.3em;
+            display: inline-block;
+            vertical-align: middle;
+            animation: spin 8s linear infinite;
+        }
+
+        .mystical-gateway-btn .btn-text {
+            display: inline-block;
+            vertical-align: middle;
+            text-shadow: 0 0 10px var(--cipher);
+        }
+
+        /* Мобильная адаптация кнопки */
+        @media (max-width: 768px) {
+            .mystical-gateway-btn {
+                max-width: 90%;
+                font-size: 1.2em;
+                padding: 15px 10px;
             }
-            .carousel-img {
-                height: 140px;
-            }
-            .carousel-title {
-                font-size: 1.5em;
+            .mystical-gateway-btn::before,
+            .mystical-gateway-btn::after {
+                display: none;
             }
         }
         
@@ -1880,7 +1856,7 @@
 
         .site-header {
             position: fixed;
-            top: -120px;
+            top: -120px; /* уводим вверх за экран */
             left: 0;
             width: 100%;
             transition: top 0.4s ease;
@@ -1917,6 +1893,7 @@
         <div class="journal-corner corner-br"></div>
         
         <header class="site-header">
+           
             <nav class="nav-bar">
                 <ul class="nav-menu" id="navMenu"></ul>
             </nav>
@@ -1961,27 +1938,114 @@
             {title:'Пухля 2', category:'characters', year:'2024', desc:'Возвращение короля', img:'🐖', story:'Продолжение хроник самого известного поросенка'},
             {title:'Тайна номер 3', category:'mystery', year:'2024', desc:'Секретные материалы', img:'📖', story:'Работа основана на страницах из дневника номер 3'},
             {title:'Гидеон', category:'characters', year:'2023', desc:'Маленький злодей', img:'🎩', story:'Портрет главного антагониста первого сезона'},
-            {title:'Робби', category:'characters', year:'2023', desc:'Скейт-панк', img:'🎸', story:'Серия работ о самом мрачном подростке городка'}
+            {title:'Робби', category:'characters', year:'2023', desc:'Скейт-панк', img:'🎸', story:'Серия работ о самом мрачном подростке городка'},
+            {title:'Лес осенью', category:'landscapes', year:'2024', desc:'Золотая осень в Гравити Фолз', img:'🍂', story:'Пленэрные зарисовки в национальном парке'},
+            {title:'Ночная хижина', category:'landscapes', year:'2024', desc:'Хижина при свете луны', img:'🌙', story:'Ночные наблюдения за тенями вокруг хижины'},
+            {title:'Водопад', category:'landscapes', year:'2023', desc:'Тайный водопад', img:'💧', story:'Водопад, скрывающий вход в пещеру'},
+            {title:'Пещера', category:'landscapes', year:'2023', desc:'Вход в подземелье', img:'🕳️', story:'Исследование пещер под Гравити Фолз'},
+            {title:'Гномий совет', category:'characters', year:'2024', desc:'Собрание гномов', img:'👺', story:'Наблюдение за гномьим советом под полной луной'},
+            {title:'Летающая тарелка', category:'mystery', year:'2023', desc:'НЛО над лесом', img:'🛸', story:'Зарисовка странного объекта в небе'},
+            {title:'Статуя Билла', category:'mystery', year:'2024', desc:'Каменное изваяние', img:'🗿', story:'Таинственная статуя в глубине леса'},
+            {title:'Поляна желаний', category:'landscapes', year:'2023', desc:'Место силы', img:'✨', story:'Поляна, где сбываются желания'},
+            {title:'Заброшенная шахта', category:'landscapes', year:'2022', desc:'Вход в подземелья', img:'⛏️', story:'Старая шахта, где пропадают люди'},
+            {title:'Библиотека', category:'landscapes', year:'2022', desc:'Хранилище знаний', img:'📚', story:'Место, где хранятся все секреты'},
+            {title:'Кладбище', category:'landscapes', year:'2023', desc:'Место упокоения', img:'🪦', story:'Старое кладбище с движущимися тенями'},
+            {title:'Магазин сувениров', category:'landscapes', year:'2024', desc:'Туристический рай', img:'🏪', story:'Магазин с самыми странными сувенирами'},
+            {title:'Подвал хижины', category:'mystery', year:'2023', desc:'Запретная зона', img:'⬇️', story:'То, что скрыто от глаз посетителей'},
+            {title:'Чердак', category:'mystery', year:'2024', desc:'Хранилище тайн', img:'🏚️', story:'Старые вещи, хранящие воспоминания'},
+            {title:'Секретная комната', category:'mystery', year:'2024', desc:'Тайное убежище', img:'🚪', story:'Комната, о которой знают только избранные'},
+            {title:'Портрет Диппера', category:'characters', year:'2023', desc:'Главный исследователь', img:'👦', story:'Портрет в стиле старых мастеров'},
+            {title:'Мэйбл и Пухля', category:'characters', year:'2024', desc:'Неразлучные друзья', img:'👧🐷', story:'Самая трогательная работа в коллекции'},
+            {title:'Билл в лесу', category:'mystery', year:'2024', desc:'Треугольник среди деревьев', img:'🔺🌲', story:'Билл появляется в каждом дереве'},
+            {title:'Хижина ночью', category:'landscapes', year:'2023', desc:'Ночная жизнь', img:'🏚️🌙', story:'Что происходит в хижине после заката'},
+            {title:'Гномы на поляне', category:'characters', year:'2024', desc:'Хоровод гномов', img:'👺👺👺', story:'Ночные пляски маленьких существ'},
+            {title:'Зус играет', category:'characters', year:'2023', desc:'Игровая зависимость', img:'🎮', story:'Зус и его видеоигры'},
+            {title:'Венди на скейте', category:'characters', year:'2024', desc:'Скейт-трюки', img:'🛹💨', story:'Самая динамичная работа'},
+            {title:'Дядя Стэн за работой', category:'characters', year:'2023', desc:'Бизнесмен', img:'💰', story:'Стэн продаёт очередной сувенир'},
+            {title:'Тайный портал', category:'mystery', year:'2024', desc:'Вход в другое измерение', img:'🌀', story:'Портал, открывающийся раз в 100 лет'},
+            {title:'Летающая свинья', category:'mystery', year:'2024', desc:'Пухля в небе', img:'🐷✈️', story:'Когда свиньи летают - это Гравити Фолз'},
+            {title:'Гидеон смеётся', category:'characters', year:'2023', desc:'Зловещий смех', img:'🎭', story:'Портрет самого хитрого малыша'},
+            {title:'Робби и Тэмби', category:'characters', year:'2023', desc:'Панки', img:'👥🎸', story:'Друзья-панки на фоне заката'},
+            {title:'Лес осенью', category:'landscapes', year:'2022', desc:'Золотая осень', img:'🍁🌲', story:'Осенний лес в лучах солнца'},
+            {title:'Зимнее утро', category:'landscapes', year:'2022', desc:'Первый снег', img:'❄️🌲', story:'Хижина после снегопада'},
+            {title:'Весенний ручей', category:'landscapes', year:'2023', desc:'Таяние снегов', img:'💧🌿', story:'Ручей, питаемый талыми водами'},
+            {title:'Летний закат', category:'landscapes', year:'2024', desc:'Краски лета', img:'🌅🌲', story:'Самый красивый закат в году'},
+            {title:'Близнецы', category:'characters', year:'2023', desc:'Диппер и Мэйбл', img:'👦👧', story:'Брат и сестра на фоне хижины'},
+            {title:'Дневник 3', category:'mystery', year:'2024', desc:'Главная книга', img:'📕', story:'Страницы из самого важного дневника'},
+            {title:'Статуя Билла', category:'mystery', year:'2023', desc:'Каменный истукан', img:'🗿🔺', story:'Статуя, которая двигается по ночам'},
+            {title:'Пещера чудес', category:'landscapes', year:'2024', desc:'Подземный мир', img:'🕳️✨', story:'Кристаллы и странные существа'},
+            {title:'Магазин сувениров', category:'landscapes', year:'2023', desc:'Всякая всячина', img:'🏪🎁', story:'Что можно купить в Хижине Тайн'},
+            {title:'Подвал хижины', category:'mystery', year:'2024', desc:'Тайная комната', img:'⬇️🔦', story:'То, что Стэн скрывает от всех'},
+            {title:'Чердак', category:'mystery', year:'2023', desc:'Пыльные тайны', img:'🏚️📦', story:'Старые коробки с секретами'},
+            {title:'Секретная комната', category:'mystery', year:'2024', desc:'Святая святых', img:'🚪🔐', story:'Комната, куда вход только посвящённым'}
         ];
         
         // ========== ПОЛНЫЙ СПИСОК НАБЛЮДЕНИЙ (20) ==========
         const observations = [
             {title:'Лесные гномы', desc:'Поведение в естественной среде. Замечены за сбором ягод и танцами под луной.', time:'14:30', icon:'👺', loc:'Старый пень у ручья'},
             {title:'Билл Шифр', desc:'Появление в отражениях. Мелькает в зеркалах и экранах телефонов.', time:'03:15', icon:'🔺', loc:'В каждом зеркале'},
-            {title:'Пухля', desc:'Режим питания и поведение. Ест каждые 2 часа, любит лежать в лужах.', time:'12:00', icon:'🐷', loc:'Загон у хижины'}
+            {title:'Пухля', desc:'Режим питания и поведение. Ест каждые 2 часа, любит лежать в лужах.', time:'12:00', icon:'🐷', loc:'Загон у хижины'},
+            {title:'Хижина', desc:'Странные звуки по ночам. Скрипы, шорохи, иногда голоса.', time:'02:00', icon:'🏚️', loc:'Подвал'},
+            {title:'Лес', desc:'Изменение цвета листьев не по сезону. Осенью листья фиолетовые.', time:'18:30', icon:'🌳', loc:'Северная часть леса'},
+            {title:'Озеро', desc:'Отражения луны странной формы. Луна отражается как треугольник.', time:'21:45', icon:'🌊', loc:'Озеро Миннегага'},
+            {title:'Горы', desc:'Форма облаков над вершинами. Облака складываются в символы.', time:'16:20', icon:'⛰️', loc:'Скала Смерти'},
+            {title:'Тени', desc:'Движение в сумерках. Тени живут своей жизнью.', time:'19:30', icon:'👤', loc:'Везде'},
+            {title:'Звёзды', desc:'Необычные созвездия. Большая Медведица иногда превращается в треугольник.', time:'23:15', icon:'⭐', loc:'Ночное небо'},
+            {title:'Гномий совет', desc:'Собрание под пнём. Раз в месяц гномы проводят совет.', time:'04:30', icon:'👥', loc:'Старый дуб'},
+            {title:'Летающие тарелки', desc:'НЛО над лесом. Замечены 3 раза за год.', time:'01:20', icon:'🛸', loc:'Над поляной'},
+            {title:'Криптограммы', desc:'Послания на стенах. Появляются и исчезают.', time:'13:45', icon:'⬟', loc:'Стены хижины'},
+            {title:'Мерцающие огни', desc:'Блуждающие огоньки в болоте. Водят путников в трясину.', time:'22:00', icon:'✨', loc:'Топь за лесом'},
+            {title:'Шепчущие камни', desc:'Камни, издающие звуки. Слышны только ночью.', time:'00:30', icon:'🪨', loc:'Каменный круг'},
+            {title:'Призрачные фигуры', desc:'Прозрачные силуэты на кладбище. Исчезают при приближении.', time:'23:45', icon:'👻', loc:'Старое кладбище'},
+            {title:'Говорящие деревья', desc:'Деревья со странными лицами. Иногда шепчут.', time:'15:30', icon:'🌲👁️', loc:'Заповедный лес'},
+            {title:'Портал в небе', desc:'Разрыв в облаках. Виден раз в месяц.', time:'14:00', icon:'🌀', loc:'Небо над хижиной'},
+            {title:'Каменные истуканы', desc:'Статуи, меняющие позы. За ночь поворачивают головы.', time:'05:15', icon:'🗿', loc:'Поляна статуй'},
+            {title:'Светящиеся грибы', desc:'Грибы, светящиеся в темноте. Растут только в полнолуние.', time:'21:00', icon:'🍄✨', loc:'Гнилой пень'},
+            {title:'Летающие рыбы', desc:'Рыбы, выпрыгивающие из воды и не падающие. Парят в воздухе.', time:'17:45', icon:'🐟✈️', loc:'Озеро'}
         ];
         
         // ========== ПОЛНЫЙ ТАЙМЛАЙН (16 событий) ==========
         const timelineData = [
-            {year:'Лето 2012', title:'ПРИБЫТИЕ В ГРАВИТИ ФОЛЗ', desc:'Первые наброски и знакомство с городом. Хижина Тайн показалась просто сувенирной лавкой.', icon:'🚌', details:'Сделано 47 первых набросков'},
-            {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Случайно нашёл страницу из дневника. Начал искать вдохновение в старых историях.', icon:'📖', details:'Найдено 3 страницы'},
-            {year:'Зима 2012', title:'СНЕЖНЫЕ МОНСТРЫ', desc:'Серия зимних зарисовок. В снегу видны странные следы.', icon:'❄️', details:'24 зимних этюда'}
+            {year:'Лето 2012', title:'ПРИБЫТИЕ В ГРАВИТИ ФОЛЗ', desc:'Первые наброски и знакомство с городом. Хижина Тайн показалась просто сувенирной лавкой. Как же я ошибался...', icon:'🚌', details:'Сделано 47 первых набросков'},
+            {year:'Осень 2012', title:'ТАЙНА ДНЕВНИКОВ', desc:'Случайно нашёл страницу из дневника. Начал искать вдохновение в старых историях и легендах.', icon:'📖', details:'Найдено 3 страницы'},
+            {year:'Зима 2012', title:'СНЕЖНЫЕ МОНСТРЫ', desc:'Серия зимних зарисовок. В снегу видны странные следы, не похожие на звериные.', icon:'❄️', details:'24 зимних этюда'},
+            {year:'Весна 2013', title:'ПРОБУЖДЕНИЕ', desc:'Новые техники и стили. Природа просыпается, и тайны становятся активнее.', icon:'🌱', details:'Освоено 5 новых техник'},
+            {year:'Лето 2013', title:'ВЫСТАВКА В ХИЖИНЕ', desc:'Первая персональная выставка. Дядя Стэн согласился повесить работы в Хижине Тайн.', icon:'🏛️', details:'Продано 12 работ'},
+            {year:'2014', title:'ПУТЕШЕСТВИЯ', desc:'Поиск новых тайн. Объехал весь штат в поисках аномалий.', icon:'🗺️', details:'5000 км пути'},
+            {year:'2015', title:'ГРАФИЧЕСКИЙ РОМАН', desc:'Работа над книгой. Решил собрать все наблюдения в графический роман.', icon:'📚', details:'128 страниц'},
+            {year:'2016', title:'ВОЗВРАЩЕНИЕ', desc:'Новая серия работ. Переосмысление старых тем.', icon:'🏠', details:'36 новых работ'},
+            {year:'2017', title:'КОЛЛАБОРАЦИИ', desc:'Совместные проекты с другими художниками, вдохновлёнными Гравити Фолз.', icon:'🤝', details:'8 совместных проектов'},
+            {year:'2018', title:'АНИМАЦИЯ', desc:'Первые опыты в анимации. Оживил персонажей.', icon:'🎬', details:'3 коротких фильма'},
+            {year:'2019', title:'ФЕСТИВАЛИ', desc:'Участие в выставках и фестивалях. Работы увидели тысячи людей.', icon:'🎪', details:'7 фестивалей'},
+            {year:'2020', title:'ОНЛАЙН-ГАЛЕРЕЯ', desc:'Цифровые выставки. Создал первый сайт.', icon:'💻', details:'10000 посетителей'},
+            {year:'2021', title:'СБОРНИК', desc:'Книга иллюстраций. Официальное издание.', icon:'📕', details:'Тираж 1000 экз.'},
+            {year:'2022', title:'10 ЛЕТ СПУСТЯ', desc:'Юбилейная выставка в Хижине Тайн. Вернулся туда, где всё начиналось.', icon:'🎉', details:'100 гостей'},
+            {year:'2023', title:'НОВАЯ ГЛАВА', desc:'Эксперименты с AI и новыми технологиями. Тайны в цифровую эпоху.', icon:'🤖', details:'50 AI-работ'},
+            {year:'2024', title:'НАШИ ДНИ', desc:'Работа над главной тайной. Готовлю самый большой проект.', icon:'🔍', details:'Скоро открытие'}
         ];
         
         // ========== ПОЛНЫЙ СПИСОК ФОНОВ (20) ==========
         const bgItems = [
             {name:'Хижина Тайн', time:'День', desc:'Главное здание. Здесь всё началось.', icon:'🏚️', danger:'Безопасно', secret:'🔼'},
-            {name:'Лесная опушка', time:'Закат', desc:'Место встреч гномов. Ночью здесь опасно.', icon:'🌅', danger:'⚠️ Опасно ночью', secret:'🌲'}
+            {name:'Лесная опушка', time:'Закат', desc:'Место встреч гномов. Ночью здесь опасно.', icon:'🌅', danger:'⚠️ Опасно ночью', secret:'🌲'},
+            {name:'Водопад', time:'Утро', desc:'Скрытый вход в пещеру за водой.', icon:'💦', danger:'Скользко', secret:'💧'},
+            {name:'Магазин', time:'Ночь', desc:'Таинственная хижина после закрытия.', icon:'🏪', danger:'Закрыто', secret:'🔺'},
+            {name:'Пещера', time:'Сумерки', desc:'Древние рисунки на стенах.', icon:'🕳️', danger:'Темно', secret:'⬟'},
+            {name:'Гора', time:'Рассвет', desc:'Смотровая площадка. Вид на весь город.', icon:'🏔️', danger:'Высоко', secret:'⛰️'},
+            {name:'Озеро', time:'Полдень', desc:'Отражения. Иногда видно небо в воде.', icon:'🏞️', danger:'Глубоко', secret:'🌊'},
+            {name:'Поляна', time:'Вечер', desc:'Кострище гномов. Следы их плясок.', icon:'🔥', danger:'Жарко', secret:'🔥'},
+            {name:'Кладбище', time:'Ночь', desc:'Старые могилы. Тени двигаются.', icon:'⚰️', danger:'Очень опасно', secret:'🪦'},
+            {name:'Дорога', time:'Туман', desc:'Въезд в город. В тумане видно странное.', icon:'🛤️', danger:'Плохая видимость', secret:'🛣️'},
+            {name:'Порт', time:'Шторм', desc:'Заброшенные лодки. Кто-то живёт внутри.', icon:'⚓', danger:'Шторм', secret:'⛵'},
+            {name:'Парк', time:'Осень', desc:'Статуи. Некоторые моргают.', icon:'🍂', danger:'Следи за статуями', secret:'🗿'},
+            {name:'Старый мост', time:'Вечер', desc:'Место легенд. Здесь видели призрака.', icon:'🌉', danger:'Скрипит', secret:'🌉'},
+            {name:'Заброшенная шахта', time:'Ночь', desc:'Вход в подземелье. Оттуда слышны звуки.', icon:'⛏️', danger:'Обвал', secret:'⛏️'},
+            {name:'Радиовышка', time:'Закат', desc:'Сигналы из космоса. Ловит странное.', icon:'📡', danger:'Излучение', secret:'📡'},
+            {name:'Лагерь', time:'Утро', desc:'Место стоянки туристов. Пропадают вещи.', icon:'⛺', danger:'Воры', secret:'⛺'},
+            {name:'Болото', time:'Ночь', desc:'Топь с огоньками. Водят по кругу.', icon:'💧', danger:'Утонуть', secret:'🪷'},
+            {name:'Каменный круг', time:'Полнолуние', desc:'Древнее святилище. Место силы.', icon:'🔄', danger:'Магия', secret:'🪨'},
+            {name:'Заброшенная церковь', time:'Полночь', desc:'Старое здание. Там поют.', icon:'⛪', danger:'Призраки', secret:'⛪'},
+            {name:'Поляна желаний', time:'Рассвет', desc:'Место, где сбываются мечты.', icon:'🌟', danger:'Будь осторожен с желаниями', secret:'✨'}
         ];
         
         // ========== ПОЛНЫЙ СПИСОК ИЛЛЮСТРАЦИЙ (124 названия) ==========
@@ -1990,7 +2054,14 @@
             const names = [
                 'Портрет Диппера', 'Мэйбл и Пухля', 'Билл в лесу', 'Хижина ночью',
                 'Гномы на поляне', 'Зус играет', 'Венди на скейте', 'Дядя Стэн',
-                'Тайный портал', 'Летающая свинья', 'Гидеон смеётся', 'Робби и Тэмби'
+                'Тайный портал', 'Летающая свинья', 'Гидеон смеётся', 'Робби и Тэмби',
+                'Лес осенью', 'Зимнее утро', 'Весенний ручей', 'Летний закат',
+                'Близнецы', 'Дневник 3', 'Статуя Билла', 'Пещера чудес',
+                'Магазин сувениров', 'Подвал хижины', 'Чердак', 'Секретная комната',
+                'Гномий король', 'Феи', 'Лесные духи', 'Озерное чудовище',
+                'Билл в портале', 'Пухля летит', 'Венди и друзья', 'Зус и роботы',
+                'Ночной лес', 'Тени на стене', 'Отражение в луже', 'Криптограмма',
+                'Стэн за прилавком', 'Мэйбл вяжет', 'Диппер читает', 'Пухля спит'
             ];
             illustrationTitles.push(names[i % names.length] + ' #' + i);
         }
@@ -2031,7 +2102,11 @@
             const messages = [
                 '📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"',
                 '🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!',
-                '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!'
+                '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!',
+                '★ Я ВЕРНУСЬ!',
+                '💀 ТЫ НЕ СПИШЬ? Я РЯДОМ...',
+                '👁️ ОДИН ГЛАЗ ВИДИТ БОЛЬШЕ',
+                '🌀 СКОРО ВСЁ ИЗМЕНИТСЯ'
             ];
             alert(messages[Math.floor(Math.random() * messages.length)]);
             const bill = document.querySelector('.bill-cipher');
@@ -2072,71 +2147,87 @@
             });
         }
         
-        // Функция для инициализации карусели
-        function initCarousel() {
-            const track = document.getElementById('carouselTrack');
-            if (!track) return;
-            
-            const cards = track.children;
-            const totalCards = cards.length;
-            let currentIndex = 0;
-            
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            function updateCarousel() {
-                const cardWidth = cards[0]?.getBoundingClientRect().width || 220;
-                const gap = 20;
-                track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
-                
-                dots.forEach((dot, idx) => {
-                    dot.classList.toggle('active', idx === currentIndex);
-                });
-            }
-            
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-                    updateCarousel();
-                });
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % totalCards;
-                    updateCarousel();
-                });
-            }
-            
-            dots.forEach((dot, idx) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = idx;
-                    updateCarousel();
-                });
-            });
-            
-            window.addEventListener('resize', updateCarousel);
-            updateCarousel();
-        }
-        
         function renderContent() {
             let html = '';
             
             if(currentPage === 'about') {
                 html = `<div class="content-section">
-                    <h2 class="section-title">
-                        <img src="./img/у.jpg" alt="logo" class="title-logo">
-                        Edasartistry
-                    </h2>
+                   <h2 class="section-title">
+    
+    <img src="./img/у.jpg" alt="logo" class="title-logo">
+</h2>
+
+<style>
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* логотип */
+.title-logo {
+    width: 78px; /* маленький размер */
+    height: 78px;
+    object-fit: cover;
+    border-radius: 6px;
+    
+    transform: rotate(-12deg); /* чуть криво */
+    
+    animation: floatLogo 2s ease-in-out infinite alternate;
+}
+
+/* лёгкое движение */
+@keyframes floatLogo {
+    from {
+        transform: rotate(-12deg) translateY(0px);
+    }
+    to {
+        transform: rotate(-8deg) translateY(-4px);
+    }
+}
+</style>
                     <div class="about-container">
                         <div class="about-image">
-                            <div class="photo-card" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
-                                <div class="photo-box">
-                                    <img src="./img/й.jpg" alt="photo">
-                                </div>
-                                <div class="photo-title">Eda</div>
-                            </div>
+
+
+
+
+<div class="photo-card" onclick="this.style.transform='rotate(360deg) scale(1.1)';setTimeout(()=>this.style.transform='',500)">
+    
+    <div class="photo-box">
+        <img src="./img/й.jpg" alt="photo">
+    </div>
+
+    <div class="photo-title">Eda </div>
+
+</div>
+
+<style>
+.photo-card {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.photo-box img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 18px; /* аккуратное скругление */
+    display: block;
+    margin: 0 auto;
+}
+
+.photo-title {
+    margin-top: 8px;
+    font-size: 14px;
+}
+</style>
+
+
+                   
+                       
+                       
                         </div>
                         <div class="about-content">
                             <p class="about-greeting"> Welcome to My Creative Portfolio </p>
@@ -2144,7 +2235,7 @@
                             <p class="about-paragraph">Всё началось летом 2012 года, когда я случайно забрёл в этот город и увидел Хижину Тайн. С тех пор я не могу уехать - каждый день приносит новые открытия, странные встречи и вдохновение для новых работ.</p>
                             <p class="about-paragraph">Я рисую всё, что вижу вокруг: гномов на поляне, появления Билла Шифра в отражениях, Пухлю за едой, тени на стенах хижины. Каждый рисунок - это страница моего личного дневника наблюдений.</p>
                             <div class="about-quote">
-                                <p>"Every illustration is a story waiting to be discovered."</p>
+                                <p>“Every illustration is a story waiting to be discovered.”</p>
                                 <p class="quote-author">— Eda Gafur</p>
                             </div>
                             <div class="about-stats">
@@ -2161,6 +2252,16 @@
                                     <span class="skill-tag">🖊️ Маркеры</span>
                                     <span class="skill-tag">📸 Фотография</span>
                                     <span class="skill-tag">🎬 Анимация</span>
+                                    <span class="skill-tag">📝 Скетчинг</span>
+                                    <span class="skill-tag">🖌️ Масло</span>
+                                    <span class="skill-tag">✒️ Тушь</span>
+                                    <span class="skill-tag">🖍️ Пастель</span>
+                                    <span class="skill-tag">💻 Adobe Photoshop</span>
+                                    <span class="skill-tag">📱 Procreate</span>
+                                    <span class="skill-tag">🎥 Storyboarding</span>
+                                    <span class="skill-tag">🎨 Concept Art</span>
+                                    <span class="skill-tag">🤖 AI Art</span>
+                                    <span class="skill-tag">🖨️ Линогравюра</span>
                                 </div>
                             </div>
                             <div class="testimonials">
@@ -2168,48 +2269,17 @@
                                 <div class="testimonial-item"><p>"Лучший художник в Гравити Фолз! Рисует даже то, чего никто не видит."</p><p class="testimonial-author">- Дядя Стэн</p></div>
                                 <div class="testimonial-item"><p>"Её рисунки такие живые, как будто сейчас выпрыгнут!"</p><p class="testimonial-author">- Мэйбл</p></div>
                                 <div class="testimonial-item"><p>"Нужно зарисовать Билла, пока он не исчез..."</p><p class="testimonial-author">- Диппер</p></div>
+                                
+                                <!-- НОВАЯ КРЕАТИВНАЯ КНОПКА -->
+                                <a href="photo.php" class="mystical-gateway-btn">
+                                    <span class="btn-text">ВОЙТИ В ГАЛЕРЕЮ</span>
+                                    <span class="btn-icon">🔮</span>
+                                    <span class="btn-text">СЕКРЕТНЫЕ ФОТО</span>
+                                </a>
                             </div>
-                            
-                            <!-- КАРУСЕЛЬ ФОТОГАЛЕРЕИ -->
-                            <div class="photo-carousel-section">
-                                <div class="carousel-title">
-                                    📸 ГАЛЕРЕЯ РАБОТ 
-                                    <span style="font-size: 0.8em; opacity: 0.8;">(20 фото)</span>
-                                </div>
-                                <div class="carousel-container">
-                                    <div class="carousel-track" id="carouselTrack">`;
-                
-                // Генерируем 20 карточек с изображениями из папки img
-                for(let i = 1; i <= 20; i++) {
-                    const ext = (i % 3 === 0) ? 'png' : 'jpg'; // чередуем расширения для реалистичности
-                    const imgSrc = `./img/${i}.${ext}`;
-                    html += `
-                        <div class="carousel-card" onclick="alert('Открыта работа №${i}')">
-                            <img src="${imgSrc}" class="carousel-img" alt="Работа ${i}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'150\\'%3E%3Crect width=\\'200\\' height=\\'150\\' fill=\\'%23ffb347\\'/%3E%3Ctext x=\\'20\\' y=\\'80\\' fill=\\'%234a154b\\' font-size=\\'24\\'%3E🎨 ${i}%3C/text%3E%3C/svg%3E'">
-                            <div class="carousel-label">Работа #${i}</div>
-                        </div>
-                    `;
-                }
-                
-                html += `</div>
-                                </div>
-                                <div class="carousel-nav">
-                                    <button class="carousel-btn" id="carouselPrev">←</button>
-                                    <button class="carousel-btn" id="carouselNext">→</button>
-                                </div>
-                                <div class="carousel-indicators" id="carouselDots">`;
-                
-                // Генерируем точки-индикаторы
-                for(let i = 0; i < 20; i++) {
-                    html += `<span class="carousel-dot ${i === 0 ? 'active' : ''}"></span>`;
-                }
-                
-                html += `</div>
-                            </div>
-                            <!-- КОНЕЦ КАРУСЕЛИ -->
-                            
                         </div>
                     </div>
+                    
                 </div>`;
             }
             else if(currentPage === 'portfolio') {
@@ -2219,6 +2289,7 @@
                         <button class="filter-btn active" data-filter="all">Все работы</button>
                         <button class="filter-btn" data-filter="2024">2024</button>
                         <button class="filter-btn" data-filter="2023">2023</button>
+                        <button class="filter-btn" data-filter="2022">2022</button>
                         <button class="filter-btn" data-filter="characters">Персонажи</button>
                         <button class="filter-btn" data-filter="landscapes">Пейзажи</button>
                         <button class="filter-btn" data-filter="mystery">Тайны</button>
@@ -2227,9 +2298,12 @@
                     <div class="personal-works">
                         <h3 class="section-title" style="font-size:2em;">✨ PERSONAL WORK</h3>
                         <div class="personal-grid">
-                            <div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>Серия работ, вдохновленных текстурой старой бумаги</p><div class="personal-stats">24 работы • 2024</div></div>
-                            <div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>Короткие анимационные сцены с персонажами</p><div class="personal-stats">8 видео • 2023-2024</div></div>
-                            <div class="personal-card"><div class="personal-number">03</div><h4>Концепт-арт</h4><p>Идеи для несуществующих эпизодов</p><div class="personal-stats">45 концептов • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">01</div><h4>Эксперименты с текстурой</h4><p>Серия работ, вдохновленных текстурой старой бумаги из дневников</p><div class="personal-stats">24 работы • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">02</div><h4>Аниматик</h4><p>Короткие анимационные сцены с персонажами (3-5 минут)</p><div class="personal-stats">8 видео • 2023-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">03</div><h4>Концепт-арт</h4><p>Идеи для несуществующих эпизодов и альтернативных вселенных</p><div class="personal-stats">45 концептов • 2024</div></div>
+                            <div class="personal-card"><div class="personal-number">04</div><h4>Скетчбук</h4><p>Ежедневные наброски, идеи, наблюдения и заметки на полях</p><div class="personal-stats">500+ страниц • 2022-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">05</div><h4>Комиксы</h4><p>Короткие истории о жизни в Гравити Фолз</p><div class="personal-stats">12 историй • 2023-2024</div></div>
+                            <div class="personal-card"><div class="personal-number">06</div><h4>3D модели</h4><p>Объёмные персонажи и предметы</p><div class="personal-stats">15 моделей • 2024</div></div>
                         </div>
                     </div>
                 </div>`;
@@ -2267,10 +2341,14 @@
                             <div class="note-item"><span class="note-marker">✦</span><span>Гномы предпочитают селиться в старых пнях (наблюдается 24 раза)</span></div>
                             <div class="note-item"><span class="note-marker">✧</span><span>Летающие свиньи - редкое, но возможное явление (зафиксировано 5 раз)</span></div>
                             <div class="note-item"><span class="note-marker">★</span><span>Билл Шифр чаще появляется в отражениях и на экранах (наблюдается 47 раз)</span></div>
+                            <div class="note-item"><span class="note-marker">⬟</span><span>Водопады скрывают входы в пещеры (обследовано 4, найдено 2 входа)</span></div>
+                            <div class="note-item"><span class="note-marker">◆</span><span>Статуи оживают в полнолуние (проверить 7 раз, подтверждено 3 раза)</span></div>
+                            <div class="note-item"><span class="note-marker">🔺</span><span>Билл разговаривает во сне (записано 12 сообщений)</span></div>
+                            <div class="note-item"><span class="note-marker">📖</span><span>Страница 19 самая важная (никому не показывать!)</span></div>
                         </div>
                         <div class="daily-cipher">
                             <div class="cipher-label">🔐 КРИПТОГРАММА ДНЯ:</div>
-                            <div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆</div>
+                            <div class="cipher-code">⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆ ⬟◆⬟⬟ ⬟⬟⬟◆ ◆◆◆⬟ ⬟⬟⬟⬟ ◆◆◆◆</div>
                             <div class="cipher-hint">Подсказка: ATBASH + 3 цифры назад</div>
                             <div class="cipher-answer" onclick="this.innerHTML='▶ ПОСЛАНИЕ: БИЛЛ ШИФР СМОТРИТ'">🔍 Показать ответ</div>
                         </div>
@@ -2297,14 +2375,15 @@
                     <h2 class="section-title">📚 STORY - ХРОНИКИ ХИЖИНЫ</h2>
                     <div class="story-intro">
                         <p class="intro-big">12 ЛЕТ ТАЙН И ОТКРЫТИЙ</p>
-                        <p>Полная история художника, чья жизнь неразрывно связана с Гравити Фолз.</p>
+                        <p>Полная история художника, чья жизнь неразрывно связана с Гравити Фолз. Каждый год - новая глава, новые тайны и новые работы.</p>
                     </div>
                     <div class="timeline" id="timelineContainer"></div>
                     <div class="journal-page" onclick="this.style.transform='rotate(1deg) scale(1.01)';setTimeout(()=>this.style.transform='',300)">
                         <div class="journal-page-number">№ 19</div>
                         <div class="journal-page-content">
                             <p class="journal-page-title">САМАЯ ВАЖНАЯ ЗАПИСЬ</p>
-                            <p>"Сегодня я понял, что каждая история заслуживает быть рассказнной. Мои рисунки - это способ запечатлеть моменты, которые иначе исчезли бы навсегда."</p>
+                            <p>"Сегодня я понял, что каждая история заслуживает быть рассказнной. Мои рисунки - это способ запечатлеть моменты, которые иначе исчезли бы навсегда. Как старый дневник хранит тайны, так и мои работы хранят частичку лета в Гравити Фолз."</p>
+                            <p>"За 12 лет я создал более 1500 работ. Каждая из них - это окно в другой мир, другой момент времени. И тайна продолжается... Билл Шифр всё ещё наблюдает за мной."</p>
                             <p class="journal-ps">P.S. Сегодня ночью я снова видел треугольник в небе. Он подмигнул мне.</p>
                         </div>
                         <div class="journal-signature">- Edasartistry</div>
@@ -2314,6 +2393,9 @@
                         <div class="story-stat-item"><div class="story-stat-number">12</div><div class="story-stat-label">лет в Гравити Фолз</div></div>
                         <div class="story-stat-item"><div class="story-stat-number">1500+</div><div class="story-stat-label">созданных работ</div></div>
                         <div class="story-stat-item"><div class="story-stat-number">247</div><div class="story-stat-label">наблюдений</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">19</div><div class="story-stat-label">страниц дневника</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">3</div><div class="story-stat-label">встречи с Биллом</div></div>
+                        <div class="story-stat-item"><div class="story-stat-number">∞</div><div class="story-stat-label">нераскрытых тайн</div></div>
                     </div>
                 </div>`;
                 setTimeout(() => {
@@ -2340,7 +2422,7 @@
                     <h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2>
                     <div class="backgrounds-intro">
                         <p class="intro-big">КАРТА ТАЙН ГРАВИТИ ФОЛЗ</p>
-                        <p>Фоны и окружение - как лес вокруг Гравити Фолз, полный тайн и скрытых деталей.</p>
+                        <p>Фоны и окружение - как лес вокруг Гравити Фолз, полный тайн и скрытых деталей. Каждое место хранит свою историю. Найди все секреты на карте.</p>
                     </div>
                     <div class="backgrounds-grid" id="bgGrid"></div>
                     <div class="mystery-map">
@@ -2370,7 +2452,9 @@
                     if(mapGrid) {
                         const secretMessages = [
                             'Здесь спрятан дневник', 'Билл был тут', 'Клад гномов', 'Портал в другое измерение', 'Говорящее дерево',
-                            'Камень желаний', 'Следы дракона', 'Вход в пещеру', 'Старый колодец', 'Зарыто сокровище'
+                            'Камень желаний', 'Следы дракона', 'Вход в пещеру', 'Старый колодец', 'Зарыто сокровище',
+                            'Место силы', 'Гномий совет', 'Проклятое место', 'Феи живут здесь', 'Летающая тарелка',
+                            'Секретный вход', 'Магический круг', 'Тень Билла', 'Страница 19', 'Послание из космоса'
                         ];
                         let mapHtml = '';
                         for(let i = 1; i <= 20; i++) {
@@ -2385,20 +2469,27 @@
                     <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
                     <div class="illustrations-intro">
                         <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
-                        <p>Более 100 иллюстраций в разных стилях и техниках.</p>
+                        <p>Более 100 иллюстраций в разных стилях и техниках. От быстрых набросков до детальных полотен.</p>
                     </div>
                     <div class="illustrations-filter">
                         <button class="filter-btn active" data-filter="all">Все (124)</button>
                         <button class="filter-btn" data-filter="2024">2024 (34)</button>
                         <button class="filter-btn" data-filter="2023">2023 (42)</button>
+                        <button class="filter-btn" data-filter="2022">2022 (28)</button>
+                        <button class="filter-btn" data-filter="portrait">Портреты (45)</button>
+                        <button class="filter-btn" data-filter="landscape">Пейзажи (52)</button>
+                        <button class="filter-btn" data-filter="sketch">Наброски (27)</button>
                     </div>
                     <div class="masonry-grid" id="masonryGrid"></div>
                     <div class="pagination">
                         <a href="#" class="page-link active">1</a>
                         <a href="#" class="page-link">2</a>
                         <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">4</a>
+                        <a href="#" class="page-link">5</a>
                         <span class="page-dots">...</span>
                         <a href="#" class="page-link">12</a>
+                        <a href="#" class="page-link">13</a>
                     </div>
                 </div>`;
                 setTimeout(() => {
@@ -2406,11 +2497,12 @@
                     if(grid) {
                         const styles = ['portrait', 'landscape', 'square', 'wide', 'sketch'];
                         let illusHtml = '';
-                        for(let i = 0; i < Math.min(illustrationTitles.length, 20); i++) {
+                        for(let i = 0; i < illustrationTitles.length; i++) {
                             const style = styles[i % styles.length];
                             const year = 2020 + (i % 5);
+                            const category = style === 'portrait' ? 'portrait' : (style === 'landscape' ? 'landscape' : 'sketch');
                             illusHtml += `
-                                <div class="masonry-item ${style}" data-year="${year}">
+                                <div class="masonry-item ${style}" data-year="${year}" data-category="${category}">
                                     <div class="masonry-image">
                                         <div class="masonry-overlay"><span class="masonry-view">🔍</span></div>
                                         <div class="masonry-year">${year}</div>
@@ -2418,7 +2510,7 @@
                                     </div>
                                     <div class="masonry-info">
                                         <h4>${illustrationTitles[i]}</h4>
-                                        <p>№${String(i + 1).padStart(3, '0')}</p>
+                                        <p>№${String(i + 1).padStart(3, '0')} • ${category}</p>
                                     </div>
                                 </div>
                             `;
@@ -2430,11 +2522,6 @@
             }
             
             document.getElementById('mainContent').innerHTML = html;
-            
-            // Инициализация карусели после рендеринга страницы "О себе"
-            if(currentPage === 'about') {
-                setTimeout(initCarousel, 50);
-            }
         }
         
         // Инициализация
@@ -2460,7 +2547,26 @@
             // Консольные пасхалки
             console.log('%c🔍 ТЫ НАШЁЛ СЕКРЕТНУЮ КОНСОЛЬ!', 'font-size: 20px; color: #b537f2; text-shadow: 2px 2px 0 #ff6b9d;');
             console.log('%c⬟ Билл Шифр наблюдает за тобой...', 'font-size: 16px; color: #a0e7e5;');
+            console.log('%c⬟◆⬟◆ ⬟⬟◆⬟ ◆⬟⬟◆ ⬟◆⬟⬟', 'font-size: 24px; color: #39ff14;');
             console.log('%cСтраница 19 - самая важная', 'font-size: 14px; color: #00ccff;');
+            
+            // Код Konami
+            let konami = [];
+            document.addEventListener('keydown', (e) => {
+                konami.push(e.keyCode);
+                if(konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
+                    alert('🎉 КОД АКТИВИРОВАН! ДОБРО ПОЖАЛОВАТЬ В ХИЖИНУ ТАЙН!');
+                    document.body.style.animation = 'flicker 0.1s infinite';
+                    const container = document.querySelector('.journal-container');
+                    container.style.transform = 'rotate(360deg) scale(1.1)';
+                    container.style.transition = 'all 1s';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        container.style.transform = '';
+                    }, 3000);
+                    konami = [];
+                }
+            });
             
             // Периодическое создание звездочек
             setInterval(() => {

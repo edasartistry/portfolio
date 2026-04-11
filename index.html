@@ -2098,23 +2098,7 @@
             document.getElementById('imageModal').style.display = 'none';
         }
         
-        function billClick() {
-            const messages = [
-                '📐 БИЛЛ ШИФР: "ПРИВЕТ, ДУРАШКА!"',
-                '🔺 ТРЕУГОЛЬНИК ВИДИТ ВСЁ!',
-                '⬟ РЕАЛЬНОСТЬ - ЭТО ИЛЛЮЗИЯ!',
-                '★ Я ВЕРНУСЬ!',
-                '💀 ТЫ НЕ СПИШЬ? Я РЯДОМ...',
-                '👁️ ОДИН ГЛАЗ ВИДИТ БОЛЬШЕ',
-                '🌀 СКОРО ВСЁ ИЗМЕНИТСЯ'
-            ];
-            alert(messages[Math.floor(Math.random() * messages.length)]);
-            const bill = document.querySelector('.bill-cipher');
-            bill.style.animation = 'shake 0.5s, spin 0.5s linear';
-            setTimeout(() => {
-                bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite';
-            }, 500);
-        }
+
         
         function revealSecret(cell, num, msg) {
             if(!cell.classList.contains('revealed')) {

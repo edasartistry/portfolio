@@ -566,7 +566,7 @@
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link" style="--rot:-2deg">← Back to Portfolio</a></li>
                     <li><a href="#" class="nav-link active" style="--rot:1deg">Gallery</a></li>
-                    <li><a href="#" class="nav-link" style="--rot:-3deg" onclick="alert('⬟ БИЛЛ СМОТРИТ НА ТЕБЯ ⬟')">Secret</a></li>
+                    <li><a href="#" class="nav-link" style="--rot:-3deg" onclick="alert('You discovered my private work ✨')">Secret</a></li>
                 </ul>
             </nav>
         </header>
@@ -632,13 +632,7 @@
             document.getElementById('photoModal').style.display = 'none';
         }
 
-        function billClick() {
-            const msgs = ['🔺 НЕ СМОТРИ НА ФОТО СЛИШКОМ ДОЛГО', '⬟ Я ТОЖЕ НА ЭТИХ СНИМКАХ', '👁️ В 19-М КАДРЕ СПРЯТАН ПОРТАЛ', '📐 РЕАЛЬНОСТЬ — ИЛЛЮЗИЯ', '⭐ ТЫ УЖЕ ВИДЕЛ МЕНЯ?'];
-            alert(msgs[Math.floor(Math.random() * msgs.length)]);
-            const bill = document.querySelector('.bill-cipher');
-            bill.style.animation = 'shake 0.5s, spin 0.5s linear';
-            setTimeout(() => bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite', 500);
-        }
+
 
         window.onclick = function(event) {
             const modal = document.getElementById('photoModal');

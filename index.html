@@ -2283,7 +2283,7 @@ turning them into visuals that feel alive.</p>
                                 <div class="testimonial-item"><p>"I mix techniques to create expressive, unique visuals."</p><p class="testimonial-author">-</p></div>
                                 
                                 <!-- НОВАЯ КРЕАТИВНАЯ КНОПКА -->
-   <a href="photo.html" style="
+   <a href="photo.html" class="mystical-gateway-btn" style="
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -2460,7 +2460,81 @@ turning them into visuals that feel alive.</p>
                     }
                 }, 10);
             }
-        
+            else if(currentPage === 'backgrounds') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">🌲 BACKGROUNDS - МИР ВОКРУГ</h2>
+                    <div class="backgrounds-intro">
+                        <p class="intro-big">КАРТА ТАЙН ГРАВИТИ ФОЛЗ</p>
+                        <p>Фоны и окружение - как лес вокруг Гравити Фолз, полный тайн и скрытых деталей. Каждое место хранит свою историю. Найди все секреты на карте.</p>
+                    </div>
+                    <div class="backgrounds-grid" id="bgGrid"></div>
+                    <div class="mystery-map">
+                        <h3>🗺️ КАРТА ТАЙН ГРАВИТИ ФОЛЗ</h3>
+                        <p class="map-instruction">Нажимай на клетки, чтобы найти секреты. Найдено: <span id="secretCount">3</span>/20</p>
+                        <div class="map-grid" id="mapGrid"></div>
+                        <p class="map-footer">★ Найди все секреты и получи приз от Билла</p>
+                    </div>
+                </div>`;
+                setTimeout(() => {
+                    const bgGrid = document.getElementById('bgGrid');
+                    if(bgGrid) {
+                        bgGrid.innerHTML = bgItems.map(b => `
+                            <div class="background-card">
+                                <div class="background-image">
+                                    <span class="background-icon">${b.icon}</span>
+                                    <span class="background-time">${b.time}</span>
+                                    <span class="background-danger">${b.danger}</span>
+                                    <span class="background-secret">${b.secret}</span>
+                                </div>
+                                <h3>${b.name}</h3>
+                                <p>${b.desc}</p>
+                            </div>
+                        `).join('');
+                    }
+                    const mapGrid = document.getElementById('mapGrid');
+                    if(mapGrid) {
+                        const secretMessages = [
+                            'Здесь спрятан дневник', 'Билл был тут', 'Клад гномов', 'Портал в другое измерение', 'Говорящее дерево',
+                            'Камень желаний', 'Следы дракона', 'Вход в пещеру', 'Старый колодец', 'Зарыто сокровище',
+                            'Место силы', 'Гномий совет', 'Проклятое место', 'Феи живут здесь', 'Летающая тарелка',
+                            'Секретный вход', 'Магический круг', 'Тень Билла', 'Страница 19', 'Послание из космоса'
+                        ];
+                        let mapHtml = '';
+                        for(let i = 1; i <= 20; i++) {
+                            mapHtml += `<div class="map-cell" onclick="revealSecret(this, ${i}, '${secretMessages[i-1]}')"><div class="map-marker">?</div><div class="map-tooltip">${secretMessages[i-1]}</div></div>`;
+                        }
+                        mapGrid.innerHTML = mapHtml;
+                    }
+                }, 10);
+            }
+            else if(currentPage === 'illustrations') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
+                    <div class="illustrations-intro">
+                        <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
+                        <p>Более 100 иллюстраций в разных стилях и техниках. От быстрых набросков до детальных полотен.</p>
+                    </div>
+                    <div class="illustrations-filter">
+                        <button class="filter-btn active" data-filter="all">Все (124)</button>
+                        <button class="filter-btn" data-filter="2024">2024 (34)</button>
+                        <button class="filter-btn" data-filter="2023">2023 (42)</button>
+                        <button class="filter-btn" data-filter="2022">2022 (28)</button>
+                        <button class="filter-btn" data-filter="portrait">Портреты (45)</button>
+                        <button class="filter-btn" data-filter="landscape">Пейзажи (52)</button>
+                        <button class="filter-btn" data-filter="sketch">Наброски (27)</button>
+                    </div>
+                    <div class="masonry-grid" id="masonryGrid"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">4</a>
+                        <a href="#" class="page-link">5</a>
+                        <span class="page-dots">...</span>
+                        <a href="#" class="page-link">12</a>
+                        <a href="#" class="page-link">13</a>
+                    </div>
+                </div>`;
                 setTimeout(() => {
                     const grid = document.getElementById('masonryGrid');
                     if(grid) {

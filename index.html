@@ -1902,31 +1902,40 @@
         
         <main id="mainContent"></main>
         
-  <a href="photo.html" 
-   style="
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     padding: 16px 38px;
-     border-radius: 50px;
-     text-decoration: none;
-     font-family: 'Fredoka One', 'Baloo 2', system-ui, sans-serif;
-     font-size: 20px;
-     font-weight: 700;
-     color: white;
-     background: linear-gradient(180deg, #ff8de1, #c93cff);
-     border: 4px solid #ffffff;
-     box-shadow: 0 6px 0 #9c2be0;
-     transition: all 0.25s ease;
-     cursor: pointer;
-   "
-   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 9px 0 #9c2be0';"
-   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 0 #9c2be0';"
->
-    ENTER THE GALLERY
-</a>
+
         
   <footer class="site-footer">
+      <style>
+    .gallery-btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: linear-gradient(135deg, #c026d3, #ec4899);
+      border-radius: 9999px;
+      box-shadow: 0 10px 20px rgba(192, 38, 211, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .gallery-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 25px rgba(236, 72, 153, 0.4);
+      background: linear-gradient(135deg, #db2777, #f472b6);
+    }
+
+    .gallery-btn:active {
+      transform: translateY(1px);
+    }
+  </style>
+      <a href="photo.html" class="gallery-btn">
+    ENTER THE GALLERY
+  </a>
                <div class="copyright">Enter the Secret Archive ✨</div>
             <div class="footer-text">📬 Contact me :</div>
             <a href="mailto:gafureda@gmail.com" class="footer-email">gafureda@gmail.com</a>

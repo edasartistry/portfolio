@@ -2469,44 +2469,35 @@ turning them into visuals that feel alive.</p>
                     }
                 }, 10);
             }
-          else if(currentPage === 'illustrations') {
-    // Открываем photo.html в текущем окне
-    window.location.href = 'photo.html';
-    // Или если нужно в новой вкладке:
-    // window.open('photo.html', '_blank');
-    
-    // Код ниже не выполнится после редиректа, 
-    // но оставляем его на случай, если нужно будет вернуть логику отображения
-    /*
-    html = `<div class="content-section">
-        <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
-        <div class="illustrations-intro">
-            <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
-            <p>Более 100 иллюстраций в разных стилях и техниках. От быстрых набросков до детальных полотен.</p>
-        </div>
-        <div class="illustrations-filter">
-            <button class="filter-btn active" data-filter="all">Все (124)</button>
-            <button class="filter-btn" data-filter="2024">2024 (34)</button>
-            <button class="filter-btn" data-filter="2023">2023 (42)</button>
-            <button class="filter-btn" data-filter="2022">2022 (28)</button>
-            <button class="filter-btn" data-filter="portrait">Портреты (45)</button>
-            <button class="filter-btn" data-filter="landscape">Пейзажи (52)</button>
-            <button class="filter-btn" data-filter="sketch">Наброски (27)</button>
-        </div>
-        <div class="masonry-grid" id="masonryGrid"></div>
-        <div class="pagination">
-            <a href="#" class="page-link active">1</a>
-            <a href="#" class="page-link">2</a>
-            <a href="#" class="page-link">3</a>
-            <a href="#" class="page-link">4</a>
-            <a href="#" class="page-link">5</a>
-            <span class="page-dots">...</span>
-            <a href="#" class="page-link">12</a>
-            <a href="#" class="page-link">13</a>
-        </div>
-    </div>`;
-    */
-}
+        
+else if(currentPage === 'illustrations') {
+                html = `<div class="content-section">
+                    <h2 class="section-title">✏️ ILLUSTRATIONS - ГАЛЕРЕЯ</h2>
+                    <div class="illustrations-intro">
+                        <p class="intro-big">ПОЛНАЯ КОЛЛЕКЦИЯ РАБОТ</p>
+                        <p>Более 100 иллюстраций в разных стилях и техниках. От быстрых набросков до детальных полотен.</p>
+                    </div>
+                    <div class="illustrations-filter">
+                        <button class="filter-btn active" data-filter="all">Все (124)</button>
+                        <button class="filter-btn" data-filter="2024">2024 (34)</button>
+                        <button class="filter-btn" data-filter="2023">2023 (42)</button>
+                        <button class="filter-btn" data-filter="2022">2022 (28)</button>
+                        <button class="filter-btn" data-filter="portrait">Портреты (45)</button>
+                        <button class="filter-btn" data-filter="landscape">Пейзажи (52)</button>
+                        <button class="filter-btn" data-filter="sketch">Наброски (27)</button>
+                    </div>
+                    <div class="masonry-grid" id="masonryGrid"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">4</a>
+                        <a href="#" class="page-link">5</a>
+                        <span class="page-dots">...</span>
+                        <a href="#" class="page-link">12</a>
+                        <a href="#" class="page-link">13</a>
+                    </div>
+                </div>`;
                 setTimeout(() => {
                     const grid = document.getElementById('masonryGrid');
                     if(grid) {

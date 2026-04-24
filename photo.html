@@ -67,11 +67,6 @@
             100% { transform: translateY(0px) rotate(-2deg); }
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         @keyframes appear {
             from { opacity: 0; transform: translateY(30px) rotate(-2deg); }
             to { opacity: 1; transform: translateY(0) rotate(0deg); }
@@ -87,20 +82,6 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
-        }
-
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(3px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(3px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
 
         .journal-container {
@@ -126,7 +107,7 @@
                 width: 98%;
                 margin: 10px auto;
                 border-width: 10px;
-                padding: 0 10px;
+                padding: 0 15px;
                 border-radius: 40px;
             }
         }
@@ -153,90 +134,50 @@
         .corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
         .corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
 
-        .bill-cipher {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            background: var(--cipher);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            opacity: 0.15;
-            right: 20px;
-            bottom: 20px;
-            animation: spin 20s linear infinite, cyberpunkGlow 4s infinite;
-            cursor: pointer;
-            z-index: 10000;
-            transition: all 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .bill-cipher {
-                width: 70px;
-                height: 70px;
-                right: 10px;
-                bottom: 10px;
-            }
-        }
-
-        .bill-cipher:hover {
-            opacity: 1;
-            animation: shake 0.5s infinite, spin 1s linear infinite;
-            width: 120px;
-            height: 120px;
-        }
-
-        .bill-cipher::before {
-            content: "▲";
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--shadow);
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        .bill-cipher::after {
-            content: "BILL";
-            position: absolute;
-            bottom: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--shadow);
-            font-size: 0.7em;
-            font-weight: bold;
-        }
-
         .site-header {
             text-align: center;
             padding: 30px 10px 20px;
             position: relative;
         }
 
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 20px 10px 15px;
+            }
+        }
+
+        /* ГЛАВНЫЙ ЗАГОЛОВОК - ЯРКИЙ И ЧИТАЕМЫЙ */
         .site-title {
-            font-family: 'Rock Salt', cursive;
-            font-size: 3.5em;
-            font-weight: bold;
-            color: var(--accent);
-            text-shadow: 
-                4px 4px 0 var(--primary),
-                7px 7px 0 var(--secondary),
-                10px 10px 10px var(--shadow);
-            letter-spacing: 5px;
-            transform: rotate(-2deg);
+            font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FF1493 0%, #FF6B9D 25%, #DA70D6 50%, #00CED1 75%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
             display: inline-block;
-            padding: 0 30px;
-            background: rgba(255,255,255,0.2);
+            padding: 12px 30px;
+            background-color: rgba(0,0,0,0.35);
+            backdrop-filter: blur(8px);
             border-radius: 60px;
-            margin-bottom: 10px;
-            animation: float 5s ease-in-out infinite, cyberpunkGlow 3s infinite;
-            border: 3px solid var(--secondary);
-            word-break: break-word;
+            box-shadow: 0 5px 0 #FF69B4, 0 8px 20px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            border: 2px solid rgba(255,255,255,0.5);
+            animation: float 5s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
             .site-title {
-                font-size: 2.2em;
+                font-size: 26px;
+                letter-spacing: 2px;
                 padding: 10px 20px;
+                background-color: rgba(0,0,0,0.5);
+                backdrop-filter: blur(10px);
+                text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
             }
         }
 
@@ -250,12 +191,25 @@
             animation: pulse 4s infinite;
         }
 
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 12px 15px;
+                margin: 10px 0 15px;
+            }
+        }
+
         .nav-menu {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
             list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 10px;
+            }
         }
 
         .nav-link {
@@ -275,6 +229,14 @@
             letter-spacing: 2px;
         }
 
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 8px 18px;
+                font-size: 0.9em;
+                letter-spacing: 1px;
+            }
+        }
+
         .nav-link:hover {
             transform: rotate(0deg) scale(1.1);
             background: var(--accent);
@@ -291,43 +253,85 @@
         }
 
         .content-section {
-            padding: 30px;
+            padding: 35px 30px;
             margin: 20px 0 30px;
-            background: rgba(255,255,255,0.8);
+            background: #ffffff;
+            backdrop-filter: none;
             border: 5px dotted var(--primary);
             border-radius: 50px;
-            backdrop-filter: blur(3px);
             animation: appear 0.6s ease-out;
+            color: #1a1a2e;
+            text-shadow: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         @media (max-width: 768px) {
             .content-section {
-                padding: 20px 15px;
+                padding: 25px 18px;
                 border-width: 4px;
                 border-radius: 30px;
+                margin: 15px 0 20px;
             }
         }
 
+        /* ЗАГОЛОВОК Hidden Archive - ЯРКИЙ И ЧИТАЕМЫЙ */
         .section-title {
-            font-family: 'Special Elite', cursive;
-            font-size: 2.5em;
-            color: var(--primary);
-            text-shadow: 2px 2px 0 var(--accent);
+            font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 30%, #BA55D3 60%, #00BFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 30px;
-            border-bottom: 4px solid var(--secondary);
-            padding-bottom: 12px;
+            padding: 12px 25px;
             display: inline-block;
+            width: auto;
+            border-bottom: none;
             position: relative;
+            background-color: rgba(0,0,0,0.3);
+            backdrop-filter: blur(6px);
+            border-radius: 50px;
+            box-shadow: 0 3px 0 #FF69B4, 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 22px;
+                letter-spacing: 2px;
+                padding: 10px 20px;
+                background-color: rgba(0,0,0,0.4);
+                backdrop-filter: blur(8px);
+                margin-bottom: 25px;
+                width: 100%;
+            }
         }
 
         .section-title::after {
-            content: "⬟";
-            position: absolute;
-            right: -30px;
-            top: 0;
-            font-size: 1.2em;
-            color: var(--cipher);
-            opacity: 0.5;
+            display: none;
+        }
+
+        .section-description {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #1a1a2e;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .section-description {
+                font-size: 1rem;
+                margin-bottom: 25px;
+                line-height: 1.5;
+                padding: 0 5px;
+                color: #2d1b3a;
+                font-weight: 600;
+            }
         }
 
         .photo-grid {
@@ -335,6 +339,14 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
             margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+                margin: 20px 0;
+            }
         }
 
         .photo-card {
@@ -347,6 +359,14 @@
             box-shadow: 10px 10px 0 var(--primary);
             animation: appear 0.5s ease-out;
             cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .photo-card {
+                border-width: 3px;
+                border-radius: 25px;
+                box-shadow: 5px 5px 0 var(--primary);
+            }
         }
 
         .photo-card:nth-child(even) {
@@ -437,6 +457,15 @@
             text-align: center;
         }
 
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                border-width: 8px;
+                border-radius: 40px;
+                width: 95%;
+            }
+        }
+
         .modal-close {
             position: absolute;
             right: 20px;
@@ -446,6 +475,14 @@
             color: var(--primary);
             transition: all 0.3s;
             z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .modal-close {
+                right: 15px;
+                top: 10px;
+                font-size: 2em;
+            }
         }
 
         .modal-close:hover {
@@ -461,6 +498,13 @@
             box-shadow: 10px 10px 0 var(--accent);
         }
 
+        @media (max-width: 768px) {
+            .modal-image {
+                border-width: 3px;
+                border-radius: 20px;
+            }
+        }
+
         .site-footer {
             background: var(--pine);
             text-align: center;
@@ -468,6 +512,14 @@
             margin-top: 30px;
             border-top: 12px solid var(--secondary);
             border-radius: 0 0 40px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 30px 15px;
+                margin-top: 20px;
+                border-top-width: 8px;
+            }
         }
 
         .footer-email {
@@ -481,12 +533,16 @@
             margin: 20px 0;
             transition: all 0.4s;
             animation: cyberpunkGlow 2s infinite;
+            background: rgba(255,255,255,0.95);
+            word-break: break-all;
         }
 
         @media (max-width: 768px) {
             .footer-email {
-                font-size: 1.3em;
-                padding: 10px 20px;
+                font-size: 1.2em;
+                padding: 12px 20px;
+                margin: 15px 0;
+                border-width: 3px;
             }
         }
 
@@ -498,17 +554,61 @@
             box-shadow: 15px 15px 0 var(--primary);
         }
 
+        .instagram-link {
+            font-size: 1.8em;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
+            padding: 12px 35px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.4s;
+            font-weight: bold;
+            border: 3px solid var(--accent);
+            animation: pulse 3s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .instagram-link {
+                font-size: 1.2em;
+                padding: 10px 25px;
+                margin: 15px 0;
+            }
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 15px 15px 0 rgba(0,0,0,0.5);
+        }
+
         .cipher-footer {
             font-family: monospace;
             font-size: 1.2em;
             margin: 20px 0;
-            color: rgba(181,55,242,0.8);
+            color: rgba(74,21,75,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .cipher-footer {
+                font-size: 1em;
+                margin: 15px 0;
+            }
         }
 
         .copyright {
             margin-top: 20px;
-            font-size: 0.9em;
-            opacity: 0.7;
+            font-size: 1em;
+            opacity: 0.8;
+            color: #2d1b3a;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .copyright {
+                font-size: 0.9em;
+                margin-top: 15px;
+            }
         }
 
         .counter {
@@ -521,6 +621,14 @@
             font-size: 1.3em;
             margin-top: 20px;
             border: 3px solid var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .counter {
+                padding: 10px 20px;
+                font-size: 1em;
+                margin-top: 15px;
+            }
         }
 
         .star {
@@ -542,6 +650,20 @@
             75% { transform: translate(30px, 20px) rotate(15deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
+
+        .footer-text {
+            color: #2d1b3a;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .footer-text {
+                font-size: 1em;
+                margin: 8px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -552,8 +674,6 @@
     <div class="star" style="top: 55%; right: 30%; animation-duration: 20s;">⭐</div>
     <div class="star" style="top: 75%; left: 10%; animation-duration: 19s;">✨</div>
 
-    <div class="bill-cipher" title="Билл Шифр" onclick="billClick()"></div>
-
     <div class="journal-container">
         <div class="journal-corner corner-tl"></div>
         <div class="journal-corner corner-tr"></div>
@@ -561,115 +681,60 @@
         <div class="journal-corner corner-br"></div>
 
         <header class="site-header">
-<h1 class="site-title" style="
-  font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
-  font-size: 32px;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-
-  /* Нежный пастельный градиент */
-  background: linear-gradient(135deg, #F9CDCD 0%, #F6A6B2 35%, #C9B1E6 65%, #A8D8EA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Тонкая кремовая обводка */
-  -webkit-text-stroke: 1.8px #FFF8F0;
-  paint-order: stroke fill;
-
-  /* Аккуратная тень без излишеств */
-  text-shadow: 
-    0 2.5px 0 #D989B5,
-    0 5px 8px rgba(216, 137, 181, 0.25);
-
-  /* Лёгкая подложка */
-  display: inline-block;
-  padding: 6px 20px 8px 20px;
-  background: rgba(255, 250, 240, 0.4);
-  backdrop-filter: blur(3px);
-  border-radius: 40px 12px 40px 12px;
-  box-shadow: 
-    0 3px 0 #EAA2B8,
-    0 6px 12px rgba(234, 162, 184, 0.15);
-">
-  📸 Hidden Gallery
-</h1>
+            <h1 class="site-title">
+                📸 HIDDEN GALLERY
+            </h1>
+            
             <nav class="nav-bar">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link" style="--rot:-2deg">← Back to Portfolio</a></li>
                     <li><a href="#" class="nav-link active" style="--rot:1deg">Gallery</a></li>
-                    <li><a href="#" class="nav-link" style="--rot:-3deg" onclick="alert('You discovered my private work ✨')">Secret</a></li>
+                    <li><a href="#" class="nav-link" style="--rot:-3deg" onclick="alert('✨ You discovered my private work ✨')">Secret</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
             <div class="content-section">
-  <h2 class="section-title" style="
-  font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-
-  /* Нежный пастельный градиент (розовый + лаванда + мята) */
-  background: linear-gradient(135deg, #F9CDCD 0%, #EAA2B8 30%, #C9B1E6 65%, #A8D8EA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Тонкая кремовая обводка */
-  -webkit-text-stroke: 1.5px #FFF8F0;
-  paint-order: stroke fill;
-
-  /* Лёгкая аккуратная тень */
-  text-shadow: 
-    0 2px 0 #D989B5,
-    0 4px 6px rgba(216, 137, 181, 0.2);
-
-  /* Воздушная подложка */
-  display: inline-block;
-  padding: 4px 18px 6px 18px;
-  background: rgba(255, 250, 240, 0.35);
-  backdrop-filter: blur(3px);
-  border-radius: 30px 8px 30px 8px;
-  box-shadow: 
-    0 2.5px 0 #EAA2B8,
-    0 5px 10px rgba(234, 162, 184, 0.12);
-">
-  🎀 Hidden Archive 🎀
-</h2>
+                <h2 class="section-title">
+                    🎀 HIDDEN ARCHIVE 🎀
+                </h2>
+                
+                <div class="section-description">
+                    ✨ Welcome to the secret gallery! ✨<br>
+                    Click on any photo to view in full size
+                </div>
                 
                 <div class="photo-grid">
-                    
-                    <!-- ФОТО 1-20 (замени src на свои) -->
                     <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/1.jpg" alt="Фото 1" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/2.jpg" alt="Фото 2" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                                  <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/4.jpg" alt="Фото 4" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
+                    <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/4.jpg" alt="Фото 4" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/5.jpg" alt="Фото 5" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                                  <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/7.jpg" alt="Фото 7" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                                   <div class="photo-card" style="--rot:3deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/8.jpg" alt="Фото 8" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                      <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/3.jpg" alt="Фото 3" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-
+                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/7.jpg" alt="Фото 7" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
+                    <div class="photo-card" style="--rot:3deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/8.jpg" alt="Фото 8" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
+                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/3.jpg" alt="Фото 3" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/9.jpg" alt="Фото 9" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/10.jpg" alt="Фото 10" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/11.jpg" alt="Фото 11" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                                        <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/13.jpg" alt="Фото 13" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
+                    <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/13.jpg" alt="Фото 13" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                     <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/14.jpg" alt="Фото 14" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                                    <div class="photo-card" style="--rot:2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/16.jpg" alt="Фото 16" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                   
+                    <div class="photo-card" style="--rot:2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/16.jpg" alt="Фото 16" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
                 </div>
             </div>
         </main>
 
         <footer class="site-footer">
-               <div class="copyright">Enter the Secret Archive ✨</div>
+            <div class="copyright">✨ Enter the Secret Archive ✨</div>
             <div class="footer-text">📬 Contact me :</div>
             <a href="mailto:gafureda@gmail.com" class="footer-email">gafureda@gmail.com</a>
+            
+            <div class="footer-text">📸 Follow me on Instagram :</div>
+            <a href="https://instagram.com/edasartistry" target="_blank" class="instagram-link">
+                📸 @edasartistry
+            </a>
+            
             <div class="cipher-footer">⬟⬟⬟ ◆◆◆</div>
-         
-            <div class="counter">That’s all for now… 👀</div>
+            <div class="counter">That's all for now… 👀</div>
         </footer>
     </div>
 
@@ -686,19 +751,11 @@
             document.getElementById('modalImage').src = img.src;
             document.getElementById('modalImage').alt = img.alt;
             document.getElementById('photoModal').style.display = 'block';
-            
-            const bill = document.querySelector('.bill-cipher');
-            if(bill) {
-                bill.style.animation = 'shake 0.3s, spin 0.8s linear';
-                setTimeout(() => bill.style.animation = 'spin 20s linear infinite, cyberpunkGlow 4s infinite', 400);
-            }
         }
 
         function closeModal() {
             document.getElementById('photoModal').style.display = 'none';
         }
-
-
 
         window.onclick = function(event) {
             const modal = document.getElementById('photoModal');
@@ -716,7 +773,7 @@
         document.addEventListener('keydown', (e) => {
             konami.push(e.keyCode);
             if (konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
-                alert('🎉 КОД АКТИВИРОВАН!');
+                alert('🎉 КОД АКТИВИРОВАН! Секретный архив открыт!');
                 document.querySelectorAll('.photo-card').forEach((card, i) => {
                     setTimeout(() => {
                         card.style.transform = 'rotate(360deg) scale(1.1)';

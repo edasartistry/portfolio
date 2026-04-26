@@ -1,803 +1,776 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Edasartistry · Секретные фото</title>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Patrick+Hand&family=Rock+Salt&display=swap');
-
-        :root {
-            --primary: #ff6b9d;
-            --secondary: #00ccff;
-            --accent: #b537f2;
-            --pine: #ffd966;
-            --sky: #ff99c8;
-            --mystery: #a0e7e5;
-            --journal: #ffffff;
-            --wood: #ffb347;
-            --shadow: #4a154b;
-            --cipher: #39ff14;
-        }
-
-        body {
-            font-family: 'Patrick Hand', 'Courier New', cursive;
-            background-color: var(--shadow);
-            background-image: 
-                repeating-linear-gradient(45deg,
-                    rgba(255,107,157,0.12) 0px,
-                    rgba(255,107,157,0.12) 20px,
-                    rgba(0,204,255,0.12) 20px,
-                    rgba(0,204,255,0.12) 40px
-                );
-            background-size: 80px 80px;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg,
-                rgba(255,105,180,0.05) 0px,
-                rgba(255,105,180,0.05) 2px,
-                transparent 2px,
-                transparent 4px
-            );
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-15px) rotate(-2deg); }
-            100% { transform: translateY(0px) rotate(-2deg); }
-        }
-
-        @keyframes appear {
-            from { opacity: 0; transform: translateY(30px) rotate(-2deg); }
-            to { opacity: 1; transform: translateY(0) rotate(0deg); }
-        }
-
-        @keyframes cyberpunkGlow {
-            0% { filter: drop-shadow(0 0 5px var(--secondary)); }
-            50% { filter: drop-shadow(0 0 20px var(--accent)); }
-            100% { filter: drop-shadow(0 0 5px var(--secondary)); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .journal-container {
-            max-width: 1400px;
-            width: 95%;
-            margin: 20px auto;
-            background: var(--journal);
-            background-image: 
-                radial-gradient(circle at 20px 20px, rgba(255,217,102,0.25) 2px, transparent 2px),
-                linear-gradient(var(--journal), rgba(255,153,200,0.12));
-            background-size: 40px 40px, 100%;
-            border: 15px solid var(--primary);
-            border-radius: 50px;
-            box-shadow: 20px 20px 40px rgba(74,21,75,0.5), inset 0 0 80px rgba(181,55,242,0.12);
-            position: relative;
-            padding: 0 20px;
-            animation: appear 0.8s ease-out;
-            z-index: 10;
-        }
-
-        @media (max-width: 768px) {
-            .journal-container {
-                width: 98%;
-                margin: 10px auto;
-                border-width: 10px;
-                padding: 0 15px;
-                border-radius: 40px;
-            }
-        }
-
-        .journal-corner {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 5px solid var(--accent);
-            opacity: 0.3;
-            z-index: 10;
-        }
-
-        @media (max-width: 768px) {
-            .journal-corner {
-                width: 40px;
-                height: 40px;
-                border-width: 4px;
-            }
-        }
-
-        .corner-tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
-        .corner-tr { top: -8px; right: -8px; border-left: none; border-bottom: none; }
-        .corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
-        .corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
-
-        .site-header {
-            text-align: center;
-            padding: 30px 10px 20px;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .site-header {
-                padding: 20px 10px 15px;
-            }
-        }
-
-        /* ГЛАВНЫЙ ЗАГОЛОВОК - ЯРКИЙ И ЧИТАЕМЫЙ */
-        .site-title {
-            font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            text-align: center;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #FF1493 0%, #FF6B9D 25%, #DA70D6 50%, #00CED1 75%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: rgba(0,0,0,0.35);
-            backdrop-filter: blur(8px);
-            border-radius: 60px;
-            box-shadow: 0 5px 0 #FF69B4, 0 8px 20px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-            border: 2px solid rgba(255,255,255,0.5);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @media (max-width: 768px) {
-            .site-title {
-                font-size: 26px;
-                letter-spacing: 2px;
-                padding: 10px 20px;
-                background-color: rgba(0,0,0,0.5);
-                backdrop-filter: blur(10px);
-                text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-            }
-        }
-
-        .nav-bar {
-            margin: 15px 0 20px;
-            padding: 15px 20px;
-            background: var(--pine);
-            border: 6px dashed var(--accent);
-            border-radius: 60px;
-            box-shadow: inset 0 0 30px rgba(0,204,255,0.5);
-            animation: pulse 4s infinite;
-        }
-
-        @media (max-width: 768px) {
-            .nav-bar {
-                padding: 12px 15px;
-                margin: 10px 0 15px;
-            }
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            list-style: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 10px;
-            }
-        }
-
-        .nav-link {
-            display: inline-block;
-            padding: 12px 25px;
-            background: var(--journal);
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            border: 4px solid var(--secondary);
-            border-radius: 40px;
-            transform: rotate(var(--rot, 0deg));
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 5px 5px 0 var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-link {
-                padding: 8px 18px;
-                font-size: 0.9em;
-                letter-spacing: 1px;
-            }
-        }
-
-        .nav-link:hover {
-            transform: rotate(0deg) scale(1.1);
-            background: var(--accent);
-            color: var(--journal);
-            box-shadow: 8px 8px 0 var(--primary);
-            border-color: var(--primary);
-        }
-
-        .nav-link.active {
-            background: var(--accent);
-            color: var(--journal);
-            border-color: var(--primary);
-            box-shadow: inset 3px 3px 8px var(--shadow);
-        }
-
-        .content-section {
-            padding: 35px 30px;
-            margin: 20px 0 30px;
-            background: #ffffff;
-            backdrop-filter: none;
-            border: 5px dotted var(--primary);
-            border-radius: 50px;
-            animation: appear 0.6s ease-out;
-            color: #1a1a2e;
-            text-shadow: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        @media (max-width: 768px) {
-            .content-section {
-                padding: 25px 18px;
-                border-width: 4px;
-                border-radius: 30px;
-                margin: 15px 0 20px;
-            }
-        }
-
-        /* ЗАГОЛОВОК Hidden Archive - ЯРКИЙ И ЧИТАЕМЫЙ */
-        .section-title {
-            font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
-            font-size: 32px;
-            font-weight: 800;
-            text-align: center;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 30%, #BA55D3 60%, #00BFFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-            padding: 12px 25px;
-            display: inline-block;
-            width: auto;
-            border-bottom: none;
-            position: relative;
-            background-color: rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
-            border-radius: 50px;
-            box-shadow: 0 3px 0 #FF69B4, 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 22px;
-                letter-spacing: 2px;
-                padding: 10px 20px;
-                background-color: rgba(0,0,0,0.4);
-                backdrop-filter: blur(8px);
-                margin-bottom: 25px;
-                width: 100%;
-            }
-        }
-
-        .section-title::after {
-            display: none;
-        }
-
-        .section-description {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #1a1a2e;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .section-description {
-                font-size: 1rem;
-                margin-bottom: 25px;
-                line-height: 1.5;
-                padding: 0 5px;
-                color: #2d1b3a;
-                font-weight: 600;
-            }
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        @media (max-width: 768px) {
-            .photo-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 15px;
-                margin: 20px 0;
-            }
-        }
-
-        .photo-card {
-            background: var(--journal);
-            border: 5px solid var(--secondary);
-            border-radius: 35px;
-            overflow: hidden;
-            transform: rotate(var(--rot, -1deg));
-            transition: all 0.4s;
-            box-shadow: 10px 10px 0 var(--primary);
-            animation: appear 0.5s ease-out;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .photo-card {
-                border-width: 3px;
-                border-radius: 25px;
-                box-shadow: 5px 5px 0 var(--primary);
-            }
-        }
-
-        .photo-card:nth-child(even) {
-            --rot: 2deg;
-        }
-
-        .photo-card:hover {
-            transform: rotate(0deg) scale(1.02);
-            box-shadow: 15px 15px 0 var(--accent);
-            border-color: var(--primary);
-        }
-
-        .photo-frame {
-            aspect-ratio: 1 / 1;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, var(--pine), var(--sky));
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .photo-card:hover .photo-frame img {
-            transform: scale(1.1);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(74,21,75,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 3;
-        }
-
-        .photo-card:hover .photo-overlay {
-            opacity: 1;
-        }
-
-        .photo-icon {
-            font-size: 3em;
-            color: var(--cipher);
-            animation: kawaiiBounce 1s infinite;
-        }
-
-        @keyframes kawaiiBounce {
-            0%,100%{transform:scale(1);}
-            50%{transform:scale(1.1);}
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(74,21,75,0.94);
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--journal);
-            margin: 20px auto;
-            padding: 30px;
-            border: 15px solid var(--secondary);
-            border-radius: 60px;
-            width: 90%;
-            max-width: 900px;
-            position: relative;
-            animation: appear 0.4s;
-            box-shadow: 25px 25px 50px var(--shadow);
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                padding: 20px;
-                border-width: 8px;
-                border-radius: 40px;
-                width: 95%;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 2.5em;
-            cursor: pointer;
-            color: var(--primary);
-            transition: all 0.3s;
-            z-index: 10;
-        }
-
-        @media (max-width: 768px) {
-            .modal-close {
-                right: 15px;
-                top: 10px;
-                font-size: 2em;
-            }
-        }
-
-        .modal-close:hover {
-            color: var(--cipher);
-            transform: scale(1.2) rotate(90deg);
-        }
-
-        .modal-image {
-            max-width: 100%;
-            max-height: 75vh;
-            border-radius: 30px;
-            border: 5px solid var(--primary);
-            box-shadow: 10px 10px 0 var(--accent);
-        }
-
-        @media (max-width: 768px) {
-            .modal-image {
-                border-width: 3px;
-                border-radius: 20px;
-            }
-        }
-
-        .site-footer {
-            background: var(--pine);
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 30px;
-            border-top: 12px solid var(--secondary);
-            border-radius: 0 0 40px 40px;
-        }
-
-        @media (max-width: 768px) {
-            .site-footer {
-                padding: 30px 15px;
-                margin-top: 20px;
-                border-top-width: 8px;
-            }
-        }
-
-        .footer-email {
-            font-size: 2.2em;
-            color: var(--accent);
-            text-decoration: none;
-            border: 4px dashed var(--accent);
-            padding: 15px 30px;
-            border-radius: 60px;
-            display: inline-block;
-            margin: 20px 0;
-            transition: all 0.4s;
-            animation: cyberpunkGlow 2s infinite;
-            background: rgba(255,255,255,0.95);
-            word-break: break-all;
-        }
-
-        @media (max-width: 768px) {
-            .footer-email {
-                font-size: 1.2em;
-                padding: 12px 20px;
-                margin: 15px 0;
-                border-width: 3px;
-            }
-        }
-
-        .footer-email:hover {
-            background: var(--accent);
-            color: var(--journal);
-            transform: scale(1.1) rotate(1deg);
-            border-style: solid;
-            box-shadow: 15px 15px 0 var(--primary);
-        }
-
-        .instagram-link {
-            font-size: 1.8em;
-            color: #fff;
-            text-decoration: none;
-            background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
-            padding: 12px 35px;
-            border-radius: 60px;
-            display: inline-block;
-            margin: 20px 0;
-            transition: all 0.4s;
-            font-weight: bold;
-            border: 3px solid var(--accent);
-            animation: pulse 3s infinite;
-        }
-
-        @media (max-width: 768px) {
-            .instagram-link {
-                font-size: 1.2em;
-                padding: 10px 25px;
-                margin: 15px 0;
-            }
-        }
-
-        .instagram-link:hover {
-            transform: scale(1.1) rotate(2deg);
-            box-shadow: 15px 15px 0 rgba(0,0,0,0.5);
-        }
-
-        .cipher-footer {
-            font-family: monospace;
-            font-size: 1.2em;
-            margin: 20px 0;
-            color: rgba(74,21,75,0.8);
-        }
-
-        @media (max-width: 768px) {
-            .cipher-footer {
-                font-size: 1em;
-                margin: 15px 0;
-            }
-        }
-
-        .copyright {
-            margin-top: 20px;
-            font-size: 1em;
-            opacity: 0.8;
-            color: #2d1b3a;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .copyright {
-                font-size: 0.9em;
-                margin-top: 15px;
-            }
-        }
-
-        .counter {
-            display: inline-block;
-            background: var(--shadow);
-            color: var(--cipher);
-            padding: 12px 25px;
-            border-radius: 15px;
-            font-family: monospace;
-            font-size: 1.3em;
-            margin-top: 20px;
-            border: 3px solid var(--accent);
-        }
-
-        @media (max-width: 768px) {
-            .counter {
-                padding: 10px 20px;
-                font-size: 1em;
-                margin-top: 15px;
-            }
-        }
-
-        .star {
-            position: fixed;
-            font-size: 24px;
-            user-select: none;
-            pointer-events: none;
-            z-index: 5;
-            opacity: 0.6;
-            color: var(--cipher);
-            text-shadow: 0 0 10px var(--accent);
-            animation: floatStar linear infinite;
-        }
-
-        @keyframes floatStar {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(30px, -20px) rotate(15deg); }
-            50% { transform: translate(60px, 0) rotate(30deg); }
-            75% { transform: translate(30px, 20px) rotate(15deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
-
-        .footer-text {
-            color: #2d1b3a;
-            font-weight: bold;
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 768px) {
-            .footer-text {
-                font-size: 1em;
-                margin: 8px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Edasartistry · Секретные фото</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Patrick+Hand&family=Rock+Salt&display=swap');
+
+    :root {
+      --primary: #ff6b9d;
+      --secondary: #00ccff;
+      --accent: #b537f2;
+      --pine: #ffd966;
+      --sky: #ff99c8;
+      --mystery: #a0e7e5;
+      --journal: #ffffff;
+      --wood: #ffb347;
+      --shadow: #4a154b;
+      --cipher: #39ff14;
+      --deep: #1a1a2e;
+    }
+
+    body {
+      font-family: 'Patrick Hand', 'Courier New', cursive;
+      background-color: var(--shadow);
+      background-image: repeating-linear-gradient(45deg,
+          rgba(255, 107, 157, 0.12) 0px,
+          rgba(255, 107, 157, 0.12) 20px,
+          rgba(0, 204, 255, 0.12) 20px,
+          rgba(0, 204, 255, 0.12) 40px);
+      background-size: 80px 80px;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg,
+          rgba(255, 105, 180, 0.05) 0px,
+          rgba(255, 105, 180, 0.05) 2px,
+          transparent 2px,
+          transparent 4px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(-2deg); }
+      100% { transform: translateY(0px) rotate(-2deg); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(30px) rotate(-2deg); }
+      to { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes cyberpunkGlow {
+      0% { filter: drop-shadow(0 0 5px var(--secondary)); }
+      50% { filter: drop-shadow(0 0 20px var(--accent)); }
+      100% { filter: drop-shadow(0 0 5px var(--secondary)); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .journal-container {
+      max-width: 1400px;
+      width: 95%;
+      margin: 20px auto;
+      background: var(--journal);
+      background-image: radial-gradient(circle at 20px 20px, rgba(255, 217, 102, 0.25) 2px, transparent 2px),
+        linear-gradient(var(--journal), rgba(255, 153, 200, 0.12));
+      background-size: 40px 40px, 100%;
+      border: 15px solid var(--primary);
+      border-radius: 50px;
+      box-shadow: 20px 20px 40px rgba(74, 21, 75, 0.5), inset 0 0 80px rgba(181, 55, 242, 0.12);
+      position: relative;
+      padding: 0 20px 20px;
+      animation: appear 0.8s ease-out;
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .journal-container {
+        width: 98%;
+        margin: 10px auto;
+        border-width: 10px;
+        padding: 0 15px 15px;
+        border-radius: 40px;
+      }
+    }
+
+    .journal-corner {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 5px solid var(--accent);
+      opacity: 0.3;
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .journal-corner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+      }
+    }
+
+    .corner-tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+    .corner-tr { top: -8px; right: -8px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
+    .corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+    .site-header {
+      text-align: center;
+      padding: 30px 10px 20px;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        padding: 20px 10px 15px;
+      }
+    }
+
+    .site-title {
+      font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #FF1493 0%, #FF6B9D 25%, #DA70D6 50%, #00CED1 75%, #FFD700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      box-shadow: 0 5px 0 #FF69B4, 0 8px 20px rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+      border: 2px solid rgba(255,255,255,0.5);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .site-title {
+        font-size: 26px;
+        letter-spacing: 2px;
+        padding: 10px 20px;
+        background-color: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      }
+    }
+
+    .nav-bar {
+      margin: 15px 0 20px;
+      padding: 15px 20px;
+      background: var(--pine);
+      border: 6px dashed var(--accent);
+      border-radius: 60px;
+      box-shadow: inset 0 0 30px rgba(0,204,255,0.5);
+      animation: pulse 4s infinite;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 12px 10px;
+        gap: 10px;
+      }
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--journal);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: 4px solid var(--secondary);
+      border-radius: 40px;
+      transform: rotate(var(--rot, 0deg));
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 5px 5px 0 var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-link {
+        padding: 8px 18px;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+      }
+    }
+
+    .nav-link:hover {
+      transform: rotate(0deg) scale(1.1);
+      background: var(--accent);
+      color: var(--journal);
+      box-shadow: 8px 8px 0 var(--primary);
+      border-color: var(--primary);
+    }
+
+    .nav-link.active {
+      background: var(--accent);
+      color: var(--journal);
+      border-color: var(--primary);
+      box-shadow: inset 3px 3px 8px var(--shadow);
+      transform: rotate(0deg);
+    }
+
+    .content-section {
+      padding: 35px 30px;
+      margin: 20px 0 30px;
+      background: #ffffff;
+      border: 5px dotted var(--primary);
+      border-radius: 50px;
+      animation: appear 0.6s ease-out;
+      color: var(--deep);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .content-section {
+        padding: 25px 18px;
+        border-width: 4px;
+        border-radius: 30px;
+        margin: 15px 0 20px;
+      }
+    }
+
+    .section-title {
+      font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #FF1493 0%, #FF69B4 30%, #BA55D3 60%, #00BFFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 30px;
+      padding: 12px 25px;
+      display: inline-block;
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      box-shadow: 0 3px 0 #FF69B4, 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 22px;
+        letter-spacing: 2px;
+        padding: 10px 20px;
+        background-color: rgba(0,0,0,0.4);
+        backdrop-filter: blur(8px);
+        margin-bottom: 25px;
+      }
+    }
+
+    .section-description {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--deep);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .section-description {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        color: #2d1b3a;
+        font-weight: 600;
+      }
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    @media (max-width: 768px) {
+      .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+    }
+
+    .photo-card {
+      background: var(--journal);
+      border: 5px solid var(--secondary);
+      border-radius: 35px;
+      overflow: hidden;
+      transform: rotate(var(--rot, -1deg));
+      transition: all 0.4s;
+      box-shadow: 10px 10px 0 var(--primary);
+      animation: appear 0.5s ease-out;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .photo-card {
+        border-width: 3px;
+        border-radius: 25px;
+        box-shadow: 5px 5px 0 var(--primary);
+      }
+    }
+
+    .photo-card:nth-child(even) { --rot: 2deg; }
+    .photo-card:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 15px 15px 0 var(--accent);
+      border-color: var(--primary);
+    }
+
+    .photo-frame {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--pine), var(--sky));
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .photo-card:hover .photo-frame img { transform: scale(1.1); }
+
+    .photo-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(74,21,75,0.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s; z-index: 3;
+    }
+    .photo-card:hover .photo-overlay { opacity: 1; }
+
+    .photo-icon { font-size: 3em; color: var(--cipher); animation: kawaiiBounce 1s infinite; }
+    @keyframes kawaiiBounce {
+      0%,100%{transform:scale(1);} 50%{transform:scale(1.1);}
+    }
+
+    .modal {
+      display: none; position: fixed; z-index: 10001; left: 0; top: 0;
+      width: 100%; height: 100%; background-color: rgba(74,21,75,0.94);
+      overflow-y: auto; padding: 20px;
+    }
+
+    .modal-content {
+      background: var(--journal); margin: 20px auto; padding: 30px;
+      border: 15px solid var(--secondary); border-radius: 60px;
+      width: 90%; max-width: 900px; position: relative;
+      animation: appear 0.4s; box-shadow: 25px 25px 50px var(--shadow);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content { padding: 20px; border-width: 8px; border-radius: 40px; width: 95%; }
+    }
+
+    .modal-close {
+      position: absolute; right: 20px; top: 15px; font-size: 2.5em;
+      cursor: pointer; color: var(--primary); transition: all 0.3s; z-index: 10;
+    }
+    .modal-close:hover { color: var(--cipher); transform: scale(1.2) rotate(90deg); }
+
+    .modal-image {
+      max-width: 100%; max-height: 75vh; border-radius: 30px;
+      border: 5px solid var(--primary); box-shadow: 10px 10px 0 var(--accent);
+    }
+
+    .site-footer {
+      background: var(--pine); text-align: center; padding: 40px 20px;
+      margin-top: 30px; border-top: 12px solid var(--secondary);
+      border-radius: 0 0 40px 40px;
+    }
+
+    .footer-email {
+      font-size: 2.2em; color: var(--accent); text-decoration: none;
+      border: 4px dashed var(--accent); padding: 15px 30px; border-radius: 60px;
+      display: inline-block; margin: 20px 0; transition: all 0.4s;
+      animation: cyberpunkGlow 2s infinite; background: rgba(255,255,255,0.95);
+      word-break: break-all;
+    }
+    .footer-email:hover { background: var(--accent); color: white; transform: scale(1.1); }
+
+    .instagram-link {
+      font-size: 1.8em; color: #fff; text-decoration: none;
+      background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
+      padding: 12px 35px; border-radius: 60px; display: inline-block;
+      margin: 20px 0; transition: all 0.4s; font-weight: bold;
+      border: 3px solid var(--accent); animation: pulse 3s infinite;
+    }
+
+    .counter {
+      display: inline-block; background: var(--shadow); color: var(--cipher);
+      padding: 12px 25px; border-radius: 15px; font-family: monospace;
+      font-size: 1.3em; margin-top: 20px; border: 3px solid var(--accent);
+    }
+
+    .cipher-footer { font-family: monospace; font-size: 1.2em; margin: 20px 0; color: rgba(74,21,75,0.8); }
+    .footer-text { color: #2d1b3a; font-weight: bold; margin: 10px 0; font-size: 1.1em; }
+
+    .star {
+      position: fixed; font-size: 24px; user-select: none; pointer-events: none;
+      z-index: 5; opacity: 0.6; color: var(--cipher);
+      text-shadow: 0 0 10px var(--accent); animation: floatStar linear infinite;
+    }
+    @keyframes floatStar {
+      0%{transform:translate(0,0) rotate(0deg);} 25%{transform:translate(30px,-20px) rotate(15deg);}
+      50%{transform:translate(60px,0) rotate(30deg);} 75%{transform:translate(30px,20px) rotate(15deg);}
+      100%{transform:translate(0,0) rotate(0deg);}
+    }
+
+    .category-hidden { display: none; }
+    .category-visible { display: block; }
+  </style>
 </head>
 <body>
-    <div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div>
-    <div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div>
-    <div class="star" style="top: 20%; right: 15%; animation-duration: 16s;">💫</div>
-    <div class="star" style="top: 35%; left: 20%; animation-duration: 22s;">🌟</div>
-    <div class="star" style="top: 55%; right: 30%; animation-duration: 20s;">⭐</div>
-    <div class="star" style="top: 75%; left: 10%; animation-duration: 19s;">✨</div>
+<div class="star" style="top: 3%; left: 2%; animation-duration: 14s;">⭐</div>
+<div class="star" style="top: 7%; right: 5%; animation-duration: 18s;">✨</div>
+<div class="star" style="top: 20%; right: 15%; animation-duration: 16s;">💫</div>
+<div class="star" style="top: 35%; left: 20%; animation-duration: 22s;">🌟</div>
+<div class="star" style="top: 55%; right: 30%; animation-duration: 20s;">⭐</div>
+<div class="star" style="top: 75%; left: 10%; animation-duration: 19s;">✨</div>
 
-    <div class="journal-container">
-        <div class="journal-corner corner-tl"></div>
-        <div class="journal-corner corner-tr"></div>
-        <div class="journal-corner corner-bl"></div>
-        <div class="journal-corner corner-br"></div>
+<div class="journal-container">
+  <div class="journal-corner corner-tl"></div>
+  <div class="journal-corner corner-tr"></div>
+  <div class="journal-corner corner-bl"></div>
+  <div class="journal-corner corner-br"></div>
 
-        <header class="site-header">
-            <h1 class="site-title">
-                📸 HIDDEN GALLERY
-            </h1>
-            
-            <nav class="nav-bar">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link" style="--rot:-2deg">← Back to Portfolio</a></li>
-                    <li><a href="#" class="nav-link active" style="--rot:1deg">Gallery</a></li>
-                    <li><a href="#" class="nav-link" style="--rot:-3deg" onclick="alert('✨ You discovered my private work ✨')">Secret</a></li>
-                </ul>
-            </nav>
-        </header>
+  <header class="site-header">
+    <h1 class="site-title">📸 HIDDEN GALLERY</h1>
+    <nav class="nav-bar">
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link" style="--rot:-2deg">← Back to Portfolio</a>
+        <a href="#" class="nav-link active" id="navGallery" style="--rot:1deg">Gallery</a>
+        <a href="#" class="nav-link" id="navStock" style="--rot:-2deg">Stock art</a>
+        <a href="#" class="nav-link" id="nav3d" style="--rot:1deg">3D</a>
+        <a href="#" class="nav-link" id="navDesigns" style="--rot:-1deg">Designs</a>
+      </div>
+    </nav>
+  </header>
 
-        <main>
-            <div class="content-section">
-                <h2 class="section-title">
-                    🎀 HIDDEN ARCHIVE 🎀
-                </h2>
-                
-                <div class="section-description">
-                    ✨ Welcome to the secret gallery! ✨<br>
-                    Click on any photo to view in full size
-                </div>
-                
-                <div class="photo-grid">
-                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/1.jpg" alt="Фото 1" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/2.jpg" alt="Фото 2" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/4.jpg" alt="Фото 4" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/5.jpg" alt="Фото 5" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/7.jpg" alt="Фото 7" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:3deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/8.jpg" alt="Фото 8" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/3.jpg" alt="Фото 3" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/9.jpg" alt="Фото 9" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/10.jpg" alt="Фото 10" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/11.jpg" alt="Фото 11" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:-2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/13.jpg" alt="Фото 13" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:1deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/14.jpg" alt="Фото 14" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                    <div class="photo-card" style="--rot:2deg" onclick="openModal(this)"><div class="photo-frame"><img src="img/16.jpg" alt="Фото 16" loading="lazy"><div class="photo-overlay"><span class="photo-icon">🔍</span></div></div></div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="site-footer">
-            <div class="copyright">✨ Enter the Secret Archive ✨</div>
-            <div class="footer-text">📬 Contact me :</div>
-            <a href="mailto:gafureda@gmail.com" class="footer-email">gafureda@gmail.com</a>
-            
-            <div class="footer-text">📸 Follow me on Instagram :</div>
-            <a href="https://instagram.com/edas_artistry" target="_blank" class="instagram-link">
-                📸 @edasartistry
-            </a>
-            
-            <div class="cipher-footer">⬟⬟⬟ ◆◆◆</div>
-            <div class="counter">That's all for now… 👀</div>
-        </footer>
+  <main>
+    <!-- Основная галерея (Gallery) -->
+    <div id="categoryGallery" class="content-section category-visible">
+      <h2 class="section-title">🎀 HIDDEN ARCHIVE 🎀</h2>
+      <div class="section-description">✨ Welcome to the secret gallery! ✨<br>Click on any photo to view in full size</div>
+      <div class="photo-grid" id="galleryGrid"></div>
     </div>
 
-    <div id="photoModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" class="modal-image" src="" alt="">
-        </div>
+    <!-- Stock art -->
+    <div id="categoryStock" class="content-section category-hidden">
+      <h2 class="section-title">🖼️ STOCK ART</h2>
+      <div class="section-description">✨ Exclusive stock images ✨</div>
+      <div class="photo-grid" id="stockGrid"></div>
     </div>
 
-    <script>
-        function openModal(card) {
-            const img = card.querySelector('img');
-            document.getElementById('modalImage').src = img.src;
-            document.getElementById('modalImage').alt = img.alt;
-            document.getElementById('photoModal').style.display = 'block';
-        }
+    <!-- 3D -->
+    <div id="category3d" class="content-section category-hidden">
+      <h2 class="section-title">🧊 3D COLLECTION</h2>
+      <div class="section-description">✨ 3D renders & objects ✨</div>
+      <div class="photo-grid" id="threeDGrid"></div>
+    </div>
 
-        function closeModal() {
-            document.getElementById('photoModal').style.display = 'none';
-        }
+    <!-- Designs -->
+    <div id="categoryDesigns" class="content-section category-hidden">
+      <h2 class="section-title">🎨 DESIGNS</h2>
+      <div class="section-description">✨ Graphic design works ✨</div>
+      <div class="photo-grid" id="designsGrid"></div>
+    </div>
+  </main>
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('photoModal');
-            if (event.target === modal) modal.style.display = 'none';
-        };
+  <footer class="site-footer">
+    <div class="copyright">✨ Enter the Secret Archive ✨</div>
+    <div class="footer-text">📬 Contact me :</div>
+    <a href="mailto:gafureda@gmail.com" class="footer-email">gafureda@gmail.com</a>
+    <div class="footer-text">📸 Follow me on Instagram :</div>
+    <a href="https://instagram.com/edas_artistry" target="_blank" class="instagram-link">📸 @edasartistry</a>
+    <div class="cipher-footer">⬟⬟⬟ ◆◆◆</div>
+    <div class="counter">That's all for now… 👀</div>
+  </footer>
+</div>
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
+<div id="photoModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" class="modal-image" src="" alt="">
+  </div>
+</div>
+
+<script>
+  (function() {
+    // --------------------------------------------------------------
+    // 1. КОНФИГУРАЦИЯ: пути к изображениям для каждой категории
+    //    Меняйте пути под свои файлы. Формат: 'папка/имя.jpg'
+    // --------------------------------------------------------------
+    const CATEGORY_IMAGES = {
+      gallery: [
+        'img/1.jpg', 'img/2.jpg', 'img/4.jpg', 'img/5.jpg', 'img/7.jpg',
+        'img/8.jpg', 'img/3.jpg', 'img/9.jpg', 'img/10.jpg', 'img/11.jpg',
+        'img/13.jpg', 'img/14.jpg', 'img/16.jpg'
+      ],
+      stock: [
+        'img/stock1.jpg', 'img/stock2.jpg', 'img/stock3.jpg',
+        'img/stock4.jpg', 'img/stock5.jpg', 'img/stock6.jpg'
+      ],
+      threeD: [
+        'img/3d1.jpg', 'img/3d2.jpg', 'img/3d3.jpg',
+        'img/3d4.jpg', 'img/3d5.jpg'
+      ],
+      designs: [
+        'img/design1.jpg', 'img/design2.jpg', 'img/design3.jpg',
+        'img/design4.jpg', 'img/design5.jpg', 'img/design6.jpg',
+        'img/design7.jpg'
+      ]
+    };
+
+    // DOM элементы
+    const sections = {
+      gallery: document.getElementById('categoryGallery'),
+      stock: document.getElementById('categoryStock'),
+      threeD: document.getElementById('category3d'),
+      designs: document.getElementById('categoryDesigns')
+    };
+
+    const grids = {
+      gallery: document.getElementById('galleryGrid'),
+      stock: document.getElementById('stockGrid'),
+      threeD: document.getElementById('threeDGrid'),
+      designs: document.getElementById('designsGrid')
+    };
+
+    const navButtons = {
+      gallery: document.getElementById('navGallery'),
+      stock: document.getElementById('navStock'),
+      threeD: document.getElementById('nav3d'),
+      designs: document.getElementById('navDesigns')
+    };
+
+    // Текущая активная категория
+    let currentCategory = 'gallery';
+
+    // --------------------------------------------------------------
+    // 2. ГЕНЕРАЦИЯ КАРТОЧЕК ДЛЯ КАТЕГОРИИ
+    // --------------------------------------------------------------
+    function renderCategory(category) {
+      const grid = grids[category];
+      if (!grid) return;
+      
+      const images = CATEGORY_IMAGES[category] || [];
+      
+      // Очищаем сетку
+      grid.innerHTML = '';
+      
+      if (images.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:40px;">✨ Soon... ✨</p>';
+        return;
+      }
+
+      // Создаём карточки
+      images.forEach((src, index) => {
+        const card = document.createElement('div');
+        card.className = 'photo-card';
+        // Чередование наклона
+        const rotation = index % 2 === 0 ? '-1deg' : '2deg';
+        card.style.setProperty('--rot', rotation);
+        
+        card.innerHTML = `
+          <div class="photo-frame">
+            <img src="${src}" alt="Photo ${index+1}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\\'padding:30px;color:var(--primary)\\'>📷<br>image not found</div>'">
+            <div class="photo-overlay"><span class="photo-icon">🔍</span></div>
+          </div>
+        `;
+        
+        card.addEventListener('click', function(e) {
+          const imgElement = this.querySelector('img');
+          if (imgElement && imgElement.complete && imgElement.naturalWidth > 0) {
+            openModalWithSrc(imgElement.src, imgElement.alt);
+          } else {
+            openModalWithSrc(src, `Photo ${index+1}`);
+          }
         });
+        
+        grid.appendChild(card);
+      });
+    }
 
-        console.log('%c📸 СЕКРЕТНЫЙ ФОТО-АРХИВ', 'font-size:22px; color:#ff6b9d;');
-        console.log('%c⬟ Подключай фото в img/1.jpg → img/20.jpg', 'font-size:14px; color:#39ff14');
+    // --------------------------------------------------------------
+    // 3. ПЕРЕКЛЮЧЕНИЕ КАТЕГОРИЙ
+    // --------------------------------------------------------------
+    function switchCategory(category) {
+      if (currentCategory === category) return;
+      
+      // Скрываем все секции
+      Object.values(sections).forEach(section => {
+        if (section) {
+          section.classList.add('category-hidden');
+          section.classList.remove('category-visible');
+        }
+      });
+      
+      // Показываем нужную
+      if (sections[category]) {
+        sections[category].classList.remove('category-hidden');
+        sections[category].classList.add('category-visible');
+      }
+      
+      // Обновляем активную кнопку
+      Object.values(navButtons).forEach(btn => {
+        if (btn) btn.classList.remove('active');
+      });
+      if (navButtons[category]) {
+        navButtons[category].classList.add('active');
+      }
+      
+      // Если категория ещё не отрендерена – рендерим
+      if (grids[category] && grids[category].children.length === 0) {
+        renderCategory(category);
+      }
+      
+      currentCategory = category;
+    }
 
-        let konami = [];
-        document.addEventListener('keydown', (e) => {
-            konami.push(e.keyCode);
-            if (konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
-                alert('🎉 КОД АКТИВИРОВАН! Секретный архив открыт!');
-                document.querySelectorAll('.photo-card').forEach((card, i) => {
-                    setTimeout(() => {
-                        card.style.transform = 'rotate(360deg) scale(1.1)';
-                        card.style.transition = 'all 0.8s';
-                        setTimeout(() => card.style.transform = '', 800);
-                    }, i*50);
-                });
-                konami = [];
-            }
+    // --------------------------------------------------------------
+    // 4. МОДАЛЬНОЕ ОКНО
+    // --------------------------------------------------------------
+    function openModalWithSrc(src, alt) {
+      const modal = document.getElementById('photoModal');
+      const modalImg = document.getElementById('modalImage');
+      if (modalImg) {
+        modalImg.src = src;
+        modalImg.alt = alt || '';
+      }
+      if (modal) modal.style.display = 'block';
+    }
+
+    window.openModal = function(card) {
+      const img = card?.querySelector('img');
+      if (img) {
+        openModalWithSrc(img.src, img.alt);
+      }
+    };
+
+    window.closeModal = function() {
+      const modal = document.getElementById('photoModal');
+      if (modal) modal.style.display = 'none';
+    };
+
+    // Закрытие по клику вне контента
+    window.onclick = function(event) {
+      const modal = document.getElementById('photoModal');
+      if (event.target === modal) modal.style.display = 'none';
+    };
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.closeModal();
+    });
+
+    // --------------------------------------------------------------
+    // 5. ПРИВЯЗКА НАВИГАЦИИ
+    // --------------------------------------------------------------
+    navButtons.gallery?.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchCategory('gallery');
+    });
+    navButtons.stock?.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchCategory('stock');
+    });
+    navButtons.threeD?.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchCategory('threeD');
+    });
+    navButtons.designs?.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchCategory('designs');
+    });
+
+    // --------------------------------------------------------------
+    // 6. ИНИЦИАЛИЗАЦИЯ
+    // --------------------------------------------------------------
+    renderCategory('gallery'); // грузим основную галерею сразу
+
+    // Пасхалка Konami Code
+    let konami = [];
+    document.addEventListener('keydown', (e) => {
+      konami.push(e.keyCode);
+      if (konami.toString().indexOf('38,38,40,40,37,39,37,39,66,65') >= 0) {
+        alert('🎉 КОД АКТИВИРОВАН! Секретный архив открыт!');
+        document.querySelectorAll('.photo-card').forEach((card, i) => {
+          setTimeout(() => {
+            card.style.transform = 'rotate(360deg) scale(1.1)';
+            card.style.transition = 'all 0.8s';
+            setTimeout(() => card.style.transform = '', 800);
+          }, i*50);
         });
+        konami = [];
+      }
+    });
 
-        setInterval(() => {
-            if(Math.random() < 0.1) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.innerHTML = ['⭐','✨','🌟','💫'][Math.floor(Math.random()*4)];
-                star.style.top = Math.random()*100 + '%';
-                star.style.left = Math.random()*100 + '%';
-                star.style.animationDuration = (10+Math.random()*20)+'s';
-                star.style.fontSize = (15+Math.random()*25)+'px';
-                document.body.appendChild(star);
-                setTimeout(() => star.remove(), 30000);
-            }
-        }, 2000);
-    </script>
+    // Плавающие звёзды
+    setInterval(() => {
+      if(Math.random() < 0.1) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.innerHTML = ['⭐','✨','🌟','💫'][Math.floor(Math.random()*4)];
+        star.style.top = Math.random()*100 + '%';
+        star.style.left = Math.random()*100 + '%';
+        star.style.animationDuration = (10+Math.random()*20)+'s';
+        star.style.fontSize = (15+Math.random()*25)+'px';
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 30000);
+      }
+    }, 2000);
+
+    console.log('%c📸 СЕКРЕТНЫЙ ФОТО-АРХИВ', 'font-size:22px; color:#ff6b9d;');
+    console.log('%c⬟ Категории: Gallery | Stock art | 3D | Designs', 'font-size:14px; color:#39ff14');
+  })();
+</script>
 </body>
 </html>
